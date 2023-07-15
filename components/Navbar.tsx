@@ -2,21 +2,22 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import logoMain from '../public/icons/mainLogo.png'
+import Image from 'next/image'
 
-export default function Example() {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <header className="bg-slate-300">
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        aria-label="Navigation bar"
+      >
         <div className="flex items-center lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
+            <Image className="h-8 w-auto" src={logoMain} alt="" />
           </a>
           <span className="px-3 text-xl">DSB General Construction</span>
         </div>
@@ -31,13 +32,13 @@ export default function Example() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-m leading-6 text-gray-900">
+          <a href="#" className="text-m leading-6 text-gray-900 hover:text-gray-400">
             Features
           </a>
-          <a href="#" className="text-m leading-6 text-gray-900">
+          <a href="#" className="text-m leading-6 text-gray-900 hover:text-gray-400">
             Marketplace
           </a>
-          <a href="#" className="text-m leading-6 text-gray-900">
+          <a href="#" className="text-m leading-6 text-gray-900 hover:text-gray-400">
             Company
           </a>
         </div>
