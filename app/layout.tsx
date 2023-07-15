@@ -1,4 +1,6 @@
 import '../styles/globals.css'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export const metadata = {
   title: 'dsbgeneralconstruction',
@@ -8,6 +10,7 @@ export const metadata = {
 type LayoutProps = {
   children: React.ReactNode
 }
+
 const RootLayout = ({ children }: LayoutProps) => {
   return (
     <html lang="en">
@@ -15,7 +18,11 @@ const RootLayout = ({ children }: LayoutProps) => {
         <div className="main">
           <div className="gradient" />
         </div>
-        <main className="app">{children}</main>
+        <main className="app">
+          <Navbar />
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   )
