@@ -2,7 +2,12 @@
 
 import { useEffect } from 'react'
 
-const Error = ({ error, reset }) => {
+type ErrorProps = {
+  error: string
+  reset: any
+}
+
+const Error = ({ error, reset }: ErrorProps) => {
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error)
