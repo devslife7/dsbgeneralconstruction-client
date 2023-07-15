@@ -1,11 +1,14 @@
-import '@styles/globals.css'
+import '../styles/globals.css'
 
 export const metadata = {
   title: 'dsbgeneralconstruction',
   description: 'Home improvement contractor',
 }
 
-const RootLayout = () => {
+type LayoutProps = {
+  children: React.ReactNode
+}
+const RootLayout = ({ children }: LayoutProps) => {
   return (
     <html Lang="en">
       <body>
