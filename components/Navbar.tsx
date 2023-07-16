@@ -33,7 +33,8 @@ export default function Navbar() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <Link href="/" className="leading-7 px-2 text-gray-900 hover:text-gray-400 ">
+          <div className="leading-7 px-2 text-gray-900">(703)585-6705</div>
+          <Link href="/" className="leading-7 px-2 text-gray-900 hover:text-gray-400">
             Home
           </Link>
           <Link href="/work" className="leading-7 px-2 text-gray-900 hover:text-gray-400">
