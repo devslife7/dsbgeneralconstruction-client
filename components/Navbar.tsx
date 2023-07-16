@@ -16,10 +16,10 @@ export default function Navbar() {
         aria-label="Navigation bar"
       >
         <div className="flex items-center lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <Image className="h-8 w-auto" src={logoMain} alt="Company Logo" />
-          </a>
+          </Link>
           <span className="px-3 text-xl">DSB General Construction</span>
         </div>
         <div className="flex lg:hidden">
