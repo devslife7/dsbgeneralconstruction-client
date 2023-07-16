@@ -36,7 +36,6 @@ const socialMediaLinks = [
 export default function Footer() {
   return (
     <footer className="bg-slate-300">
-      {/* <div className="mx-auto flex flex-col max-w-7xl items-center justify-around p-6 h-48"> */}
       <div className="flex flex-col justify-center gap-y-4 h-52 mx-auto max-w-7xl md:flex-row md:justify-around items-center">
         <div className="text-xl text-center ">DSB General Construction</div>
         <div className="text-center">Copyright © 2023 DSB General Construction. All rights reserved.</div>

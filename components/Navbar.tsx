@@ -4,6 +4,7 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logoMain from '../public/icons/mainLogo.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -17,7 +18,7 @@ export default function Navbar() {
         <div className="flex items-center lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <Image className="h-8 w-auto" src={logoMain} alt="" />
+            <Image className="h-8 w-auto" src={logoMain} alt="Company Logo" />
           </a>
           <span className="px-3 text-xl">DSB General Construction</span>
         </div>
@@ -32,15 +33,15 @@ export default function Navbar() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-m leading-6 text-gray-900 hover:text-gray-400">
-            Features
-          </a>
-          <a href="#" className="text-m leading-6 text-gray-900 hover:text-gray-400">
-            Marketplace
-          </a>
-          <a href="#" className="text-m leading-6 text-gray-900 hover:text-gray-400">
-            Company
-          </a>
+          <Link href="/" className="leading-7 px-2 text-gray-900 hover:text-gray-400 ">
+            Home
+          </Link>
+          <Link href="/work" className="leading-7 px-2 text-gray-900 hover:text-gray-400">
+            Work
+          </Link>
+          <Link href="/about" className="leading-7 px-2 text-gray-900 hover:text-gray-400">
+            About
+          </Link>
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -49,11 +50,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
+              <Image className="h-8 w-auto" src={logoMain} alt="Company Logo" />
             </a>
             <button
               type="button"
@@ -67,24 +64,29 @@ export default function Navbar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                <Link
+                  href="/"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  Features
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  Home
+                </Link>
+
+                <Link
+                  href="/work"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  Marketplace
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  Work
+                </Link>
+
+                <Link
+                  href="/about"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  Company
-                </a>
+                  About
+                </Link>
               </div>
             </div>
           </div>
