@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <header className="white">
       <nav
-        className="mx-auto max-w-7xl flex items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Navigation bar"
       >
         <div className="flex items-center lg:flex-1">
@@ -33,14 +33,14 @@ export default function Navbar() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <div className="leading-7 px-2 text-gray-900">(703)585-6705</div>
-          <Link href="/" className="leading-7 px-2 text-gray-900 hover:text-gray-400">
+          <div className="px-2 leading-7 text-gray-900">(703)585-6705</div>
+          <Link href="/" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
             Home
           </Link>
-          <Link href="/work" className="leading-7 px-2 text-gray-900 hover:text-gray-400">
+          <Link href="/work" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
             Work
           </Link>
-          <Link href="/about" className="leading-7 px-2 text-gray-900 hover:text-gray-400">
+          <Link href="/about" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
             About
           </Link>
         </div>
