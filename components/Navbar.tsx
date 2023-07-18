@@ -5,9 +5,31 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import logoMain from "../public/icons/mainLogo.png"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const pathname = usePathname()
+
+  const navLinks = [
+    {
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "Work",
+      href: "/work",
+    },
+    {
+      label: "About",
+      href: "/about",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+    },
+  ]
 
   return (
     <header className="bg-secondary-color text-white">
@@ -33,23 +55,23 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           <div className="px-2 leading-7">(999)999-9999</div>
-          <Link href="/" className="px-2 leading-7 hover:text-gray-400">
-            Home
-          </Link>
-          <Link href="/work" className="px-2 leading-7 hover:text-gray-400">
-            Work
-          </Link>
-          <Link href="/about" className="px-2 leading-7 hover:text-gray-400">
-            About
-          </Link>
-          <Link href="/contact" className="px-2 leading-7 hover:text-gray-400">
-            Contact Us
-          </Link>
+
+          {navLinks.map((link, index) => (
+            <Link
+              key={index}
+              href={link.href}
+              className={`px-2 leading-7 ${
+                pathname === link.href ? "text-primary-color" : "hover:text-gray-400"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -73,29 +95,18 @@ export default function Navbar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Link
-                  href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Home
-                </Link>
-
-                <Link
-                  href="/work"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Work
-                </Link>
-
-                <Link
-                  href="/about"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  About
-                </Link>
+                {navLinks.map((link, index) => (
+                  <Link
+                    key={index}
+                    className={`-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 ${
+                      pathname === link.href && "text-primary-color"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    href={link.href}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
