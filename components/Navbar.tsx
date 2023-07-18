@@ -32,9 +32,9 @@ export default function Navbar() {
   ]
 
   return (
-    <header className="fixed w-full  text-white">
+    <header className="fixed w-full bg-background text-white">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
         aria-label="Navigation bar"
       >
         <div className="flex items-center lg:flex-1">

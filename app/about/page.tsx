@@ -1,16 +1,16 @@
-import Image from 'next/image'
-import AboutUs from '../../public/images/aboutPage.jpg'
+import Image from "next/image"
+import AboutUs from "../../public/images/aboutPage.jpg"
 
 const About = () => {
   return (
-    <div className="mx-auto max-w-7xl h-[79vh] p-4">
-      <h1 className="text-4xl font-medium text-center mt-20 mb-20">About Us</h1>
+    <div className="mx-auto h-[79vh] max-w-7xl p-4 lg:p-8">
+      <h1 className="mb-20 mt-20 text-center text-4xl font-medium">About Us</h1>
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2">
           <Image src={AboutUs} alt="About Us" width={800} height={600} objectFit="cover" />
         </div>
         <div className="md:w-1/2 md:pl-8">
-          <h2 className="text-2xl font-medium my-6">Our Story</h2>
+          <h2 className="my-6 text-2xl font-medium">Our Story</h2>
           <p className="mb-6">
             At DSB General Construction, we have been transforming houses into dream homes for many years. Our
             passion for design, craftsmanship, and customer satisfaction sets us apart in the industry.
