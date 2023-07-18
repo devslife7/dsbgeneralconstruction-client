@@ -32,16 +32,12 @@ export default function Navbar() {
   ]
 
   return (
-    <header className="bg-background text-white">
+    <header className="fixed w-full  text-white">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Navigation bar"
       >
         <div className="flex items-center lg:flex-1">
-          {/* <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <Image className="h-8 w-auto" src={logoMain} alt="Company Logo" />
-          </Link> */}
           <Link href="/">
             <span className="text-2xl font-semibold">
               <span className="text-primary-color">DSB</span> General Construction
@@ -58,7 +54,7 @@ export default function Navbar() {
             <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-7">
           <div className="px-2 leading-7">(999)999-9999</div>
 
           {navLinks.map((link, index) => (
@@ -78,10 +74,6 @@ export default function Navbar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            {/* <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <Image className="h-8 w-auto" src={logoMain} alt="Company Logo" />
-            </a> */}
             <span className=" text-2xl font-semibold text-primary-color">DSB</span>
             <button
               type="button"
