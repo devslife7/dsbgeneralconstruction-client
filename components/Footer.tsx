@@ -25,7 +25,7 @@ const socialMediaLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary-color text-white">
+    <footer className="bg-background text-white">
       <div className="mx-auto flex h-52 max-w-7xl flex-col items-center justify-center gap-y-4 md:flex-row md:justify-around">
         <div className="px-6 text-center text-xl">DSB General Construction</div>
         <div className="px-6 text-center">

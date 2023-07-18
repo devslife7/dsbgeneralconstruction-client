@@ -26,7 +26,7 @@ const socialMediaLinks = [
 
 export default function Contact() {
   return (
-    <div className="bg-secondary-color text-white">
+    <div className="bg-background text-white">
       <div className="mx-auto max-w-7xl p-6 lg:p-8">
         <div className=" my-20  md:my-40 md:mb-44">
           <h1 className=" text-5xl font-bold">Schedule an Free Estimate</h1>

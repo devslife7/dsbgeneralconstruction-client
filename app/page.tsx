@@ -1,4 +1,5 @@
-import HeroBackground from '../public/images/HeroSection.jpg'
+import { url } from "inspector"
+import HeroBackground from "../public/images/HeroSection.jpg"
 
 export default function Home() {
   return (
