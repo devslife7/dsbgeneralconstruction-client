@@ -1,16 +1,16 @@
-'use client'
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logoMain from '../public/icons/mainLogo.png'
-import Image from 'next/image'
-import Link from 'next/link'
+"use client"
+import { useState } from "react"
+import { Dialog } from "@headlessui/react"
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
+import logoMain from "../public/icons/mainLogo.png"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="white">
+    <header className="bg-secondary-color text-white">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Navigation bar"
@@ -20,9 +20,11 @@ export default function Navbar() {
             <span className="sr-only">Your Company</span>
             <Image className="h-8 w-auto" src={logoMain} alt="Company Logo" />
           </Link> */}
-          <span className="text-2xl font-semibold">
-            <span className="text-primary-color">DSB</span> General Construction
-          </span>
+          <Link href="/">
+            <span className="text-2xl font-semibold">
+              <span className="text-primary-color">DSB</span> General Construction
+            </span>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -35,17 +37,17 @@ export default function Navbar() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <div className="px-2 leading-7 text-gray-900">(703)585-6705</div>
-          <Link href="/" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
+          <div className="px-2 leading-7">(999)999-9999</div>
+          <Link href="/" className="px-2 leading-7 hover:text-gray-400">
             Home
           </Link>
-          <Link href="/work" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
+          <Link href="/work" className="px-2 leading-7 hover:text-gray-400">
             Work
           </Link>
-          <Link href="/about" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
+          <Link href="/about" className="px-2 leading-7 hover:text-gray-400">
             About
           </Link>
-          <Link href="/contact" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
+          <Link href="/contact" className="px-2 leading-7 hover:text-gray-400">
             Contact Us
           </Link>
         </div>

@@ -1,41 +1,31 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaYoutube } from "react-icons/fa"
 
 const socialMediaLinks = [
   {
-    label: 'Facebook',
-    href: 'https://www.instagram.com/dsbgeneralconstruction/',
+    label: "Facebook",
+    href: "https://www.instagram.com/dsbgeneralconstruction/",
     icon: <FaFacebook />,
   },
   {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/dsbgeneralconstruction/',
+    label: "Instagram",
+    href: "https://www.instagram.com/dsbgeneralconstruction/",
     icon: <FaInstagram />,
   },
   {
-    label: 'Twitter',
-    href: 'https://www.instagram.com/dsbgeneralconstruction/',
+    label: "Twitter",
+    href: "https://www.instagram.com/dsbgeneralconstruction/",
     icon: <FaTwitter />,
   },
   {
-    label: 'LinkedIn',
-    href: 'https://www.instagram.com/dsbgeneralconstruction/',
-    icon: <FaLinkedin />,
-  },
-  {
-    label: 'GitHub',
-    href: 'https://www.instagram.com/dsbgeneralconstruction/',
-    icon: <FaGithub />,
-  },
-  {
-    label: 'Youtube',
-    href: 'https://www.instagram.com/dsbgeneralconstruction/',
+    label: "Youtube",
+    href: "https://www.instagram.com/dsbgeneralconstruction/",
     icon: <FaYoutube />,
   },
 ]
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-800 text-white">
+    <footer className="bg-secondary-color text-white">
       <div className="mx-auto flex h-52 max-w-7xl flex-col items-center justify-center gap-y-4 md:flex-row md:justify-around">
         <div className="px-6 text-center text-xl">DSB General Construction</div>
         <div className="px-6 text-center">
