@@ -16,11 +16,13 @@ export default function Navbar() {
         aria-label="Navigation bar"
       >
         <div className="flex items-center lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          {/* <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <Image className="h-8 w-auto" src={logoMain} alt="Company Logo" />
-          </Link>
-          <span className="px-3 text-xl">DSB General Construction</span>
+          </Link> */}
+          <span className="px-3 text-2xl font-semibold">
+            <span className="text-orange-500">DSB</span> General Construction
+          </span>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -42,6 +44,9 @@ export default function Navbar() {
           </Link>
           <Link href="/about" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
             About
+          </Link>
+          <Link href="/contact" className="px-2 leading-7 text-gray-900 hover:text-gray-400">
+            Contact Us
           </Link>
         </div>
       </nav>
