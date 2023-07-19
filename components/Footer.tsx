@@ -18,12 +18,15 @@ export default function Footer() {
 
   return (
     <footer className="bg-background text-white">
-      <div className="mx-auto flex h-52 max-w-7xl flex-col items-center justify-center gap-y-4 md:flex-row md:justify-around">
-        <div className="px-6 text-center text-xl">DSB General Construction</div>
-        <div className="px-6 text-center">
-          Copyright © 2023 DSB General Construction. All rights reserved.
+      <div className="container flex h-52 flex-col items-center justify-center gap-y-4 md:flex-row md:justify-between">
+        <div className="text-center text-xl">
+          <span className="text-primary">DSB</span> General Construction
         </div>
-        <div className="flex justify-center gap-x-6 px-6">{renderSocialLinks()}</div>
+        <div className=" text-center">
+          Copyright © 2023 <span className="text-primary">DSB</span> General Construction. All rights
+          reserved.
+        </div>
+        <div className="flex justify-center gap-x-6">{renderSocialLinks()}</div>
       </div>
     </footer>
   )

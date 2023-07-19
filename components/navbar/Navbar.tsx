@@ -38,12 +38,12 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed w-full bg-background text-white">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
+    <header className="fixed top-0 w-full bg-background text-white">
+      <nav className="container flex items-center justify-between">
         <div className="flex items-center lg:flex-1">
           <Link href="/">
             <span className="text-2xl font-semibold">
-              <span className="text-primary-color">DSB</span> General Construction
+              <span className="text-primary">DSB</span> General Construction
             </span>
           </Link>
         </div>
@@ -63,9 +63,7 @@ export default function Navbar() {
             <Link
               key={index}
               href={link.href}
-              className={`px-2 leading-7 ${
-                pathname === link.href ? "text-primary-color" : "hover:text-gray-400"
-              }`}
+              className={`px-2 leading-7 ${pathname === link.href ? "text-primary" : "hover:text-gray-400"}`}
             >
               {link.label}
             </Link>

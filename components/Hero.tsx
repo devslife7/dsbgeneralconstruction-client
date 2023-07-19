@@ -11,7 +11,7 @@ export default function Hero() {
               Our skilled artisans pour their heart and soul into every project, ensuring impeccable finishes
               and long-lasting beauty.
             </div>
-            <Link href="/work" className="inline-block rounded-md bg-primary-color px-11 py-4  text-2xl">
+            <Link href="/work" className="inline-block rounded-md bg-primary px-11 py-4  text-2xl">
               Explore Work
             </Link>
           </div>
