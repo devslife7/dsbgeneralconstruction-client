@@ -1,14 +1,14 @@
-import '../styles/globals.css'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import "../styles/globals.css"
+import Navbar from "../components/navbar/Navbar"
+import Footer from "../components/Footer"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: 'dsbgeneralconstruction',
-  description: 'Home improvement contractor',
+  title: "dsbgeneralconstruction",
+  description: "Home improvement contractor",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
