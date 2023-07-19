@@ -1,9 +1,10 @@
+import Link from "next/link"
 import { socialMediaLinks } from "../data/socialMediaLinks"
 
 export default function Footer() {
   const renderSocialLinks = () => {
     return socialMediaLinks.map((link, index) => (
-      <a
+      <Link
         key={index}
         className="text-3xl"
         href={link.href}
@@ -12,7 +13,7 @@ export default function Footer() {
         aria-label={link.label}
       >
         {link.icon}
-      </a>
+      </Link>
     ))
   }
 
