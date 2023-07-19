@@ -7,7 +7,7 @@ export default function Hero() {
         <div className="mx-auto flex h-full max-w-screen-xl items-center p-4 lg:p-8">
           <div className="relative left-[-4rem] rounded-md bg-black bg-opacity-50 px-16 py-20 text-white">
             <h1 className="text-7xl font-bold">Renovate Your Home</h1>
-            <div className="w-[53rem]  pb-10 pt-5 text-2xl font-light leading-10">
+            <div className="max-w-[53rem]  pb-10 pt-5 text-2xl font-light leading-10">
               Our skilled artisans pour their heart and soul into every project, ensuring impeccable finishes
               and long-lasting beauty.
             </div>

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
+import { Bars3Icon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import NavDialog from "./NavDialog"
@@ -33,6 +33,10 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
+  const handleMobileMenuOpen = () => {
+    setMobileMenuOpen(true)
+  }
+
   return (
     <header className="fixed w-full bg-background text-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
@@ -47,7 +51,7 @@ export default function Navbar() {
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
+            onClick={handleMobileMenuOpen}
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
@@ -68,7 +72,13 @@ export default function Navbar() {
           ))}
         </div>
       </nav>
-      <NavDialog mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} navLinks={navLinks} />
+      {mobileMenuOpen && (
+        <NavDialog
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
+          navLinks={navLinks}
+        />
+      )}
     </header>
   )
 }
