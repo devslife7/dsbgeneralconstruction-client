@@ -3,7 +3,7 @@ import AboutUs from "../../public/images/aboutPage.jpg"
 
 const About = () => {
   return (
-    <div className="container h-[79vh]">
+    <div className="container h-[50vh]">
       <h1 className=" mt-20 text-center text-4xl font-bold">About Us</h1>
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2">

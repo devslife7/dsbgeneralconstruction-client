@@ -17,7 +17,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-background text-white">
+    <footer className="mt-auto bg-background text-white">
       <div className="container flex h-52 flex-col items-center justify-center gap-y-4 md:flex-row md:justify-between">
         <div className="text-center text-xl">
           <span className="text-primary">DSB</span> General Construction
