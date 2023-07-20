@@ -70,5 +70,9 @@ export default function Work() {
       </div>
     ))
   }
-  return <div className="container-custom my-32 flex items-center gap-5 flex-wrap">{renderGallery()}</div>
+  return (
+    <div className="container-custom my-32 flex justify-center lg:justify-evenly xl:justify-start gap-5 flex-wrap">
+      {renderGallery()}
+    </div>
+  )
 }
