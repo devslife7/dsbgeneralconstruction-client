@@ -1,12 +1,13 @@
+import GallerySection from "@/components/GallerySection"
 import Hero from "../components/Hero"
+import KeyPoints from "./keypoints/page"
 
 export default function Home() {
   return (
     <div>
       <Hero />
-      <div className="flex h-screen items-center justify-center">
-        <div className="text-7xl">Hello World</div>
-      </div>
+      <KeyPoints />
+      <GallerySection />
     </div>
   )
 }

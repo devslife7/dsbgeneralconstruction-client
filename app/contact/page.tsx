@@ -3,16 +3,9 @@ import { socialMediaLinks } from "../../data/socialMediaLinks"
 import { FaMapLocationDot } from "react-icons/fa6"
 import { BsWhatsapp, BsFillTelephoneOutboundFill } from "react-icons/bs"
 import { MdMailOutline } from "react-icons/md"
-import { FaPhoneVolume } from "react-icons/fa"
 
 export default function Contact() {
   const renderMediaLinks = () => {
-    const phoneCallAction = {
-      label: "Phone number",
-      href: "tel:999-999-9999",
-      icon: <BsFillTelephoneOutboundFill />,
-    }
-    socialMediaLinks.push(phoneCallAction)
     return socialMediaLinks.map((link, index) => (
       <Link key={index} className="text-5xl hover:text-primary" href={link.href} aria-label={link.label}>
         {link.icon}

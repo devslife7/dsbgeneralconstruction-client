@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa"
+import { BsFillTelephoneOutboundFill } from "react-icons/bs"
 
 export const socialMediaLinks = [
   {
@@ -20,5 +21,10 @@ export const socialMediaLinks = [
     label: "Youtube",
     href: "https://www.instagram.com/dsbgeneralconstruction/",
     icon: <FaYoutube />,
+  },
+  {
+    label: "Phone number",
+    href: "tel:999-999-9999",
+    icon: <BsFillTelephoneOutboundFill />,
   },
 ]

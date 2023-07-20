@@ -17,8 +17,8 @@ const navLinks: NavLink[] = [
     href: "/",
   },
   {
-    label: "Work",
-    href: "/work",
+    label: "Gallery",
+    href: "/gallery",
   },
   {
     label: "About",
@@ -43,7 +43,7 @@ export default function Navbar() {
       <Link
         key={index}
         href={link.href}
-        className={`px-2 leading-7 transition-all ${
+        className={`px-2 leading-7 transition-all text-lg ${
           pathname === link.href ? "text-primary" : "hover:text-gray-400"
         }`}
       >

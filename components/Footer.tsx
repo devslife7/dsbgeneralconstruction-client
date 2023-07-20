@@ -6,7 +6,7 @@ export default function Footer() {
     return socialMediaLinks.map((link, index) => (
       <Link
         key={index}
-        className="text-3xl"
+        className="text-3xl hover:text-primary"
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
