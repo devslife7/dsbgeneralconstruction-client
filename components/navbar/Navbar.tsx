@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 z-10 w-full bg-background text-white">
-      <nav className="container flex h-[4.5rem] items-center justify-between">
+      <nav className="container-custom flex h-[4.5rem] items-center justify-between">
         <div className="flex items-center lg:flex-1">
           <Link href="/">
             <span className="text-2xl font-semibold">
@@ -63,7 +63,9 @@ export default function Navbar() {
             <Link
               key={index}
               href={link.href}
-              className={`px-2 leading-7 ${pathname === link.href ? "text-primary" : "hover:text-gray-400"}`}
+              className={`px-2 leading-7 transition-all ${
+                pathname === link.href ? "text-primary" : "hover:text-gray-400"
+              }`}
             >
               {link.label}
             </Link>

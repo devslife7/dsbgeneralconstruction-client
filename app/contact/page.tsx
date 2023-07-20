@@ -6,15 +6,15 @@ import { MdMailOutline } from "react-icons/md"
 
 export default function Contact() {
   return (
-    <div className="bg-background text-white">
-      <div className="mx-auto max-w-7xl p-4 lg:p-8">
-        <div className="my-40  md:mt-48 md:mb-44">
+    <div className="bg-gray-100 text-gray-700">
+      <div className="container-custom">
+        <div className="my-40  md:mt-72 ">
           <h1 className="text-5xl font-bold">Schedule a Free Estimate</h1>
           <p className="mb-20 mt-6 max-w-2xl text-[1.4rem] font-light">
             We are located in Fort Washington, Maryland. We service Northern Virginia and Southern Maryland
             including PG County, Calvert County, Anne Arundel County Charles County and St. Mary’s County.
           </p>
-          <div className="flex gap-16">
+          <div className="flex flex-wrap gap-16">
             {socialMediaLinks.map((link, index) => (
               <Link
                 key={index}
@@ -29,23 +29,22 @@ export default function Contact() {
             ))}
           </div>
         </div>
-        {/* <div className="my-36 flex flex-wrap items-end justify-between"> */}
         <div className="my-36 space-y-28 md:flex md:flex-wrap md:items-end md:justify-between">
-          <div className="bg-black bg-opacity-20 mx-auto px-10 py-10 h-[17rem] w-[23rem] rounded-md flex flex-col justify-evenly">
+          <div className="bg-black bg-opacity-20 mx-auto md:mx-0 px-10 py-10 h-[17rem] max-w-[23rem] md:w-[23rem] rounded-md flex flex-col justify-evenly">
             <p className="text-5xl mb-10">
               <MdMailOutline />
             </p>
             <div className="text-[1.8rem]">Send us an email</div>
             <div className="text-xl font-light">email123@gmail.com</div>
           </div>
-          <div className="bg-black bg-opacity-20 mx-auto px-10 py-10 h-[21rem] w-[24rem] rounded-md flex flex-col justify-evenly">
+          <div className="bg-black bg-opacity-20 mx-auto md:mx-0 px-10 py-10 h-[21rem] max-w-[23rem] md:w-[24rem] rounded-md flex flex-col justify-evenly">
             <p className="text-[4.7rem] mb-7">
               <BsWhatsapp />
             </p>
             <div className="text-[2.2rem]">WhatsApp</div>
             <div className="text-2xl font-light">+1 999 999 9999</div>
           </div>
-          <div className="bg-black bg-opacity-20 mx-auto px-10 py-10 h-[16rem] w-[23rem] rounded-md flex flex-col justify-evenly">
+          <div className="bg-black bg-opacity-20 mx-auto md:mx-0 px-10 py-10 h-[16rem] max-w-[23rem] md:w-[23rem] rounded-md flex flex-col justify-evenly">
             <p className="text-5xl mb-10">
               <FaMapLocationDot />
             </p>

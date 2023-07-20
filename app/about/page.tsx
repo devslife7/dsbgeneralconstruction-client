@@ -3,8 +3,8 @@ import AboutUs from "../../public/images/aboutPage.jpg"
 
 const About = () => {
   return (
-    <div className="container h-[50vh]">
-      <h1 className="mb-20 mt-40 text-center text-4xl font-bold">About Us</h1>
+    <div className="container-custom h-screen flex items-center">
+      {/* <h1 className="mb-20 mt-40 text-center text-4xl font-bold">About Us</h1> */}
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2">
           <Image src={AboutUs} alt="About Us" width={800} height={600} objectFit="cover" />
