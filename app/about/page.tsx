@@ -6,7 +6,13 @@ const About = () => {
     <div className="container-custom sm:h-screen flex items-center py-40">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 mb-14">
-          <Image src={AboutUs} alt="About Us" width={800} height={600} objectFit="cover" />
+          <Image
+            src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+            alt="About Us"
+            width={800}
+            height={600}
+            objectFit="cover"
+          />
         </div>
         <div className="md:w-1/2 md:pl-8 ">
           <h2 className="mb-6 text-5xl font-bold">Our Story</h2>
