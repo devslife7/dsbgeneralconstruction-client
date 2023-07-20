@@ -4,6 +4,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import NavDialog from "./NavDialog"
+import { FaPhone } from "react-icons/fa"
 
 interface NavLink {
   label: string
@@ -37,9 +38,23 @@ export default function Navbar() {
     setMobileMenuOpen(true)
   }
 
+  const renderNavLinks = () => {
+    return navLinks.map((link, index) => (
+      <Link
+        key={index}
+        href={link.href}
+        className={`px-2 leading-7 transition-all ${
+          pathname === link.href ? "text-primary" : "hover:text-gray-400"
+        }`}
+      >
+        {link.label}
+      </Link>
+    ))
+  }
+
   return (
     <header className="fixed top-0 z-10 w-full bg-background text-white">
-      <nav className="container-custom flex h-[4.5rem] items-center justify-between">
+      <nav className="container-custom flex h-[5rem] items-center justify-between">
         <div className="flex items-center lg:flex-1">
           <Link href="/">
             <span className="text-2xl font-semibold">
@@ -47,6 +62,14 @@ export default function Navbar() {
             </span>
           </Link>
         </div>
+        <div className="hidden lg:flex lg:gap-x-7">{renderNavLinks()}</div>
+        <a
+          href="tel:999-999-9999"
+          className="hidden py-2 px-4 leading-7 border-primary rounded-md border-2 lg:flex items-center ml-8 hover:bg-primary transition-all ease-in-out duration-300"
+        >
+          <FaPhone className="inline-block text-primary text-xl" />
+          <span className="text-lg ml-3">999-999-9999</span>
+        </a>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -56,20 +79,6 @@ export default function Navbar() {
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
           </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-7">
-          <div className="px-2 leading-7">(999)999-9999</div>
-          {navLinks.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className={`px-2 leading-7 transition-all ${
-                pathname === link.href ? "text-primary" : "hover:text-gray-400"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
         </div>
       </nav>
       {mobileMenuOpen && (

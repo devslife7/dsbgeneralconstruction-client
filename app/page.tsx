@@ -1,7 +1,4 @@
-import { url } from "inspector"
-import HeroBackground from "../public/images/HeroSection.jpg"
 import Hero from "../components/Hero"
-import Footer from "../components/Footer"
 
 export default function Home() {
   return (

@@ -3,13 +3,12 @@ import AboutUs from "../../public/images/aboutPage.jpg"
 
 const About = () => {
   return (
-    <div className="container-custom h-screen flex items-center">
-      {/* <h1 className="mb-20 mt-40 text-center text-4xl font-bold">About Us</h1> */}
+    <div className="container-custom sm:h-screen flex items-center py-40">
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/2 mb-10">
+        <div className="md:w-1/2 mb-14">
           <Image src={AboutUs} alt="About Us" width={800} height={600} objectFit="cover" />
         </div>
-        <div className="md:w-1/2 md:pl-8">
+        <div className="md:w-1/2 md:pl-8 ">
           <h2 className="mb-6 text-5xl font-bold">Our Story</h2>
           <div className="text-[1.4rem] font-light space-y-6 text-gray-700">
             <p>
