@@ -24,9 +24,11 @@ export default function NavDialog({ mobileMenuOpen, setMobileMenuOpen, navLinks 
   return (
     <Dialog as="div" className="lg:hidden transition-all" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
       <div className="fixed inset-0 z-10" />
-      <Dialog.Panel className="fixed top-0 bottom-0 right-0 z-10 w-full overflow-y-auto bg-background bg-opacity-90 text-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+      <Dialog.Panel className="fixed top-0 bottom-0 right-0 z-10 w-full overflow-y-auto bg-background bg-opacity-[0.99] text-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div className="flex items-center justify-between">
-          <span className=" text-2xl font-semibold text-primary">DSB</span>
+          <span className=" text-2xl font-semibold">
+            <span className="text-primary">DSB</span> GC
+          </span>
           <button type="button" className="-m-2.5 rounded-md p-2.5 " onClick={closeMobileMenu}>
             <span className="sr-only">Close menu</span>
             <XMarkIcon className="h-6 w-6" aria-hidden="true" />
