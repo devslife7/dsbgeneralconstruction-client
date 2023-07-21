@@ -58,7 +58,7 @@ export default function Work() {
   const renderGallery = () => {
     return workGallery.map((work, index) => (
       <div key={index}>
-        <Image src={work.img[0]} alt={work.title} width={390} height={600} objectFit="cover" />
+        {/* <Image src={work.img[0]} alt={work.title} width={390} height={600} objectFit="cover" /> */}
         <div className="flex justify-between">
           <div>{work.title}</div>
           <div>
