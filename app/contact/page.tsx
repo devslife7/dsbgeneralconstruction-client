@@ -19,7 +19,7 @@ export default function Contact() {
         <h1 className="text-5xl font-bold">Schedule a Free Estimate</h1>
         <p className="mb-14 md:mb-20 mt-8 max-w-2xl text-[1.4rem] font-light text-gray-700">
           We are located in Fort Washington, Maryland. We service Northern Virginia and Southern Maryland
-          including PG County, Calvert County, Anne Arundel County Charles County and St. Mary’s County.
+          including PG County, Calvert County, Anne Arundel County Charles County and St. Mary&apos;s County.
         </p>
         <div className="flex flex-wrap gap-10 md:gap-16">{renderMediaLinks()}</div>
       </div>
