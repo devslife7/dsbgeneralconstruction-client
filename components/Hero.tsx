@@ -12,7 +12,7 @@ export default function Hero() {
               and long-lasting beauty.
             </div>
             <Link
-              href="/work"
+              href="/gallery"
               className="bg-primary border-[3px] border-solid border-transparent inline-block rounded-md text-xl px-7 py-2 md:px-10 md:py-3 md:text-2xl
               hover:border-solid hover:bg-transparent hover:border-[3px] hover:border-primary transition-all ease-in-out duration-300 "
             >
