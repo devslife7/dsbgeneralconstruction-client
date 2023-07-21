@@ -22,9 +22,4 @@ export const socialMediaLinks = [
     href: "https://www.instagram.com/dsbgeneralconstruction/",
     icon: <FaYoutube />,
   },
-  {
-    label: "Phone number",
-    href: "tel:999-999-9999",
-    icon: <BsFillTelephoneOutboundFill />,
-  },
 ]
