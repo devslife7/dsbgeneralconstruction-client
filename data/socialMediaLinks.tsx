@@ -1,5 +1,4 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa"
-import { BsFillTelephoneOutboundFill } from "react-icons/bs"
 
 export const socialMediaLinks = [
   {

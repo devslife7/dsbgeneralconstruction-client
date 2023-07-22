@@ -17,7 +17,7 @@ const About = () => {
             </p>
             <p>
               With a focus on quality and attention to detail, we take pride in delivering exceptional
-              results. Whether it&apos;s a kitchen remodel, ba'throom renovation, or a complete home makeover,
+              results. Whether it&apos;s a kitchen remodel, bathroom renovation, or a complete home makeover,
               we approach each project with dedication and commitment to creating spaces that our clients love
               to call home.
             </p>
