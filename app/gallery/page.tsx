@@ -71,7 +71,7 @@ export default function Work() {
         </div>
         <div>{work.subtitle}</div>
         <Link href="/gallery/work">
-          <p className="text-gray-700 mt-2 mb-10">See more...</p>
+          <p className="text-gray-700 mt-2 mb-10 text-xl">See more...</p>
         </Link>
       </div>
     ))

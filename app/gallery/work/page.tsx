@@ -32,11 +32,12 @@ export default function work() {
             <div className="text-lg">Leo Messi</div>
           </div>
           <div>
-            Muchaaachoooos ahora nos vovimo a ilusinaarr, quieroo gana la MLS yo ya soy campeon mundiaaaal!
+            Muchaaaaaachoooos ahora nos volvimo a ilusinaarr, quieroo gana la MLS yo ya soy campeon
+            mundiaaaal...
           </div>
           <div className="text-gray-700">Add comment...</div>
         </div>
-        <div className="bg-red-300 lg:w-[65%] flex justify-center flex-wrap order-first my-20">
+        <div className="lg:w-[65%] flex justify-center flex-wrap order-first my-20">
           <Image src={aboutPage} width={350} alt="image" />
           <Image src={aboutPage} width={350} alt="image" />
           <Image src={aboutPage} width={350} alt="image" />
