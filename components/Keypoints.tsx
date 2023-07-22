@@ -5,9 +5,9 @@ import { BsPeopleFill } from "react-icons/bs"
 export default function KeyPoints() {
   return (
     <div className="container-custom ">
-      <div className="gap-20 md:gap-0 my-20 flex flex-wrap justify-evenly">
+      <div className=" gap-12 md:gap-0 my-20 flex flex-wrap justify-evenly">
         <div className="md:text-center p-5 max-w-sm">
-          <MdAddHomeWork className="md:mx-auto text-9xl md:text-6xl my-14" />
+          <MdAddHomeWork className="md:mx-auto text-8xl md:text-6xl mb-6" />
           <h1 className="text-4xl mb-5 font-bold md:text-2xl">Expertise and Experience</h1>
           <p className="text-[1.35rem] text-gray-700 md:text-lg">
             Our craftsmanship ensures that the final outcome is not only visually appealing but also
@@ -15,7 +15,7 @@ export default function KeyPoints() {
           </p>
         </div>
         <div className="md:text-center p-5 max-w-sm">
-          <BsPeopleFill className="md:mx-auto text-9xl md:text-6xl my-14" />
+          <BsPeopleFill className="md:mx-auto text-8xl md:text-6xl mb-6" />
           <h1 className="text-4xl mb-5 font-bold md:text-2xl">Portfolio and References</h1>
           <p className="text-[1.35rem] text-gray-700 md:text-lg">
             Our proven track record is a strong indicator of our reliability, craftsmanship, and ability to
@@ -23,7 +23,7 @@ export default function KeyPoints() {
           </p>
         </div>
         <div className="md:text-center p-5 max-w-sm">
-          <BiTimeFive className="md:mx-auto text-9xl md:text-6xl my-14" />
+          <BiTimeFive className="md:mx-auto text-8xl md:text-6xl mb-6" />
           <h1 className="text-4xl mb-5 font-bold md:text-2xl">Commitment to Timelines</h1>
           <p className="text-[1.35rem] text-gray-700 md:text-lg">
             We prioritize punctuality and create a realistic project schedule with clear deadlines for each

@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Hero() {
   return (
-    <div className="h-[70vh] lg:h-[80vh] bg-[url('../public/images/HeroSection.jpg')] bg-cover bg-fixed mt-20">
+    <div className="h-[70vh] lg:h-[80vh] bg-[url('../public/images/HeroSection.jpg')] bg-cover bg-fixed mt-2">
       <div className="bg-black bg-opacity-25 h-full">
         <div className="container-custom h-full flex items-center text-white">
           <div className="bg-black bg-opacity-50 px-8 lg:px-16 py-14 lg:py-20 relative lg:left-[-4rem] rounded-md">
