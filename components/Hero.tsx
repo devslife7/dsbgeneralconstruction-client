@@ -1,12 +1,12 @@
 import Link from "next/link"
 import Image from "next/image"
-import heroBackground from "../public/images/HeroSection.jpg"
+import heroBackground from "../public/images/heroSection.webp"
 
 export default function Hero() {
   return (
     <div className="mt-20 h-[70vh] relative">
       <div className="absolute h-full w-full -z-10">
-        <Image src={heroBackground} alt="Colorful Kitchen" layout="fill" objectFit="cover" />
+        <Image src={heroBackground} priority={true} layout="fill" objectFit="cover" alt="Colorful Kitchen" />
       </div>
       <div className="bg-black bg-opacity-25 h-full">
         <div className="container-custom h-full flex items-center text-white">
