@@ -9,11 +9,7 @@ type WorkType = {
 }
 const workGallery: WorkType[] = [
   {
-    img: [
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://plus.unsplash.com/premium_photo-1681690860621-57d749a22f34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    ],
+    img: [],
     title: "Kitchen",
     subtitle: "The layout was reconfigured for better workflow, and new flooring.",
   },
@@ -76,8 +72,10 @@ export default function Work() {
       </div>
     ))
   }
+
   return (
     <div className="container-custom my-32 flex justify-center lg:justify-evenly xl:justify-start gap-5 flex-wrap">
+      <div className="btn bg-primary text-white">Add work...</div>
       {renderGallery()}
     </div>
   )

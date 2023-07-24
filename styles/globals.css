@@ -25,3 +25,6 @@ body {
 .container-custom {
   @apply container mx-auto px-4 lg:px-8;
 }
+
+#my_modal_3 {
+}
