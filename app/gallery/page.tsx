@@ -1,6 +1,12 @@
+"use client"
+// import { DirectUpload } from "activestorage"
+import * as ActiveStorage from "@rails/activestorage"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import { AiFillStar } from "react-icons/ai"
+
+ActiveStorage.start()
 
 type WorkType = {
   img: string[]
@@ -52,6 +58,8 @@ const workGallery: WorkType[] = [
 ]
 
 export default function Work() {
+  const [images, setImages] = useState({})
+  const [avatar, setAvatar] = useState("")
   const renderGallery = () => {
     return workGallery.map((work, index) => (
       <div key={index} className="w-[350px]">
@@ -73,10 +81,55 @@ export default function Work() {
     ))
   }
 
+  const handleImageUpload = (e: any) => {
+    // const formData = new FormData()
+    // const imagesArray = Array.prototype.slice.call(e.target.files)
+    // setImages(imagesArray)
+
+    // imagesArray.forEach((img, index) => formData.append("images[]", img))
+
+    // console.log("fordaa:", formData)
+
+    const formData = new FormData()
+    formData.append("avatar", avatar)
+
+    const uploadURL = "http://localhost:3001" + "/uploadAvatar/"
+
+    if (!!avatar) {
+      fetch(uploadURL + "5", {
+        method: "PATCH",
+        body: formData,
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+        })
+        .catch(err => console.log("Avatar Fetch Error: ", err))
+    }
+  }
+
   return (
-    <div className="container-custom my-32 flex justify-center lg:justify-evenly xl:justify-start gap-5 flex-wrap">
+    <div className="container-custom my-32">
       <div className="btn bg-primary text-white">Add work...</div>
-      {renderGallery()}
+      <div className="my-10 space-y-4">
+        <div>New Work</div>
+
+        {/* <input
+          id="imageUpload"
+          type="file"
+          multiple
+          placeholder="testing"
+          onChange={e => handleImageUpload(e)}
+        /> */}
+        <input id="customFile" type="file" placeholder="hello" onChange={e => setAvatar(e.target.files[0])} />
+        <button onClick={handleImageUpload} className="btn">
+          Submit
+        </button>
+      </div>
+
+      <div className=" flex justify-center lg:justify-evenly xl:justify-start gap-5 flex-wrap">
+        {renderGallery()}
+      </div>
     </div>
   )
 }
