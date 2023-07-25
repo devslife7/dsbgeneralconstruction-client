@@ -15,7 +15,9 @@ type WorkType = {
 }
 const workGallery: WorkType[] = [
   {
-    img: [],
+    img: [
+      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+    ],
     title: "Kitchen",
     subtitle: "The layout was reconfigured for better workflow, and new flooring.",
   },
@@ -58,13 +60,12 @@ const workGallery: WorkType[] = [
 ]
 
 export default function Work() {
-  const [images, setImages] = useState({})
-  const [avatar, setAvatar] = useState("")
+  const [photos, setPhotos] = useState([])
   const renderGallery = () => {
     return workGallery.map((work, index) => (
       <div key={index} className="w-[350px]">
         <Link href="/gallery/work">
-          <Image src={work.img[0]} alt={work.title} width={390} height={600} objectFit="cover" />
+          <Image src={work.img[0]} alt={work.title} width={390} height={600} className="object-cover" />
         </Link>
         <div className="flex justify-between">
           <div>{work.title}</div>
@@ -81,31 +82,37 @@ export default function Work() {
     ))
   }
 
-  const handleImageUpload = (e: any) => {
-    // const formData = new FormData()
-    // const imagesArray = Array.prototype.slice.call(e.target.files)
-    // setImages(imagesArray)
-
-    // imagesArray.forEach((img, index) => formData.append("images[]", img))
-
-    // console.log("fordaa:", formData)
-
+  const handleImageUpload = () => {
+    const uploadURL = "http://localhost:3000" + "/uploadAvatar/"
     const formData = new FormData()
-    formData.append("avatar", avatar)
+    photos.forEach((photo, index) => formData.append(`images[]`, photo))
 
-    const uploadURL = "http://localhost:3001" + "/uploadAvatar/"
-
-    if (!!avatar) {
+    if (!!photos) {
       fetch(uploadURL + "5", {
         method: "PATCH",
         body: formData,
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
+          console.log("data::", data)
+          // setPhotos(data.profile_img)
         })
         .catch(err => console.log("Avatar Fetch Error: ", err))
     }
+  }
+
+  const setImagesArray = (e: any) => {
+    const imagesArray = Array.prototype.slice.call(e.target.files)
+    const photosToUpload = [...photos]
+
+    imagesArray.some((images: string[]) => {
+      photosToUpload.push(images)
+    })
+
+    setPhotos(photosToUpload)
+
+    console.log("ImagesArray:", imagesArray)
+    console.log("ImagesArray:", photosToUpload)
   }
 
   return (
@@ -121,11 +128,21 @@ export default function Work() {
           placeholder="testing"
           onChange={e => handleImageUpload(e)}
         /> */}
-        <input id="customFile" type="file" placeholder="hello" onChange={e => setAvatar(e.target.files[0])} />
+        <input
+          id="customFile"
+          type="file"
+          placeholder="hello"
+          multiple
+          // onChange={e => setAvatar(e.target.files)}
+          onChange={e => setImagesArray(e)}
+        />
         <button onClick={handleImageUpload} className="btn">
           Submit
         </button>
       </div>
+
+      {/* {<Image src={photo} alt="photo" width={600} height={900} />}
+      {photo} */}
 
       <div className=" flex justify-center lg:justify-evenly xl:justify-start gap-5 flex-wrap">
         {renderGallery()}

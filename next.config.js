@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   optimizeFonts: true,
   images: {
+    domains: ["localhost"],
     remotePatterns: [
       {
         protocol: "https",
