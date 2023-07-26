@@ -6,8 +6,10 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiFillStar } from "react-icons/ai"
 import { Button, Modal } from "flowbite-react"
+import { consoleText } from "../../utils/api_calls"
+import axios from "axios"
 
-const serverURL = process.env.REACT_APP_SERVER_URL
+const serverURL = process.env.SERVER_URL
 
 // ActiveStorage.start()
 
@@ -93,8 +95,13 @@ export default function Work() {
   }
 
   const handleImageUpload = () => {
-    const uploadURL = "http://localhost:3000" + "/uploadAvatar/"
-    const filesURL = "http://localhost:3000" + "/works/"
+    const serverURL = "http://localhost:3000/"
+    console.log("serverURL:", serverURL)
+    console.log("serverURLLLL:", process.env.SERVER_URL)
+    console.log("serverURLLLL:", process.env.DB_USER)
+    console.log("serverURLLLL:", process.env.NEXT_PUBLIC_DB_USER)
+    const uploadURL = serverURL + "/uploadAvatar/"
+    const filesURL = serverURL + "/works/"
     const formData = new FormData()
     photos.forEach((photo, index) => formData.append(`images[]`, photo))
 
@@ -193,7 +200,13 @@ export default function Work() {
             <Button onClick={handleImageUpload} className="bg-primary">
               Submit
             </Button>
-            <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+            <Button
+              color="gray"
+              onClick={() => {
+                props.setOpenModal(undefined)
+                consoleText()
+              }}
+            >
               Cancel
             </Button>
           </Modal.Footer>
