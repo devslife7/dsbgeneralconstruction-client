@@ -1,13 +1,15 @@
 "use client"
 // import { DirectUpload } from "activestorage"
-import * as ActiveStorage from "@rails/activestorage"
+// import * as ActiveStorage from "@rails/activestorage"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AiFillStar } from "react-icons/ai"
 import { Button, Modal } from "flowbite-react"
 
-ActiveStorage.start()
+const serverURL = process.env.REACT_APP_SERVER_URL
+
+// ActiveStorage.start()
 
 type WorkType = {
   img: string[]
@@ -64,7 +66,11 @@ export default function Work() {
   const [openModal, setOpenModal] = useState<string | undefined>()
   const props = { openModal, setOpenModal }
 
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
   const [photos, setPhotos] = useState([])
+  const [currentWork, setCurrentWork] = useState({ image_urls: [] })
+
   const renderGallery = () => {
     return workGallery.map((work, index) => (
       <div key={index} className="w-[350px]">
@@ -88,21 +94,42 @@ export default function Work() {
 
   const handleImageUpload = () => {
     const uploadURL = "http://localhost:3000" + "/uploadAvatar/"
+    const filesURL = "http://localhost:3000" + "/works/"
     const formData = new FormData()
     photos.forEach((photo, index) => formData.append(`images[]`, photo))
 
     if (!!photos) {
-      fetch(uploadURL + "5", {
-        method: "PATCH",
-        body: formData,
+      fetch(filesURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          work: {
+            title: title,
+            description: description,
+          },
+        }),
       })
         .then(res => res.json())
-        .then(data => {
-          console.log("data::", data)
-          // setPhotos(data.profile_img)
+        .then(work => {
+          console.log("data::", work)
+
+          fetch(uploadURL + work.work.id, {
+            method: "PATCH",
+            body: formData,
+          })
+            .then(res => res.json())
+            .then(work => {
+              console.log("work::", work)
+              setCurrentWork({ ...work })
+            })
+          props.setOpenModal(undefined)
         })
         .catch(err => console.log("Avatar Fetch Error: ", err))
     }
+
+    props.setOpenModal(undefined)
   }
 
   const setImagesArray = (e: any) => {
@@ -119,64 +146,59 @@ export default function Work() {
     console.log("ImagesArray:", photosToUpload)
   }
 
+  const renderCurrentWork = () => {
+    if (currentWork.image_urls.length < 1) return
+    console.log("test:", currentWork.image_urls)
+    return currentWork.image_urls.map((url, index) => (
+      <Image key={index} src={url} width={300} height={400} alt="alt for now" />
+    ))
+  }
+
   return (
     <div className="container-custom my-32">
-      <div className="btn bg-primary text-white">Add work...</div>
-      <div className="my-10 space-y-4">
-        <div>New Work</div>
-        {/* <label htmlFor="fileUpload" className="text-3xl">
-          Upload Here
-        </label> */}
-        <input
-          id="fileUpload"
-          type="file"
-          placeholder="hello"
-          multiple
-          // onChange={e => setAvatar(e.target.files)}
-          onChange={e => setImagesArray(e)}
-        />
-        <button onClick={handleImageUpload} className="btn">
-          Submit
-        </button>
-        {/* <video
-          width="640"
-          height="480"
-          src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13d2b14f3b3283d1242125f7781158910ff22c4d/testVideo.mp4"
-          controls
-          autoPlay
-          muted
-        >
-          Sorry, your browser doesn't support HTML5 <code>video</code>, but you can download this video from
-        </video> */}
-      </div>
+      {renderCurrentWork()}
 
-      <>
-        <Button onClick={() => props.setOpenModal("default")}>Toggle modal</Button>
+      <div>
+        <Button onClick={() => props.setOpenModal("default")} className="bg-primary">
+          Add Work...
+        </Button>
         <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
-          <Modal.Header>Terms of Service</Modal.Header>
+          <Modal.Header>Add Work Form</Modal.Header>
           <Modal.Body>
-            <div className="space-y-6">
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                With less than a month to go before the European Union enacts new consumer privacy laws for
-                its citizens, companies around the world are updating their terms of service agreements to
-                comply.
-              </p>
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                The European Unions General Data Protection Regulation (G.D.P.R.) goes into effect on May 25
-                and is meant to ensure a common set of data rights in the European Union. It requires
-                organizations to notify users as soon as possible of high-risk data breaches that could
-                personally affect them.
-              </p>
+            <div className="flex flex-col space-y-7">
+              <input
+                id="title"
+                type="text"
+                placeholder="Title"
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+              />
+              <textarea
+                id="description"
+                placeholder="Description"
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+              />
+              <input
+                id="fileUpload"
+                type="file"
+                placeholder="hello"
+                multiple
+                accept=".png, .jpg, .jpeg, .mp4"
+                onChange={e => setImagesArray(e)}
+              />
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+            <Button onClick={handleImageUpload} className="bg-primary">
+              Submit
+            </Button>
             <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
-              Decline
+              Cancel
             </Button>
           </Modal.Footer>
         </Modal>
-      </>
+      </div>
     </div>
   )
 }

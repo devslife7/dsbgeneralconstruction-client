@@ -45,6 +45,17 @@ export default function work() {
           <Image src={aboutPage} width={350} alt="image" />
         </div>
       </div>
+
+      {/* <video
+          width="640"
+          height="480"
+          src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13d2b14f3b3283d1242125f7781158910ff22c4d/testVideo.mp4"
+          controls
+          autoPlay
+          muted
+        >
+          Sorry, your browser doesn't support HTML5 <code>video</code>, but you can download this video from
+        </video> */}
     </div>
   )
 }
