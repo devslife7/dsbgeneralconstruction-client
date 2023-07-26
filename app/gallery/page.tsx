@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AiFillStar } from "react-icons/ai"
+import { Button, Modal } from "flowbite-react"
 
 ActiveStorage.start()
 
@@ -60,6 +61,9 @@ const workGallery: WorkType[] = [
 ]
 
 export default function Work() {
+  const [openModal, setOpenModal] = useState<string | undefined>()
+  const props = { openModal, setOpenModal }
+
   const [photos, setPhotos] = useState([])
   const renderGallery = () => {
     return workGallery.map((work, index) => (
@@ -120,16 +124,11 @@ export default function Work() {
       <div className="btn bg-primary text-white">Add work...</div>
       <div className="my-10 space-y-4">
         <div>New Work</div>
-
-        {/* <input
-          id="imageUpload"
-          type="file"
-          multiple
-          placeholder="testing"
-          onChange={e => handleImageUpload(e)}
-        /> */}
+        {/* <label htmlFor="fileUpload" className="text-3xl">
+          Upload Here
+        </label> */}
         <input
-          id="customFile"
+          id="fileUpload"
           type="file"
           placeholder="hello"
           multiple
@@ -139,14 +138,45 @@ export default function Work() {
         <button onClick={handleImageUpload} className="btn">
           Submit
         </button>
+        {/* <video
+          width="640"
+          height="480"
+          src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13d2b14f3b3283d1242125f7781158910ff22c4d/testVideo.mp4"
+          controls
+          autoPlay
+          muted
+        >
+          Sorry, your browser doesn't support HTML5 <code>video</code>, but you can download this video from
+        </video> */}
       </div>
 
-      {/* {<Image src={photo} alt="photo" width={600} height={900} />}
-      {photo} */}
-
-      <div className=" flex justify-center lg:justify-evenly xl:justify-start gap-5 flex-wrap">
-        {renderGallery()}
-      </div>
+      <>
+        <Button onClick={() => props.setOpenModal("default")}>Toggle modal</Button>
+        <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
+          <Modal.Header>Terms of Service</Modal.Header>
+          <Modal.Body>
+            <div className="space-y-6">
+              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                With less than a month to go before the European Union enacts new consumer privacy laws for
+                its citizens, companies around the world are updating their terms of service agreements to
+                comply.
+              </p>
+              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                The European Unions General Data Protection Regulation (G.D.P.R.) goes into effect on May 25
+                and is meant to ensure a common set of data rights in the European Union. It requires
+                organizations to notify users as soon as possible of high-risk data breaches that could
+                personally affect them.
+              </p>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+            <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+              Decline
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     </div>
   )
 }
