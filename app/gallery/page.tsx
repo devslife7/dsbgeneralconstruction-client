@@ -11,57 +11,6 @@ import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "../../uti
 
 // ActiveStorage.start()
 
-type WorkType = {
-  img: string[]
-  title: string
-  subtitle: string
-}
-const workGallery: WorkType[] = [
-  {
-    img: [
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    ],
-    title: "Kitchen",
-    subtitle: "The layout was reconfigured for better workflow, and new flooring.",
-  },
-  {
-    img: [
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://plus.unsplash.com/premium_photo-1681690860621-57d749a22f34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    ],
-    title: "Kitchen",
-    subtitle: "The layout was reconfigured for better workflow, and new flooring.",
-  },
-  {
-    img: [
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://plus.unsplash.com/premium_photo-1681690860621-57d749a22f34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    ],
-    title: "Kitchen",
-    subtitle: "The layout was reconfigured for better workflow, and new flooring.",
-  },
-  {
-    img: [
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://plus.unsplash.com/premium_photo-1681690860621-57d749a22f34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    ],
-    title: "Kitchen",
-    subtitle: "The layout was reconfigured for better workflow, and new flooring.",
-  },
-  {
-    img: [
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      "https://plus.unsplash.com/premium_photo-1681690860621-57d749a22f34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    ],
-    title: "Kitchen",
-    subtitle: "The layout was reconfigured for better workflow, and new flooring.",
-  },
-]
-
 export default function Work() {
   const [openModal, setOpenModal] = useState<string | undefined>()
   const props = { openModal, setOpenModal }
@@ -81,14 +30,22 @@ export default function Work() {
   }, [])
 
   const renderGallery = () => {
-    console.log("gallery:", gallery)
+    console.log("renders gallery")
     if (!gallery) return
     if (gallery.length < 1) return
+
+    gallery.sort((a, b) => b.id - a.id)
+
     console.log("gallery::::", gallery)
     return gallery.map((work, index) => (
       <div key={index} className="w-[350px]">
         <Link href="/gallery/work">
-          {work.image_urls[0] && (
+          {work.image_urls[0] && work.image_urls[0].slice(-4, work.image_urls[0].length) === ".mp4" ? (
+            <video width="640" height="480" src={work.image_urls[0]} controls autoPlay muted>
+              Sorry, your browser doesn't support HTML5 <code>video</code>, but you can download this video
+              from
+            </video>
+          ) : (
             <Image
               src={work.image_urls[0]}
               alt={work.title}
@@ -107,9 +64,9 @@ export default function Work() {
         </div>
         <div>{work.subtitle}</div>
         <Link href="/gallery/work">
-          <p className="text-gray-700 mt-2 mb-10 text-xl">See more...</p>
+          <p className="text-gray-700 mt-2 mb-10 ">See more...</p>
         </Link>
-        <button className="btn-error" onClick={() => handleWorkDelete(work.id)}>
+        <button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
           Delete
         </button>
       </div>
@@ -138,7 +95,12 @@ export default function Work() {
       const work_id = workResponse.data.work.id
 
       const updateWorkResponse = await updateWorkFiles(work_id, formData)
-      setCurrentWork(updateWorkResponse.data.work)
+      const newWork = updateWorkResponse.data.work
+      setCurrentWork(newWork)
+
+      const galleryArray = [...gallery, newWork]
+
+      setGallery(galleryArray)
     }
     setTitle("")
     setDescription("")
@@ -155,17 +117,8 @@ export default function Work() {
     setPhotos(photosToUpload)
   }
 
-  const renderCurrentWork = () => {
-    if (currentWork.image_urls === undefined) return
-    return currentWork.image_urls.map((url, index) => (
-      <Image key={index} src={url} width={300} height={400} alt="alt for now" />
-    ))
-  }
-
   return (
     <div className="container-custom my-32">
-      {renderCurrentWork()}
-
       <div>
         <Button onClick={() => props.setOpenModal("default")} className="bg-primary">
           Add Work...
