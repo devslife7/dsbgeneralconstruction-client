@@ -3,13 +3,11 @@
 // import * as ActiveStorage from "@rails/activestorage"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AiFillStar } from "react-icons/ai"
 import { Button, Modal } from "flowbite-react"
-import { getGallery, updateWorkFiles, createWork } from "../../utils/api_calls"
-import axios from "axios"
-
-const serverURL = process.env.SERVER_URL
+import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "../../utils/api_calls"
+// import axios from "axios"
 
 // ActiveStorage.start()
 
@@ -72,12 +70,33 @@ export default function Work() {
   const [description, setDescription] = useState("")
   const [photos, setPhotos] = useState([])
   const [currentWork, setCurrentWork] = useState({ image_urls: [] })
+  const [gallery, setGallery] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetchGallery()
+      setGallery(response.data)
+    }
+    fetchData()
+  }, [])
 
   const renderGallery = () => {
-    return workGallery.map((work, index) => (
+    console.log("gallery:", gallery)
+    if (!gallery) return
+    if (gallery.length < 1) return
+    console.log("gallery::::", gallery)
+    return gallery.map((work, index) => (
       <div key={index} className="w-[350px]">
         <Link href="/gallery/work">
-          <Image src={work.img[0]} alt={work.title} width={390} height={600} className="object-cover" />
+          {work.image_urls[0] && (
+            <Image
+              src={work.image_urls[0]}
+              alt={work.title}
+              width={390}
+              height={600}
+              className="object-cover"
+            />
+          )}
         </Link>
         <div className="flex justify-between">
           <div>{work.title}</div>
@@ -90,14 +109,27 @@ export default function Work() {
         <Link href="/gallery/work">
           <p className="text-gray-700 mt-2 mb-10 text-xl">See more...</p>
         </Link>
+        <button className="btn-error" onClick={() => handleWorkDelete(work.id)}>
+          Delete
+        </button>
       </div>
     ))
   }
 
+  const handleWorkDelete = async (work_id: number) => {
+    console.log("delete work is id:", work_id)
+
+    const response = await deleteWork(work_id)
+    console.log("axios delete:", response.data.work)
+
+    const idx = gallery.findIndex(work => work.id === work_id)
+
+    const galleryArray = [...gallery.slice(0, idx), ...gallery.slice(idx + 1)]
+
+    setGallery(galleryArray)
+  }
+
   const handleImageUpload = async () => {
-    const serverURL = process.env.NEXT_PUBLIC_SERVER_URL
-    const uploadURL = serverURL + "/uploadAvatar/"
-    const filesURL = serverURL + "/works/"
     const formData = new FormData()
     photos.forEach(photo => formData.append(`images[]`, photo))
 
@@ -106,22 +138,20 @@ export default function Work() {
       const work_id = workResponse.data.work.id
 
       const updateWorkResponse = await updateWorkFiles(work_id, formData)
-      console.log("RESPONSE:", updateWorkResponse)
+      setCurrentWork(updateWorkResponse.data.work)
     }
-
+    setTitle("")
+    setDescription("")
+    setPhotos([])
     props.setOpenModal(undefined)
   }
 
   const setImagesArray = (e: any) => {
     const imagesArray = Array.prototype.slice.call(e.target.files)
     const photosToUpload = [...photos]
-
-    // console.log("imagesArra:", imagesArray)
-
     imagesArray.some((images: string) => {
       photosToUpload.push(images)
     })
-
     setPhotos(photosToUpload)
   }
 
@@ -182,6 +212,8 @@ export default function Work() {
           </Modal.Footer>
         </Modal>
       </div>
+
+      <div className="flex flex-wrap gap-10">{renderGallery()}</div>
     </div>
   )
 }
