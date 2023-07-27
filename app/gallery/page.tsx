@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiFillStar } from "react-icons/ai"
 import { Button, Modal } from "flowbite-react"
-import { consoleText, getGallery, updateWorkFiles } from "../../utils/api_calls"
+import { getGallery, updateWorkFiles, createWork } from "../../utils/api_calls"
 import axios from "axios"
 
 const serverURL = process.env.SERVER_URL
@@ -102,40 +102,11 @@ export default function Work() {
     photos.forEach(photo => formData.append(`images[]`, photo))
 
     if (!!photos) {
-      fetch(filesURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          work: {
-            title: title,
-            description: description,
-          },
-        }),
-      })
-        .then(res => res.json())
-        .then(work => {
-          // console.log("data::", work)
+      const workResponse = await createWork(title, description)
+      const work_id = workResponse.data.work.id
 
-          // console.log("type of:", typeof formData)
-          // fetch(uploadURL + work.work.id, {
-          //   method: "PATCH",
-          //   body: formData,
-          // })
-          //   .then(res => res.json())
-          //   .then(work => {
-          //     console.log("work::", work)
-          //     setCurrentWork({ ...work })
-          //   })
-
-          const files = updateWorkFiles(work.work.id, formData)
-          console.log("FILES", files)
-          setCurrentWork(files)
-
-          props.setOpenModal(undefined)
-        })
-        .catch(err => console.log("Avatar Fetch Error: ", err))
+      const updateWorkResponse = await updateWorkFiles(work_id, formData)
+      console.log("RESPONSE:", updateWorkResponse)
     }
 
     props.setOpenModal(undefined)
@@ -145,7 +116,7 @@ export default function Work() {
     const imagesArray = Array.prototype.slice.call(e.target.files)
     const photosToUpload = [...photos]
 
-    console.log("imagesArra:", imagesArray)
+    // console.log("imagesArra:", imagesArray)
 
     imagesArray.some((images: string) => {
       photosToUpload.push(images)
@@ -156,7 +127,6 @@ export default function Work() {
 
   const renderCurrentWork = () => {
     if (currentWork.image_urls === undefined) return
-    console.log("test:", currentWork.image_urls)
     return currentWork.image_urls.map((url, index) => (
       <Image key={index} src={url} width={300} height={400} alt="alt for now" />
     ))
