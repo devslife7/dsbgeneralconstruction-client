@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiFillStar } from "react-icons/ai"
 import { Button, Modal } from "flowbite-react"
-import { consoleText } from "../../utils/api_calls"
+import { consoleText, getGallery, updateWorkFiles } from "../../utils/api_calls"
 import axios from "axios"
 
 const serverURL = process.env.SERVER_URL
@@ -94,16 +94,12 @@ export default function Work() {
     ))
   }
 
-  const handleImageUpload = () => {
-    const serverURL = "http://localhost:3000/"
-    console.log("serverURL:", serverURL)
-    console.log("serverURLLLL:", process.env.SERVER_URL)
-    console.log("serverURLLLL:", process.env.DB_USER)
-    console.log("serverURLLLL:", process.env.NEXT_PUBLIC_DB_USER)
+  const handleImageUpload = async () => {
+    const serverURL = process.env.NEXT_PUBLIC_SERVER_URL
     const uploadURL = serverURL + "/uploadAvatar/"
     const filesURL = serverURL + "/works/"
     const formData = new FormData()
-    photos.forEach((photo, index) => formData.append(`images[]`, photo))
+    photos.forEach(photo => formData.append(`images[]`, photo))
 
     if (!!photos) {
       fetch(filesURL, {
@@ -120,17 +116,23 @@ export default function Work() {
       })
         .then(res => res.json())
         .then(work => {
-          console.log("data::", work)
+          // console.log("data::", work)
 
-          fetch(uploadURL + work.work.id, {
-            method: "PATCH",
-            body: formData,
-          })
-            .then(res => res.json())
-            .then(work => {
-              console.log("work::", work)
-              setCurrentWork({ ...work })
-            })
+          // console.log("type of:", typeof formData)
+          // fetch(uploadURL + work.work.id, {
+          //   method: "PATCH",
+          //   body: formData,
+          // })
+          //   .then(res => res.json())
+          //   .then(work => {
+          //     console.log("work::", work)
+          //     setCurrentWork({ ...work })
+          //   })
+
+          const files = updateWorkFiles(work.work.id, formData)
+          console.log("FILES", files)
+          setCurrentWork(files)
+
           props.setOpenModal(undefined)
         })
         .catch(err => console.log("Avatar Fetch Error: ", err))
@@ -143,18 +145,17 @@ export default function Work() {
     const imagesArray = Array.prototype.slice.call(e.target.files)
     const photosToUpload = [...photos]
 
-    imagesArray.some((images: string[]) => {
+    console.log("imagesArra:", imagesArray)
+
+    imagesArray.some((images: string) => {
       photosToUpload.push(images)
     })
 
     setPhotos(photosToUpload)
-
-    console.log("ImagesArray:", imagesArray)
-    console.log("ImagesArray:", photosToUpload)
   }
 
   const renderCurrentWork = () => {
-    if (currentWork.image_urls.length < 1) return
+    if (currentWork.image_urls === undefined) return
     console.log("test:", currentWork.image_urls)
     return currentWork.image_urls.map((url, index) => (
       <Image key={index} src={url} width={300} height={400} alt="alt for now" />
@@ -204,7 +205,6 @@ export default function Work() {
               color="gray"
               onClick={() => {
                 props.setOpenModal(undefined)
-                consoleText()
               }}
             >
               Cancel
