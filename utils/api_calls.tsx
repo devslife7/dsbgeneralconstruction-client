@@ -4,6 +4,9 @@ const worksURL = serverURL + "/works/"
 const uploadFilesURL = serverURL + "/upload_files/"
 
 export const fetchGallery = async () => await axios.get(worksURL)
+export const fetchWork = async (work_id: string) => {
+  return await axios.get(worksURL + work_id)
+}
 
 export const createWork = async (title: string, description: string) => {
   const requestOBJ = {

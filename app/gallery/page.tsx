@@ -64,7 +64,7 @@ export default function Work() {
           </div>
         </div>
         <div>{work.subtitle}</div>
-        <Link href="/gallery/work">
+        <Link href={`/gallery/${work.id}`}>
           <p className="text-gray-700 mt-2 mb-10 ">See more...</p>
         </Link>
         <button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
