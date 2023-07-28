@@ -35,10 +35,10 @@ export default function Work() {
     if (!gallery) return
     if (gallery.length < 1) return
 
-    gallery.sort((a, b) => b.id - a.id)
+    gallery.sort((a: any, b: any) => b.id - a.id)
 
     console.log("gallery::::", gallery)
-    return gallery.map((work, index) => (
+    return gallery.map((work: any, index) => (
       <div key={index} className="w-[350px]">
         <Link href="/gallery/work">
           {work.image_urls[0] && work.image_urls[0].slice(-4, work.image_urls[0].length) === ".mp4" ? (
@@ -80,7 +80,7 @@ export default function Work() {
     const response = await deleteWork(work_id)
     console.log("axios delete:", response.data.work)
 
-    const idx = gallery.findIndex(work => work.id === work_id)
+    const idx = gallery.findIndex((work: any) => work.id === work_id)
 
     const galleryArray = [...gallery.slice(0, idx), ...gallery.slice(idx + 1)]
 
