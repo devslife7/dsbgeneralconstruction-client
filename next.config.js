@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   optimizeFonts: true,
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "dsbgeneralconstruction-images-videos.s3.amazonaws.com"],
     remotePatterns: [
       {
         protocol: "https",

@@ -24,6 +24,7 @@ export default function Work() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetchGallery()
+      console.log("response:", response)
       setGallery(response.data)
     }
     fetchData()
