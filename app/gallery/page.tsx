@@ -37,11 +37,11 @@ export default function Work() {
 
     gallery.sort((a: any, b: any) => b.id - a.id)
 
-    console.log("gallery::::", gallery)
+    // console.log("gallery::::", gallery) optimize code here
     return gallery.map((work: any, index) => (
       <div key={index} className="w-[350px]">
         <Link href="/gallery/work">
-          {work.image_urls[0] && work.image_urls[0].slice(-4, work.image_urls[0].length) === ".mp4" ? (
+          {work.image_urls[0] && !!work.image_urls[0].match(/.mp4/) ? (
             <video width="640" height="480" src={work.image_urls[0]} controls autoPlay muted>
               Sorry, your browser doesn't support HTML5 <code>video</code>, but you can download this video
               from
