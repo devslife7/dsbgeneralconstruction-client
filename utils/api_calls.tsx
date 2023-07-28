@@ -13,6 +13,8 @@ export const createWork = async (title: string, description: string) => {
     },
   }
 
+  console.log("wha isthis:")
+
   return await axios.post(worksURL, requestOBJ)
 }
 
