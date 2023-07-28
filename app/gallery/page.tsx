@@ -17,9 +17,9 @@ export default function Work() {
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
-  const [photos, setPhotos] = useState([])
+  const [photos, setPhotos] = useState<any[]>([])
   const [currentWork, setCurrentWork] = useState({ image_urls: [] })
-  const [gallery, setGallery] = useState([])
+  const [gallery, setGallery] = useState<any[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -112,7 +112,7 @@ export default function Work() {
   const setImagesArray = (e: any) => {
     const imagesArray = Array.prototype.slice.call(e.target.files)
     const photosToUpload = [...photos]
-    imagesArray.some((images: string) => {
+    imagesArray.some((images: any) => {
       photosToUpload.push(images)
     })
     setPhotos(photosToUpload)
