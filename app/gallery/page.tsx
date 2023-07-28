@@ -41,7 +41,7 @@ export default function Work() {
     return gallery.map((work: any, index) => (
       <div key={index} className="w-[350px]">
         <Link href="/gallery/work">
-          {work.image_urls[0] && !!work.image_urls[0].match(/.mp4/) ? (
+          {work.image_urls[0] && !!work.image_urls[0].match(/.mp4|.mov/) ? (
             <video width="640" height="480" src={work.image_urls[0]} controls autoPlay muted>
               Sorry, your browser doesn't support HTML5 <code>video</code>, but you can download this video
               from
@@ -146,7 +146,7 @@ export default function Work() {
                 type="file"
                 placeholder="hello"
                 multiple
-                accept=".png, .jpg, .jpeg, .mp4"
+                accept=".png, .jpg, .jpeg, .mp4, .mov"
                 onChange={e => setImagesArray(e)}
               />
             </div>
