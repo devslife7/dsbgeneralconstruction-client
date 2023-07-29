@@ -24,16 +24,13 @@ export default function page({ params }: { params: { id: string } }) {
     return work.image_urls.map((url, index) => (
       <Image key={index} src={url} width={400} height={500} alt="image" />
     ))
-    {
-      /* // <Image key={index} src={url} width={350} alt="image" /> */
-    }
   }
 
   return (
     <div className="container-custom mt-20">
-      <div className="my-8 lg:flex space-y-5">
+      <div className="my-8 space-y-5">
         <div className="flex justify-between">
-          <Link href="/gallery" className=" lg:w-[35%] clear-left text-gray-700 lg:hidden items-center">
+          <Link href="/gallery" className=" lg:w-[35%] clear-left text-gray-700 items-center">
             <IoMdArrowBack className="inline-block text-lg" />
             <span> gallery</span>
           </Link>
@@ -63,9 +60,15 @@ export default function page({ params }: { params: { id: string } }) {
           </div>
           <div className="text-gray-700">Add comment...</div>
         </div>
+        <div id="Comments_form" className="flex flex-col gap-10 max-w-lg">
+          <label>Name</label>
+          <input placeholder="Name..." />
+          <input placeholder="Comment..." />
+          <div className="btn">Submit</div>
+          <div className="btn btn-error">Cancel</div>
+        </div>
         <div className="lg:w-[65%] flex justify-center flex-wrap order-first my-20">{renderFiles()}</div>
       </div>
-      <div className="text-5xl">work with id: {params.id}</div>
     </div>
   )
 }
