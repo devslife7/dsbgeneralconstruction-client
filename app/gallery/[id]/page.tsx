@@ -7,6 +7,9 @@ import { fetchWork } from "../../../utils/api_calls"
 
 export default function page({ params }: { params: { id: string } }) {
   const [work, setWork] = useState({ image_urls: [] })
+  const [commentOpen, setCommentOpen] = useState(false)
+  const [name, setName] = useState("")
+  const [comment, setComment] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +27,11 @@ export default function page({ params }: { params: { id: string } }) {
     return work.image_urls.map((url, index) => (
       <Image key={index} src={url} width={400} height={500} alt="image" />
     ))
+  }
+
+  const handleCommentSubmit = () => {
+    setCommentOpen(false)
+    return true
   }
 
   return (
@@ -45,27 +53,32 @@ export default function page({ params }: { params: { id: string } }) {
         </div>
 
         <div className=" space-y-2">
-          <div className="flex items-center gap-2">
-            <div className="avatar placeholder">
-              <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                <span className="text-lg">L</span>
-              </div>
-            </div>
-
+          {/* <div className="flex items-center gap-2">
+                <div className="avatar placeholder">
+                <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                    <span className="text-lg">L</span>
+                </div>
+                </div>
             <div className="text-lg">Leo Messi</div>
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             Muchaaaaaachoooos ahora nos volvimo a ilusinaarr, quieroo gana la MLS yo ya soy campeon
             mundiaaaal...
+          </div> */}
+          <div className="text-gray-700 btn" onClick={() => setCommentOpen(true)}>
+            Add comment
           </div>
-          <div className="text-gray-700">Add comment...</div>
         </div>
-        <div id="Comments_form" className="flex flex-col gap-10 max-w-lg">
-          <label>Name</label>
-          <input placeholder="Name..." />
-          <input placeholder="Comment..." />
-          <div className="btn">Submit</div>
-          <div className="btn btn-error">Cancel</div>
+        <div id="Comments_form" className={`flex flex-col gap-5 max-w-md ${!commentOpen && "hidden"} `}>
+          <label className="text-2xl">Comment form:</label>
+          <input type="text" placeholder="Name..." />
+          <textarea placeholder="Comment..." />
+          <button className="btn" onClick={handleCommentSubmit()}>
+            Submit
+          </button>
+          <div className="btn btn-error" onClick={() => setCommentOpen(false)}>
+            Cancel
+          </div>
         </div>
         <div className="lg:w-[65%] flex justify-center flex-wrap order-first my-20">{renderFiles()}</div>
       </div>
