@@ -20,6 +20,8 @@ export default function Work() {
   const [photos, setPhotos] = useState<any[]>([])
   const [currentWork, setCurrentWork] = useState({ image_urls: [] })
   const [gallery, setGallery] = useState<any[]>([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [password, setPassword] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,9 +69,11 @@ export default function Work() {
         <Link href={`/gallery/${work.id}`}>
           <p className="text-gray-700 mt-2 mb-10 ">See more...</p>
         </Link>
-        <button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
-          Delete
-        </button>
+        {isLoggedIn && (
+          <button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
+            Delete
+          </button>
+        )}
       </div>
     ))
   }
@@ -118,6 +122,12 @@ export default function Work() {
     setPhotos(photosToUpload)
   }
 
+  const handlePasswordSubmit = () => {
+    const pass = process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+    setIsLoggedIn(pass === password)
+    console.log("isloggedin?:", isLoggedIn)
+  }
+
   return (
     <div className="container-custom my-32">
       <div>
@@ -125,51 +135,70 @@ export default function Work() {
           Add Work...
         </Button>
         <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
-          <Modal.Header>Add Work Form</Modal.Header>
-          <Modal.Body>
-            <div className="flex flex-col space-y-7">
+          {!isLoggedIn && (
+            <div className="m-20">
+              <label className="mb-10">Enter Admin password</label>
+              <br />
               <input
-                id="title"
-                type="text"
-                placeholder="Title"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
+                placeholder="password"
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
               />
-              <textarea
-                id="description"
-                placeholder="Description"
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-              />
-              <input
-                id="fileUpload"
-                type="file"
-                placeholder="hello"
-                multiple
-                accept=".png, .jpg, .jpeg, .mp4, .mov"
-                onChange={e => setImagesArray(e)}
-                className="block w-full text-sm text-slate-500
+              <button className="btn" onClick={handlePasswordSubmit}>
+                Submit
+              </button>
+            </div>
+          )}
+          {isLoggedIn && (
+            <>
+              <Modal.Header>Add Work Form</Modal.Header>
+              <Modal.Body>
+                <div className="flex flex-col space-y-7">
+                  <input
+                    id="title"
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                  />
+                  <textarea
+                    id="description"
+                    placeholder="Description"
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                  />
+                  <input
+                    id="fileUpload"
+                    type="file"
+                    placeholder="hello"
+                    multiple
+                    accept=".png, .jpg, .jpeg, .mp4, .mov"
+                    onChange={e => setImagesArray(e)}
+                    className="block w-full text-sm text-slate-500
                 file:mr-4 file:py-2 file:px-4
                 file:rounded-full file:border-0
                 file:text-sm file:font-semibold
                 file:bg-violet-50 file:text-violet-700
                 hover:file:bg-violet-100"
-              />
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={handleImageUpload} className="bg-primary">
-              Submit
-            </Button>
-            <Button
-              color="gray"
-              onClick={() => {
-                props.setOpenModal(undefined)
-              }}
-            >
-              Cancel
-            </Button>
-          </Modal.Footer>
+                  />
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={handleImageUpload} className="bg-primary">
+                  Submit
+                </Button>
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    props.setOpenModal(undefined)
+                  }}
+                >
+                  Cancel
+                </Button>
+              </Modal.Footer>
+            </>
+          )}
         </Modal>
       </div>
 

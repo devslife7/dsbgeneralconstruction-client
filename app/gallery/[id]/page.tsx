@@ -1,15 +1,16 @@
 "use client"
 import Image from "next/image"
-import { IoMdArrowBack } from "react-icons/io"
+import { IoIosLogIn, IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { fetchWork, createComment, deleteComment } from "../../../utils/api_calls"
 
-export default function page({ params }: { params: { id: string } }) {
+export default function page({ params, isLoggedIn }: { params: { id: string }; isLoggedIn: boolean }) {
   const [work, setWork] = useState({ image_urls: [], comments: [] })
   const [commentOpen, setCommentOpen] = useState(false)
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
+  const [rating, setRating] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,22 +60,37 @@ export default function page({ params }: { params: { id: string } }) {
         <div className="flex items-center gap-2">
           <div className="avatar placeholder">
             <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-              <span className="text-lg">{comment.username.charAt(0)}</span>
+              <span className="text-lg uppercase">{comment.username.charAt(0)}</span>
             </div>
           </div>
           <div className="text-lg">{comment.username}</div>
         </div>
         <div>{comment.content}</div>
-        <button className="btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
-          Delete
-        </button>
+        {isLoggedIn && (
+          <button className="btn btn-error mt-6" onClick={() => handleCommentDelete(comment.id)}>
+            Delete
+          </button>
+        )}
       </div>
     ))
   }
 
   const handleCommentDelete = async (comment_id: number) => {
     const response = await deleteComment(comment_id)
-    console.log("response:", response)
+    console.log("response:3333", response)
+
+    const idx = work.comments.findIndex((comment: any) => comment.id === response.data.comment.id)
+
+    const newWorkOBJ = {
+      ...work,
+      comments: [...work.comments.slice(0, idx), ...work.comments.slice(idx + 1)],
+    }
+    setWork(newWorkOBJ)
+  }
+
+  const handleRating = (e: any) => {
+    console.log("rating", e.target.name)
+    setRating(e.target.name)
   }
 
   return (
@@ -86,12 +102,41 @@ export default function page({ params }: { params: { id: string } }) {
             <span> gallery</span>
           </Link>
 
-          <div className="rating">
-            <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary" />
-            <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary" />
-            <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary" />
-            <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary" />
-            <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary" />
+          <div className="flex">
+            <div className="mr-5">{rating}</div>
+
+            <div className="rating">
+              <input
+                type="radio"
+                name="1"
+                className={`mask mask-star-2 bg-primary ${rating && "btn-disabled"}`}
+                onClick={e => handleRating(e)}
+              />
+              <input
+                type="radio"
+                name="2"
+                className={`mask mask-star-2 bg-primary ${rating && "btn-disabled"}`}
+                onClick={e => handleRating(e)}
+              />
+              <input
+                type="radio"
+                name="3"
+                className={`mask mask-star-2 bg-primary ${rating && "btn-disabled"}`}
+                onClick={e => handleRating(e)}
+              />
+              <input
+                type="radio"
+                name="4"
+                className={`mask mask-star-2 bg-primary ${rating && "btn-disabled"}`}
+                onClick={e => handleRating(e)}
+              />
+              <input
+                type="radio"
+                name="5"
+                className={`mask mask-star-2 bg-primary ${rating && "btn-disabled"}`}
+                onClick={e => handleRating(e)}
+              />
+            </div>
           </div>
         </div>
 
