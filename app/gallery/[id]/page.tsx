@@ -3,7 +3,7 @@ import Image from "next/image"
 import { IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { fetchWork } from "../../../utils/api_calls"
+import { fetchWork, createComment } from "../../../utils/api_calls"
 
 export default function page({ params }: { params: { id: string } }) {
   const [work, setWork] = useState({ image_urls: [] })
@@ -29,10 +29,16 @@ export default function page({ params }: { params: { id: string } }) {
     ))
   }
 
-  const handleCommentSubmit = () => {
+  const handleCommentSubmit = async () => {
+    const requstOBJ = {
+      username: name,
+      content: comment,
+      work_id: params.id,
+    }
+
+    const response = await createComment(requstOBJ)
+    console.log("response::::", response)
     setCommentOpen(false)
-    console.log("comment submit:")
-    // return true
   }
 
   return (
