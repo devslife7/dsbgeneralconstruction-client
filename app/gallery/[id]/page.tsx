@@ -3,10 +3,10 @@ import Image from "next/image"
 import { IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { fetchWork, createComment } from "../../../utils/api_calls"
+import { fetchWork, createComment, deleteComment } from "../../../utils/api_calls"
 
 export default function page({ params }: { params: { id: string } }) {
-  const [work, setWork] = useState({ image_urls: [] })
+  const [work, setWork] = useState({ image_urls: [], comments: [] })
   const [commentOpen, setCommentOpen] = useState(false)
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
@@ -16,6 +16,7 @@ export default function page({ params }: { params: { id: string } }) {
       const response = await fetchWork(params.id)
       console.log("response:", response)
       setWork(response.data)
+      console.log("work:", response.data)
     }
     fetchData()
   }, [])
@@ -38,7 +39,42 @@ export default function page({ params }: { params: { id: string } }) {
 
     const response = await createComment(requstOBJ)
     console.log("response::::", response)
+
+    setWork(response.data)
     setCommentOpen(false)
+    setName("")
+    setComment("")
+  }
+
+  const renderComments = () => {
+    const cmts = work.comments
+    if (cmts === undefined) return
+    if (cmts.length < 1) return
+    console.log("comments:")
+
+    // <div key={index}>{comment.username}</div>
+
+    return cmts.map((comment: any, index) => (
+      <div key={index} className="mb-10">
+        <div className="flex items-center gap-2">
+          <div className="avatar placeholder">
+            <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+              <span className="text-lg">{comment.username.charAt(0)}</span>
+            </div>
+          </div>
+          <div className="text-lg">{comment.username}</div>
+        </div>
+        <div>{comment.content}</div>
+        <button className="btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
+          Delete
+        </button>
+      </div>
+    ))
+  }
+
+  const handleCommentDelete = async (comment_id: number) => {
+    const response = await deleteComment(comment_id)
+    console.log("response:", response)
   }
 
   return (
@@ -60,18 +96,7 @@ export default function page({ params }: { params: { id: string } }) {
         </div>
 
         <div className=" space-y-2">
-          {/* <div className="flex items-center gap-2">
-                <div className="avatar placeholder">
-                <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                    <span className="text-lg">L</span>
-                </div>
-                </div>
-            <div className="text-lg">Leo Messi</div>
-          </div> */}
-          {/* <div>
-            Muchaaaaaachoooos ahora nos volvimo a ilusinaarr, quieroo gana la MLS yo ya soy campeon
-            mundiaaaal...
-          </div> */}
+          {renderComments()}
           <div className="text-gray-700 btn" onClick={() => setCommentOpen(true)}>
             Add comment
           </div>

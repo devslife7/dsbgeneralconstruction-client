@@ -2,7 +2,7 @@ import axios from "axios"
 const serverURL = process.env.NEXT_PUBLIC_SERVER_URL
 const worksURL = serverURL + "/works/"
 const uploadFilesURL = serverURL + "/upload_files/"
-const commentsURL = serverURL + "/comments"
+const commentsURL = serverURL + "/comments/"
 
 export const fetchGallery = async () => await axios.get(worksURL)
 export const fetchWork = async (work_id: string) => {
@@ -36,4 +36,9 @@ export const deleteWork = async (work_id: number) => {
 
 export const createComment = async (requestOBJ: any) => {
   return await axios.post(commentsURL, requestOBJ)
+}
+
+export const deleteComment = async (comment_id: number) => {
+  const deleteURL = commentsURL + comment_id
+  return await axios.delete(deleteURL)
 }
