@@ -31,7 +31,8 @@ export default function page({ params }: { params: { id: string } }) {
 
   const handleCommentSubmit = () => {
     setCommentOpen(false)
-    return true
+    console.log("comment submit:")
+    // return true
   }
 
   return (
@@ -71,9 +72,9 @@ export default function page({ params }: { params: { id: string } }) {
         </div>
         <div id="Comments_form" className={`flex flex-col gap-5 max-w-md ${!commentOpen && "hidden"} `}>
           <label className="text-2xl">Comment form:</label>
-          <input type="text" placeholder="Name..." />
-          <textarea placeholder="Comment..." />
-          <button className="btn" onClick={handleCommentSubmit()}>
+          <input type="text" placeholder="Name..." value={name} onChange={e => setName(e.target.value)} />
+          <textarea placeholder="Comment..." value={comment} onChange={e => setComment(e.target.value)} />
+          <button className="btn" onClick={handleCommentSubmit}>
             Submit
           </button>
           <div className="btn btn-error" onClick={() => setCommentOpen(false)}>
