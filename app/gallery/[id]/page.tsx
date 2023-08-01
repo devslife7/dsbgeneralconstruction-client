@@ -5,7 +5,12 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { fetchWork, createComment, deleteComment } from "../../../utils/api_calls"
 
-export default function Page({ params, isLoggedIn }: { params: { id: string }, isLoggedIn: any[]}) {
+type Props = {
+  params: { id: string },
+  isLoggedIn: boolean
+}
+
+export default function Page({ params, isLoggedIn }: Props) {
   const [work, setWork] = useState({ image_urls: [], comments: [] })
   const [commentOpen, setCommentOpen] = useState(false)
   // const [commentOpen, setCommentOpen] = useState(false)
