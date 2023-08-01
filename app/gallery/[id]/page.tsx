@@ -8,6 +8,10 @@ import { fetchWork, createComment, deleteComment } from "../../../utils/api_call
 export default function Page({ params, isLoggedIn }: { params: { id: string }, isLoggedIn: boolean }) {
   const [work, setWork] = useState({ image_urls: [], comments: [] })
   const [commentOpen, setCommentOpen] = useState(false)
+  // const [commentOpen, setCommentOpen] = useState(false)
+  // const [commentOpen, setCommentOpen] = useState(false)
+  // const [commentOpen, setCommentOpen] = useState(false)
+  // const [commentOpen, setCommentOpen] = useState(false)
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
   const [rating, setRating] = useState(0)
