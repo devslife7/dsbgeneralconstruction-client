@@ -20,7 +20,7 @@ export default function Page({ params, isLoggedIn }: { params: { id: string }; i
       console.log("work:", response.data)
     }
     fetchData()
-  }, [])
+  }, [params.id])
 
   const renderFiles = () => {
     if (!work) return
