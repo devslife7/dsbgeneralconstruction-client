@@ -7,7 +7,7 @@ import { fetchWork, createComment, deleteComment } from "../../../utils/api_call
 
 type Props = {
   params: { id: string },
-  isLoggedIn: boolean
+  isLoggedIn: any[]
 }
 
 export default function Page({ params, isLoggedIn }: Props) {
