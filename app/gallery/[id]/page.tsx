@@ -11,7 +11,7 @@ import { fetchWork, createComment, deleteComment } from "../../../utils/api_call
 // }
 
 interface PageProps {
-  params: { id: any[] },
+  params: { id: string },
   isLoggedIn: any[]
 }
 
