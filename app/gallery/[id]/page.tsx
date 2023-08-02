@@ -12,7 +12,7 @@ import { fetchWork, createComment, deleteComment } from "../../../utils/api_call
 
 interface PageProps {
   params: { id: string },
-  isLoggedIn: any[]
+  isLoggedIn: boolean
 }
 
 export default function Page({ params, isLoggedIn }: PageProps) {

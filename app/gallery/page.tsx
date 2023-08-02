@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { AiFillStar } from "react-icons/ai"
 import { Button, Modal } from "flowbite-react"
 import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "../../utils/api_calls"
+
 // import axios from "axios"
 
 // ActiveStorage.start()
@@ -71,9 +72,9 @@ export default function Work() {
           <p className="text-gray-700 mt-2 mb-10 ">See more...</p>
         </Link>
         {isLoggedIn && (
-          <button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
+          <Button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
             Delete
-          </button>
+          </Button>
         )}
       </div>
     ))
@@ -148,9 +149,9 @@ export default function Work() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
               />
-              <button className="btn" onClick={handlePasswordSubmit}>
+              <Button className="btn" onClick={handlePasswordSubmit}>
                 {isLoading? "Loading..." : "Submit"}
-              </button>
+              </Button>
             </div>
           )}
           {isLoggedIn && (
