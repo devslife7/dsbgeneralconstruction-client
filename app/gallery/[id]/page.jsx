@@ -70,7 +70,7 @@ export default function Page({ params, isLoggedIn }) {
 
     // <div key={index}>{comment.username}</div>
 
-    return cmts.map((comment: any, index) => (
+    return cmts.map((comment, index) => (
       <div key={index} className="mb-10">
         <div className="flex items-center gap-2">
           <div className="avatar placeholder">
@@ -90,11 +90,11 @@ export default function Page({ params, isLoggedIn }) {
     ))
   }
 
-  const handleCommentDelete = async (comment_id: number) => {
+  const handleCommentDelete = async (comment_id) => {
     const response = await deleteComment(comment_id)
     console.log("response:3333", response)
 
-    const idx = work.comments.findIndex((comment: any) => comment.id === response.data.comment.id)
+    const idx = work.comments.findIndex((comment) => comment.id === response.data.comment.id)
 
     const newWorkOBJ = {
       ...work,
@@ -103,7 +103,7 @@ export default function Page({ params, isLoggedIn }) {
     setWork(newWorkOBJ)
   }
 
-  const handleRating = (e: any) => {
+  const handleRating = (e) => {
     console.log("rating", e.target.name)
     setRating(e.target.name)
   }
