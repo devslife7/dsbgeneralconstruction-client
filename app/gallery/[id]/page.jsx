@@ -10,12 +10,13 @@ import { fetchWork, createComment, deleteComment } from "../../../utils/api_call
 //   isLoggedIn: any[]
 // }
 
-interface PageProps {
-  params: { id: string },
-  isLoggedIn: boolean
-}
+// interface PageProps {
+//   params: { id: string },
+//   isLoggedIn: boolean
+// }
 
-export default function Page({ params, isLoggedIn }: PageProps) {
+// export default function Page({ params, isLoggedIn }: PageProps) {
+export default function Page({ params, isLoggedIn }) {
   const [work, setWork] = useState({ image_urls: [], comments: [] })
   const [commentOpen, setCommentOpen] = useState(false)
   // const [commentOpen, setCommentOpen] = useState(false)
