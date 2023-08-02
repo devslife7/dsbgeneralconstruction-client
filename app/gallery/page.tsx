@@ -22,6 +22,7 @@ export default function Work() {
   const [gallery, setGallery] = useState<any[]>([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [password, setPassword] = useState("")
+  const [ isLoading, setIsLoading ] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -92,6 +93,7 @@ export default function Work() {
   }
 
   const handleImageUpload = async () => {
+    setIsLoading(true)
     const formData = new FormData()
     photos.forEach(photo => formData.append(`images[]`, photo))
 
@@ -107,6 +109,7 @@ export default function Work() {
 
       setGallery(galleryArray)
     }
+    setIsLoading(false)
     setTitle("")
     setDescription("")
     setPhotos([])
@@ -146,7 +149,7 @@ export default function Work() {
                 onChange={e => setPassword(e.target.value)}
               />
               <button className="btn" onClick={handlePasswordSubmit}>
-                Submit
+                {isLoading? "Loading..." : "Submit"}
               </button>
             </div>
           )}
