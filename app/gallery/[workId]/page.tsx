@@ -5,37 +5,23 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { fetchWork, createComment, deleteComment } from "../../../utils/api_calls"
 
-// type Props = {
-//   params: { id: any[] },
-//   isLoggedIn: any[]
-// }
-
-// interface PageProps {
-//   params: { id: string },
-//   isLoggedIn: boolean
-// }
-
-// export default function Page({ params, isLoggedIn }: PageProps) {
-export default function Page({ params, isLoggedIn }) {
+export default function Page({ params: { workId } }: { params: { workId: string, isLoggedIn: boolean }}) {
+  console.log("PARAMS:", workId)
   const [work, setWork] = useState({ image_urls: [], comments: [] })
   const [commentOpen, setCommentOpen] = useState(false)
-  // const [commentOpen, setCommentOpen] = useState(false)
-  // const [commentOpen, setCommentOpen] = useState(false)
-  // const [commentOpen, setCommentOpen] = useState(false)
-  // const [commentOpen, setCommentOpen] = useState(false)
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
   const [rating, setRating] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetchWork(params.id)
+      const response = await fetchWork(workId)
       console.log("response:", response)
       setWork(response.data)
       console.log("work:", response.data)
     }
     fetchData()
-  }, [params.id])
+  }, [workId])
 
   const renderFiles = () => {
     if (!work) return
@@ -50,7 +36,7 @@ export default function Page({ params, isLoggedIn }) {
     const requstOBJ = {
       username: name,
       content: comment,
-      work_id: params.id,
+      work_id: workId,
     }
 
     const response = await createComment(requstOBJ)
@@ -63,7 +49,8 @@ export default function Page({ params, isLoggedIn }) {
   }
 
   const renderComments = () => {
-    const cmts = work.comments
+    type Comment = any[]
+    const cmts: Comment = work.comments
     if (cmts === undefined) return
     if (cmts.length < 1) return
     console.log("comments:")
@@ -81,7 +68,12 @@ export default function Page({ params, isLoggedIn }) {
           <div className="text-lg">{comment.username}</div>
         </div>
         <div>{comment.content}</div>
-        {isLoggedIn && (
+        {/* {isLoggedIn && (
+          <button className="btn btn-error mt-6" onClick={() => handleCommentDelete(comment.id)}>
+            Delete
+          </button>
+        )} */}
+        {true && (
           <button className="btn btn-error mt-6" onClick={() => handleCommentDelete(comment.id)}>
             Delete
           </button>
@@ -90,11 +82,10 @@ export default function Page({ params, isLoggedIn }) {
     ))
   }
 
-  const handleCommentDelete = async (comment_id) => {
+  const handleCommentDelete = async (comment_id: number) => {
     const response = await deleteComment(comment_id)
-    console.log("response:3333", response)
 
-    const idx = work.comments.findIndex((comment) => comment.id === response.data.comment.id)
+    const idx = work.comments.findIndex((comment: {id: number}) => comment.id === response.data.comment.id)
 
     const newWorkOBJ = {
       ...work,
@@ -103,7 +94,7 @@ export default function Page({ params, isLoggedIn }) {
     setWork(newWorkOBJ)
   }
 
-  const handleRating = (e) => {
+  const handleRating = (e: any) => {
     console.log("rating", e.target.name)
     setRating(e.target.name)
   }
