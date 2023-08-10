@@ -39,7 +39,7 @@ export default function Work() {
     console.log("gallery to display:", gallery)
     return gallery.map((work: any, index) => (
       <div key={index} className="w-[350px]">
-        <Link href={`/gallery/${work.id}`}>
+        {/* <Link href={`/gallery/${work.id}`}> */}
           {work.image_urls[0] && !!work.image_urls[0].match(/.mp4|.mov/) ? (
             <video width="640" height="480" src={work.image_urls[0]} controls autoPlay muted>
               Sorry, your browser doesn't support HTML5 <code>video</code>, but you can download this video
@@ -55,7 +55,7 @@ export default function Work() {
             />
             // <img src={work.image_urls[0]}/>
           )}
-        </Link>
+        {/* </Link> */}
         <div className="flex justify-between">
           <div>{work.title}</div>
           <div>
@@ -133,7 +133,7 @@ export default function Work() {
           Add Work...
         </Button>
         <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
-          {!isLoggedIn && (
+          {/* {!isLoggedIn && (
             <div className="m-20">
               <label className="mb-10">Enter Admin password</label>
               <br />
@@ -147,8 +147,8 @@ export default function Work() {
                 {isLoading? "Loading..." : "Submit"}
               </Button>
             </div>
-          )}
-          {isLoggedIn && (
+          )} */}
+          {true && (
             <>
               <Modal.Header>Add Work Form</Modal.Header>
               <Modal.Body>
