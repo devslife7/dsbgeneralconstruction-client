@@ -4,11 +4,17 @@ const nextConfig = {
   swcMinify: true,
   optimizeFonts: true,
   images: {
-    domains: ["localhost", "dsbgeneralconstruction-images-videos.s3.amazonaws.com", "dsbgeneralconstruction-api-production.up.railway.app"],
     remotePatterns: [
       {
+        hostname: "localhost",
+      },
+      {
         protocol: "https",
-        hostname: "images.unsplash.com",
+        hostname: "dsbgeneralconstruction-images-videos.s3.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "dsbgeneralconstruction-api-production.up.railway.app",
       },
     ],
   },
