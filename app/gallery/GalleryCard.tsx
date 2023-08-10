@@ -12,7 +12,14 @@ export default function GalleryCard({ work, handleWorkDelete }: { work: any; han
           Sorry, your browser doesn't support HTML5 <code>video</code>
         </video>
       ) : (
-        <Image src={coverFile} alt={work.title} width={350} height={450} className="object-cover" />
+        <Image
+          src={coverFile}
+          alt={work.title}
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="w-full h-auto"
+        />
       )}
       <div className="flex justify-between">
         <div>{work.title}</div>

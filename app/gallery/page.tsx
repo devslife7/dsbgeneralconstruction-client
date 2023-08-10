@@ -17,7 +17,7 @@ export default function Work() {
   const [gallery, setGallery] = useState<any[]>([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [password, setPassword] = useState("")
-  const [ isLoading, setIsLoading ] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,14 +28,9 @@ export default function Work() {
   }, [])
 
   const renderGallery = () => {
-    if (!gallery) return
-    if (gallery.length < 1) return
-
     gallery.sort((a: any, b: any) => b.id - a.id)
-
-    console.log("gallery to display:", gallery)
     return gallery.map((work: any, index: number) => (
-        <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete}/>
+      <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} />
     ))
   }
 
@@ -142,7 +137,7 @@ export default function Work() {
               </Modal.Body>
               <Modal.Footer>
                 <Button onClick={handleImageUpload} className="bg-primary">
-                  {isLoading ? "Loading...": "Submit"}
+                  {isLoading ? "Loading..." : "Submit"}
                 </Button>
                 <Button
                   color="gray"

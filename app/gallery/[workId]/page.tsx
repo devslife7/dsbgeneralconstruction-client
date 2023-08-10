@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { fetchWork, createComment, deleteComment } from "../../../utils/api_calls"
 
-export default function Page({ params: { workId } }: { params: { workId: string, isLoggedIn: boolean }}) {
+export default function Page({ params: { workId } }: { params: { workId: string; isLoggedIn: boolean } }) {
   console.log("PARAMS:", workId)
   const [work, setWork] = useState({ image_urls: [], comments: [] })
   const [commentOpen, setCommentOpen] = useState(false)
@@ -53,9 +53,6 @@ export default function Page({ params: { workId } }: { params: { workId: string,
     const cmts: Comment = work.comments
     if (cmts === undefined) return
     if (cmts.length < 1) return
-    console.log("comments:")
-
-    // <div key={index}>{comment.username}</div>
 
     return cmts.map((comment, index) => (
       <div key={index} className="mb-10">
@@ -85,7 +82,7 @@ export default function Page({ params: { workId } }: { params: { workId: string,
   const handleCommentDelete = async (comment_id: number) => {
     const response = await deleteComment(comment_id)
 
-    const idx = work.comments.findIndex((comment: {id: number}) => comment.id === response.data.comment.id)
+    const idx = work.comments.findIndex((comment: { id: number }) => comment.id === response.data.comment.id)
 
     const newWorkOBJ = {
       ...work,

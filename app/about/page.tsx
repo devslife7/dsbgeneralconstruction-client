@@ -6,7 +6,7 @@ const About = () => {
     <div className="container-custom sm:h-screen flex items-center py-40">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 mb-14">
-          <Image src={AboutUs} alt="About Us" width={800} height={600} className="object-cover" />
+          <Image src={AboutUs} alt="About Us" width={800} height={600} className="object-cover" priority />
         </div>
         <div className="md:w-1/2 md:pl-8 ">
           <h2 className="mb-6 text-5xl font-bold">Our Story</h2>
