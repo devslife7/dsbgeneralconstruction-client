@@ -136,11 +136,6 @@ export default function Work() {
         <Button onClick={() => props.setOpenModal("default")} className="bg-primary">
           Add Work...
         </Button>
-        <Image src='https://dsbgeneralconstruction-images-videos.s3.amazonaws.com/kpm86c86c7yd0r0nmbzvdcdhhevy'
-              alt='test image'
-              width={390}
-              height={600}
-              className="object-cover"/>
         <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
           {!isLoggedIn && (
             <div className="m-20">
