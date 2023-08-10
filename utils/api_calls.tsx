@@ -16,21 +16,16 @@ export const createWork = async (title: string, description: string) => {
       description: description,
     },
   }
-
-  console.log("wha isthis:")
-
   return await axios.post(worksURL, requestOBJ)
 }
 
 export const updateWorkFiles = async (work_id: number, formData: object) => {
   const requestURL = uploadFilesURL + work_id
-
   return await axios.patch(requestURL, formData)
 }
 
 export const deleteWork = async (work_id: number) => {
   const deleteURL = worksURL + work_id
-
   return await axios.delete(deleteURL)
 }
 

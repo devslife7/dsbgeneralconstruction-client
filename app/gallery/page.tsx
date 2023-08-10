@@ -1,12 +1,10 @@
 "use client"
 // import { DirectUpload } from "activestorage"
 // import * as ActiveStorage from "@rails/activestorage"
-import Image from "next/image"
-import Link from "next/link"
 import { useEffect, useState } from "react"
-import { AiFillStar } from "react-icons/ai"
 import { Button, Modal } from "flowbite-react"
 import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "../../utils/api_calls"
+import GalleryCard from "./GalleryCard"
 
 export default function Work() {
   const [openModal, setOpenModal] = useState<string | undefined>()
@@ -35,49 +33,9 @@ export default function Work() {
 
     gallery.sort((a: any, b: any) => b.id - a.id)
 
-    // console.log("gallery::::", gallery) optimize code here
     console.log("gallery to display:", gallery)
-    return gallery.map((work: any, index) => (
-      <div key={index} className="w-[350px]">
-        {/* <Link href={`/gallery/${work.id}`}> */}
-          {work.image_urls[0] && !!work.image_urls[0].match(/.mp4|.mov/) ? (
-            <video width="640" height="480" src={work.image_urls[0]} controls autoPlay muted>
-              Sorry, your browser doesn't support HTML5 <code>video</code>, but you can download this video
-              from
-            </video>
-          ) : (
-            <Image
-              src={work.image_urls[0]}
-              alt={work.title}
-              width={390}
-              height={600}
-              className="object-cover"
-            />
-            // <img src={work.image_urls[0]}/>
-          )}
-        {/* </Link> */}
-        <div className="flex justify-between">
-          <div>{work.title}</div>
-          <div>
-            <span>4.5</span>
-            <AiFillStar className="inline-block text-primary text-lg" />
-          </div>
-        </div>
-        <div>{work.subtitle}</div>
-        <Link href={`/gallery/${work.id}`}>
-          <p className="text-gray-700 mt-2 mb-10 ">See more...</p>
-        </Link>
-        {/* {isLoggedIn && (
-          <Button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
-            Delete
-          </Button>
-        )} */}
-        {true && (
-          <Button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
-            Delete
-          </Button>
-        )}
-      </div>
+    return gallery.map((work: any, index: number) => (
+        <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete}/>
     ))
   }
 
