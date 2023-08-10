@@ -40,6 +40,7 @@ export default function Work() {
     gallery.sort((a: any, b: any) => b.id - a.id)
 
     // console.log("gallery::::", gallery) optimize code here
+    console.log("gallery to display:", gallery)
     return gallery.map((work: any, index) => (
       <div key={index} className="w-[350px]">
         <Link href={`/gallery/${work.id}`}>
@@ -56,6 +57,7 @@ export default function Work() {
               height={600}
               className="object-cover"
             />
+            // <img src={work.image_urls[0]}/>
           )}
         </Link>
         <div className="flex justify-between">
@@ -134,6 +136,11 @@ export default function Work() {
         <Button onClick={() => props.setOpenModal("default")} className="bg-primary">
           Add Work...
         </Button>
+        <Image src='https://dsbgeneralconstruction-images-videos.s3.amazonaws.com/kpm86c86c7yd0r0nmbzvdcdhhevy'
+              alt='test image'
+              width={390}
+              height={600}
+              className="object-cover"/>
         <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
           {!isLoggedIn && (
             <div className="m-20">
@@ -186,7 +193,7 @@ export default function Work() {
               </Modal.Body>
               <Modal.Footer>
                 <Button onClick={handleImageUpload} className="bg-primary">
-                  Submit
+                  {isLoading ? "Loading...": "Submit"}
                 </Button>
                 <Button
                   color="gray"
