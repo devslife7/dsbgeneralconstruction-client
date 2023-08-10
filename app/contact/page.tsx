@@ -31,22 +31,22 @@ export default function Contact() {
         </a>
       </div>
       <div className="mb-36 space-y-16 lg:flex lg:flex-wrap lg:items-end lg:justify-between gap-5">
-        <div className="bg-gray-200 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[21rem] max-w-[23rem] md:w-[24rem] rounded-md flex flex-col justify-evenly">
-          <p className="text-[4.7rem] mb-7 text-green-600">
+        <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[21rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly">
+          <p className="text-[4.7rem] mb-7 text-green-400">
             <BsWhatsapp />
           </p>
           <div className="text-[2.2rem]">WhatsApp</div>
           <div className="text-2xl font-light">+1 999 999 9999</div>
         </div>
-        <div className="bg-gray-200 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[17rem] max-w-[23rem] md:w-[23rem] rounded-md flex flex-col justify-evenly order-first">
-          <p className="text-5xl mb-10 text-blue-500">
+        <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[17rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly order-first">
+          <p className="text-[4.7rem] mb-7 text-blue-500">
             <MdMailOutline />
           </p>
           <div className="text-[1.8rem]">Send us an email</div>
           <div className="text-xl font-light">email123@gmail.com</div>
         </div>
-        <div className="bg-gray-200 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[16rem] max-w-[23rem] md:w-[23rem] rounded-md flex flex-col justify-evenly">
-          <p className="text-5xl mb-10 text-primary">
+        <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[16rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly">
+          <p className="text-[4.7rem] mb-7 text-primary">
             <FaMapLocationDot />
           </p>
           <div className="text-[1.8rem]">Our Location</div>
