@@ -8,10 +8,6 @@ import { AiFillStar } from "react-icons/ai"
 import { Button, Modal } from "flowbite-react"
 import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "../../utils/api_calls"
 
-// import axios from "axios"
-
-// ActiveStorage.start()
-
 export default function Work() {
   const [openModal, setOpenModal] = useState<string | undefined>()
   const props = { openModal, setOpenModal }
