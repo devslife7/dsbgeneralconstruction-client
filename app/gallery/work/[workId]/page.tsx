@@ -3,7 +3,7 @@ import Image from "next/image"
 import { IoIosLogIn, IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { fetchWork, createComment, deleteComment } from "../../../utils/api_calls"
+import { fetchWork, createComment, deleteComment } from "../../../../utils/api_calls"
 import ImageViewer from "./ImageViewer"
 
 export default function Page({ params: { workId } }: { params: { workId: string; isLoggedIn: boolean } }) {
@@ -91,7 +91,7 @@ export default function Page({ params: { workId } }: { params: { workId: string;
         <div className="flex justify-between">
           <Link href="/gallery" className=" lg:w-[35%] clear-left text-gray-700 items-center">
             <IoMdArrowBack className="inline-block text-lg" />
-            <span> gallery</span>
+            <span>gallery</span>
           </Link>
 
           <div className="flex">

@@ -29,7 +29,7 @@ export default function GalleryCard({ work, handleWorkDelete }: { work: any; han
         </div>
       </div>
       <div>{work.subtitle}</div>
-      <Link href={`/gallery/${work.id}`}>
+      <Link href={`/gallery/work/${work.id}`}>
         <p className="text-gray-700 mt-2 mb-10 ">See more...</p>
       </Link>
 
