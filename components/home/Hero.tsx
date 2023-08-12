@@ -1,10 +1,11 @@
 import Link from "next/link"
 import Image from "next/image"
 import heroBackground from "../../public/images/heroSection.webp"
+import Button from "../shared/Button"
 
 export default function Hero() {
   return (
-    <div className="mt-20 h-[80vh] relative">
+    <div className="mt-20 h-[70vh] relative">
       <div className="absolute h-full w-full -z-10">
         <Image
           src={heroBackground}
@@ -22,11 +23,8 @@ export default function Hero() {
               Our skilled artisans pour their heart and soul into every project, ensuring impeccable finishes
               and long-lasting beauty.
             </p>
-            <Link
-              href="/gallery"
-              className="bg-primary border-[3px] border-solid border-transparent inline-block rounded-md text-lg px-7 py-2 md:px-6 md:py-2 md:text-xl hover:border-solid hover:bg-transparent hover:border-[3px] hover:border-primary transition-all ease-in-out duration-300 "
-            >
-              Gallery...
+            <Link href="/gallery">
+              <Button className="text-xl">Explore Gallery...</Button>
             </Link>
           </div>
         </div>
