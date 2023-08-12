@@ -3,7 +3,6 @@ import { XMarkIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { MdHomeWork } from "react-icons/md"
-import { Button } from 'flowbite-react'
 
 type ObjectType = {
   href: string
