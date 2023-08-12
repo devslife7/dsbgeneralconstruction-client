@@ -15,7 +15,7 @@ type Props = {
   navLinks: ObjectType[]
 }
 
-export default function NavDialog({ mobileMenuOpen, setMobileMenuOpen, navLinks }: Props) {
+export default function MobileNavbar({ mobileMenuOpen, setMobileMenuOpen, navLinks }: Props) {
   const pathname = usePathname()
 
   const closeMobileMenu = () => {
