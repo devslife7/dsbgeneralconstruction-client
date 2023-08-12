@@ -2,9 +2,11 @@
 // import { DirectUpload } from "activestorage"
 // import * as ActiveStorage from "@rails/activestorage"
 import { useEffect, useState } from "react"
-import { Button, Modal } from "flowbite-react"
+import { Modal } from "flowbite-react"
 import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "../../utils/api_calls"
-import GalleryCard from "../../components/gallery/GalleryCard"
+import GalleryCard from "@/components/gallery/GalleryCard"
+import MyModal from "@/components/shared/MyModal"
+import Button from "@/components/shared/Button"
 
 export default function Work() {
   const [openModal, setOpenModal] = useState<string | undefined>()
@@ -82,9 +84,8 @@ export default function Work() {
   return (
     <div className="container-custom my-24">
       <div>
-        <Button onClick={() => props.setOpenModal("default")} className="bg-primary">
-          Add Work...
-        </Button>
+        <MyModal>open sesame</MyModal>
+        {/* <Button onClick={() => props.setOpenModal("default")}>Add Work...</Button> */}
         <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
           {/* {!isLoggedIn && (
             <div className="m-20">
@@ -140,7 +141,6 @@ export default function Work() {
                   {isLoading ? "Loading..." : "Submit"}
                 </Button>
                 <Button
-                  color="gray"
                   onClick={() => {
                     props.setOpenModal(undefined)
                   }}
