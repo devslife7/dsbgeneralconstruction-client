@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Bars3Icon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import MobileNavbar from "./MobileNavbar"
+import MobileNav from "./MobileNav"
 import { FaPhone } from "react-icons/fa"
 
 interface NavLink {
@@ -82,7 +82,7 @@ export default function Navbar() {
         </div>
       </nav>
       {mobileMenuOpen && (
-        <MobileNavbar
+        <MobileNav
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
           navLinks={navLinks}
