@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react"
 import { Button, Modal } from "flowbite-react"
 import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "../../utils/api_calls"
-import GalleryCard from "./GalleryCard"
+import GalleryCard from "../../components/gallery/GalleryCard"
 
 export default function Work() {
   const [openModal, setOpenModal] = useState<string | undefined>()

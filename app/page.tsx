@@ -1,13 +1,13 @@
-import GallerySection from "../components/GallerySection"
-import Hero from "../components/Hero"
-import KeyPoints from "../components/Keypoints"
+import GallerySection from "../components/home/GallerySection"
+import Hero from "../components/home/Hero"
+import KeyPoints from "../components/home/Keypoints"
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Hero />
       <KeyPoints />
       <GallerySection />
-    </div>
+    </>
   )
 }

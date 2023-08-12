@@ -4,7 +4,7 @@ import { IoIosLogIn, IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { fetchWork, createComment, deleteComment } from "../../../../utils/api_calls"
-import ImageViewer from "./ImageViewer"
+import ImageViewer from "../../../../components/gallery/work/ImageViewer"
 
 export default function Page({ params: { workId } }: { params: { workId: string; isLoggedIn: boolean } }) {
   const [work, setWork] = useState({ image_urls: [], comments: [], title: "" })

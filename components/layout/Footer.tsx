@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { socialMediaLinks } from "../../data/socialMediaLinks"
+import { socialMediaLinks } from "../../utils/data/socialMediaLinks"
 
 export default function Footer() {
   const renderSocialLinks = () => {
