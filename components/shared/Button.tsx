@@ -1,7 +1,7 @@
-export default function Button() {
+export default function Button({ children }: { children: any }) {
   return (
     <div>
-      <button>Button placeholder</button>
+      <button>{children}</button>
     </div>
   )
 }
