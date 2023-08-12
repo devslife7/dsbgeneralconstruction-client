@@ -86,7 +86,7 @@ export default function Page({ params: { workId } }: { params: { workId: string;
   }
 
   return (
-    <div className="container-custom mt-20">
+    <div className="container-custom">
       <div className="my-8 space-y-5">
         <div className="flex justify-between">
           <Link href="/gallery" className=" lg:w-[35%] clear-left text-gray-700 items-center">

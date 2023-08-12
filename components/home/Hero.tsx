@@ -5,7 +5,7 @@ import Button from "../shared/Button"
 
 export default function Hero() {
   return (
-    <div className="mt-20 h-[70vh] relative">
+    <div className="h-[70vh] relative">
       <div className="absolute h-full w-full -z-10">
         <Image
           src={heroBackground}

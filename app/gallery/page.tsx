@@ -80,7 +80,7 @@ export default function Work() {
   }
 
   return (
-    <div className="container-custom my-32">
+    <div className="container-custom my-24">
       <div>
         <Button onClick={() => props.setOpenModal("default")} className="bg-primary">
           Add Work...
@@ -97,7 +97,7 @@ export default function Work() {
                 onChange={e => setPassword(e.target.value)}
               />
               <Button className="btn" onClick={handlePasswordSubmit}>
-                {isLoading? "Loading..." : "Submit"}
+                {isLoading ? "Loading..." : "Submit"}
               </Button>
             </div>
           )} */}
@@ -127,11 +127,11 @@ export default function Work() {
                     accept=".png, .jpg, .jpeg, .mp4, .mov"
                     onChange={e => setImagesArray(e)}
                     className="block w-full text-sm text-slate-500
-                file:mr-4 file:py-2 file:px-4
-                file:rounded-full file:border-0
-                file:text-sm file:font-semibold
-                file:bg-violet-50 file:text-violet-700
-                hover:file:bg-violet-100"
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-violet-50 file:text-violet-700
+                      hover:file:bg-violet-100"
                   />
                 </div>
               </Modal.Body>

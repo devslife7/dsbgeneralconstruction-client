@@ -3,7 +3,7 @@ import AboutUs from "../../public/images/aboutPage.webp"
 
 const About = () => {
   return (
-    <div className="container-custom sm:h-screen flex items-center py-40">
+    <div className="container-custom flex items-center py-32">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 mb-14">
           <Image src={AboutUs} alt="About Us" width={800} height={600} className="object-cover" priority />
