@@ -4,7 +4,7 @@ import heroBackground from "../../public/images/heroSection.webp"
 
 export default function Hero() {
   return (
-    <div className="mt-20 h-[70vh] relative">
+    <div className="mt-20 h-[80vh] relative">
       <div className="absolute h-full w-full -z-10">
         <Image
           src={heroBackground}
