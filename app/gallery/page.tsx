@@ -7,6 +7,7 @@ import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "@/utils/a
 import GalleryCard from "@/components/gallery/GalleryCard"
 import MyModal from "@/components/shared/MyModal"
 import Button from "@/components/shared/Button"
+import { HiPlus } from "react-icons/hi"
 
 export default function Work() {
   const [openModal, setOpenModal] = useState<string | undefined>()
@@ -85,7 +86,7 @@ export default function Work() {
     <div className="container-custom my-24">
       <div>
         <MyModal>open sesame</MyModal>
-        <Button onClick={() => props.setOpenModal("default")} leftIcon={<div>icon</div>}>
+        <Button onClick={() => props.setOpenModal("default")} rightIcon={<HiPlus />}>
           Add Work...
         </Button>
         <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>

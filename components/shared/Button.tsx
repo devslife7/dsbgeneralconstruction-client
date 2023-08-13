@@ -33,11 +33,11 @@ export default function Button({
     <button
       {...props}
       onClick={onClick}
-      className={`${buttonVariantStyles[variant as keyof ButtonType]} ${className}`}
+      className={`${buttonVariantStyles[variant as keyof ButtonType]} ${className} flex items-center`}
     >
-      {leftIcon && <div className="inline-block mr-2 text-inherit">{leftIcon}</div>}
+      {leftIcon && <div className="mr-2 text-inherit">{leftIcon}</div>}
       {children}
-      {rightIcon && <div className="inline-block mr-2 text-inherit">{rightIcon}</div>}
+      {rightIcon && <div className="ml-2 text-inherit">{rightIcon}</div>}
     </button>
   )
 }
