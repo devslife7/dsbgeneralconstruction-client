@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react"
-import { Fragment, useState } from "react"
+import { Fragment } from "react"
 import Button from "./Button"
 import { RiCloseFill } from "react-icons/Ri"
 
@@ -16,14 +16,9 @@ export default function MyModal({
   title?: string
   children?: React.ReactNode
 }) {
-  // let [isOpen, setIsOpen] = useState(false)
-
-  // const closeModal = () => setIsOpen(false)
-  // const openModal = () => setIsOpen(true)
-
   return (
     <>
-      <Button onClick={openModal}>Open dialog</Button>
+      {/* <Button onClick={openModal}>Open dialog</Button> */}
 
       <Transition appear show={isModalOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -51,7 +46,7 @@ export default function MyModal({
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title className="text-2xl font-medium leading-6 text-gray-900 flex justify-between text-center mb-5">
+                  <Dialog.Title className="text-2xl font-medium leading-6 text-gray-900 flex justify-between text-center mb-8">
                     {title}
                     <RiCloseFill
                       className="text-2xl hover:bg-gray-100 hover:cursor-pointer rounded-md hover:text-red-500 text-gray-500"

@@ -8,19 +8,12 @@ import GalleryCard from "@/components/gallery/GalleryCard"
 import MyModal from "@/components/shared/MyModal"
 import Button from "@/components/shared/Button"
 import { HiPlus } from "react-icons/hi"
+import CreateWorkForm from "@/components/gallery/CreateWorkForm"
 
 export default function Work() {
-  // const [openModal, setOpenModal] = useState<string | undefined>()
-  // const props = { openModal, setOpenModal }
-
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [photos, setPhotos] = useState<any[]>([])
-  const [currentWork, setCurrentWork] = useState({ image_urls: [] })
   const [gallery, setGallery] = useState<any[]>([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [password, setPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const closeModal = () => setIsModalOpen(false)
@@ -36,9 +29,13 @@ export default function Work() {
 
   const renderGallery = () => {
     gallery.sort((a: any, b: any) => b.id - a.id)
-    return gallery.map((work: any, index: number) => (
-      <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} />
-    ))
+    return (
+      <div className="flex flex-wrap gap-10">
+        {gallery.map((work: any, index: number) => (
+          <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} />
+        ))}
+      </div>
+    )
   }
 
   const handleWorkDelete = async (work_id: number) => {
@@ -48,37 +45,8 @@ export default function Work() {
     setGallery(galleryArray)
   }
 
-  // const handleImageUpload = async () => {
-  //   setIsLoading(true)
-  //   const formData = new FormData()
-  //   photos.forEach(photo => formData.append(`images[]`, photo))
-
-  //   if (!!photos) {
-  //     const workResponse = await createWork(title, description)
-  //     const work_id = workResponse.data.work.id
-
-  //     const updateWorkResponse = await updateWorkFiles(work_id, formData)
-  //     const newWork = updateWorkResponse.data.work
-  //     setCurrentWork(newWork)
-
-  //     const galleryArray = [...gallery, newWork]
-
-  //     setGallery(galleryArray)
-  //   }
-  //   setIsLoading(false)
-  //   setTitle("")
-  //   setDescription("")
-  //   setPhotos([])
-  //   props.setOpenModal(undefined)
-  // }
-
-  const setImagesArray = (e: any) => {
-    const imagesArray = Array.prototype.slice.call(e.target.files)
-    const photosToUpload = [...photos]
-    imagesArray.some((images: any) => {
-      photosToUpload.push(images)
-    })
-    setPhotos(photosToUpload)
+  const addToGallery = (work: any) => {
+    setGallery([...gallery, work])
   }
 
   const handlePasswordSubmit = () => {
@@ -88,85 +56,14 @@ export default function Work() {
 
   return (
     <div className="container-custom my-24">
-      <div>
-        <MyModal
-          isModalOpen={isModalOpen}
-          openModal={openModal}
-          closeModal={closeModal}
-          title="Add Work Form"
-        ></MyModal>
-        {/* <Button onClick={() => props.setOpenModal("default")} startIcon={<HiPlus />}>
-          Add Work...
-        </Button> */}
-        {/* <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
-          {!isLoggedIn && (
-            <div className="m-20">
-              <label className="mb-10">Enter Admin password</label>
-              <br />
-              <input
-                placeholder="password"
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-              <Button className="btn" onClick={handlePasswordSubmit}>
-                {isLoading ? "Loading..." : "Submit"}
-              </Button>
-            </div>
-          )}
-          {true && (
-            <>
-              <Modal.Header>Add Work Form</Modal.Header>
-              <Modal.Body>
-                <div className="flex flex-col space-y-7">
-                  <input
-                    id="title"
-                    type="text"
-                    placeholder="Title"
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                  />
-                  <textarea
-                    id="description"
-                    placeholder="Description"
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                  />
-                  <input
-                    id="fileUpload"
-                    type="file"
-                    placeholder="hello"
-                    multiple
-                    accept=".png, .jpg, .jpeg, .mp4, .mov"
-                    onChange={e => setImagesArray(e)}
-                    className="block w-full text-sm text-slate-500
-                      file:mr-4 file:py-2 file:px-4
-                      file:rounded-full file:border-0
-                      file:text-sm file:font-semibold
-                      file:bg-violet-50 file:text-violet-700
-                      hover:file:bg-violet-100"
-                  />
-                </div>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button onClick={handleImageUpload} variant="secondary">
-                  {isLoading ? "Loading..." : "Submit"}
-                </Button>
-                <Button
-                  onClick={() => {
-                    props.setOpenModal(undefined)
-                  }}
-                  variant="danger"
-                >
-                  Cancel
-                </Button>
-              </Modal.Footer>
-            </>
-          )}
-        </Modal> */}
-      </div>
+      {renderGallery()}
 
-      <div className="flex flex-wrap gap-10">{renderGallery()}</div>
+      <Button onClick={openModal} startIcon={<HiPlus />}>
+        Add Work
+      </Button>
+      <MyModal title="Add Work Form" isModalOpen={isModalOpen} openModal={openModal} closeModal={closeModal}>
+        <CreateWorkForm closeModal={closeModal} addToGallery={addToGallery} />
+      </MyModal>
     </div>
   )
 }
