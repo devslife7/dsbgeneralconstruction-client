@@ -22,6 +22,6 @@ body {
   /* rgb(var(--background-start-rgb)); */
 }
 
-.container-custom {
+.my-container {
   @apply container mx-auto px-4 lg:px-8;
 }

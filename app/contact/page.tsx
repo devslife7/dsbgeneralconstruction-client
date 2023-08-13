@@ -14,7 +14,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="container-custom">
+    <div className="my-container">
       <div className="mb-32 mt-32">
         <h1 className="text-5xl font-bold">Schedule a Free Estimate</h1>
         <p className="mb-14 md:mb-20 mt-8 max-w-2xl text-[1.4rem] font-light text-gray-700">

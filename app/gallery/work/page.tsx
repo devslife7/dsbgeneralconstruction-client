@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function work() {
   return (
-    <div className="container-custom">
+    <div className="my-container">
       <div className="my-8 lg:flex space-y-5">
         <div className="flex justify-between">
           <Link href="/gallery" className=" lg:w-[35%] clear-left text-gray-700 lg:hidden items-center">

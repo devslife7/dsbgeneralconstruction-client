@@ -56,7 +56,7 @@ export default function Navbar() {
     <>
       <div className="h-20 bg-red-400">Navbar height compensator</div>
       <header className="fixed top-0 z-10 w-full bg-background text-white">
-        <nav className="container-custom flex h-20 items-center justify-between">
+        <nav className="my-container flex h-20 items-center justify-between">
           <div className="flex items-center lg:flex-1">
             <Link href="/">
               <span className="text-2xl font-semibold">

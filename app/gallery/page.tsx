@@ -55,7 +55,7 @@ export default function Work() {
   }
 
   return (
-    <div className="container-custom my-24">
+    <div className="my-container my-24">
       {renderGallery()}
 
       <Button onClick={openModal} startIcon={<HiPlus />}>

@@ -4,7 +4,7 @@ import { BsPeopleFill } from "react-icons/bs"
 
 export default function KeyPoints() {
   return (
-    <div className="container-custom ">
+    <div className="my-container">
       <div className="gap-12 md:gap-0 my-20 flex flex-wrap justify-evenly">
         <div className="md:text-center p-5 max-w-sm">
           <MdAddHomeWork className="md:mx-auto text-8xl md:text-6xl mb-6 text-primary" />
