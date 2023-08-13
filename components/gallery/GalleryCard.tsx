@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { AiFillStar } from "react-icons/ai"
-import { Button } from "flowbite-react"
+import Button from "../shared/Button"
 
 export default function GalleryCard({ work, handleWorkDelete }: { work: any; handleWorkDelete: any }) {
   const coverFile = work.image_urls[0]
@@ -33,7 +33,7 @@ export default function GalleryCard({ work, handleWorkDelete }: { work: any; han
         <p className="text-gray-700 mt-2 mb-10 ">See more...</p>
       </Link>
 
-      <Button className="btn bg-red-500 text-white" onClick={() => handleWorkDelete(work.id)}>
+      <Button variant="danger" onClick={() => handleWorkDelete(work.id)}>
         Delete
       </Button>
     </div>

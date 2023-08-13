@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { socialMediaLinks } from "../../utils/data/socialMediaLinks"
+import { socialMediaLinks } from "@/utils/data/socialMediaLinks"
 import { FaMapLocationDot } from "react-icons/fa6"
 import { BsWhatsapp } from "react-icons/bs"
 import { MdMailOutline } from "react-icons/md"

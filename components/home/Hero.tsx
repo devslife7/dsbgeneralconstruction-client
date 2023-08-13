@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import heroBackground from "../../public/images/heroSection.webp"
+import heroBackground from "@/public/images/heroSection.webp"
 import Button from "../shared/Button"
 
 export default function Hero() {

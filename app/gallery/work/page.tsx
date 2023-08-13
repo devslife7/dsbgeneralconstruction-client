@@ -1,5 +1,5 @@
 import Image from "next/image"
-import aboutPage from "../../../public/images/aboutPage.jpg"
+import aboutPage from "..@/public/images/aboutPage.jpg"
 import { IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 

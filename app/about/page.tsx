@@ -1,5 +1,5 @@
 import Image from "next/image"
-import AboutUs from "../../public/images/aboutPage.webp"
+import AboutUs from "@/public/images/aboutPage.webp"
 
 const About = () => {
   return (
