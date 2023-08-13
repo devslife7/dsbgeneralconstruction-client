@@ -10,8 +10,8 @@ import Button from "@/components/shared/Button"
 import { HiPlus } from "react-icons/hi"
 
 export default function Work() {
-  const [openModal, setOpenModal] = useState<string | undefined>()
-  const props = { openModal, setOpenModal }
+  // const [openModal, setOpenModal] = useState<string | undefined>()
+  // const props = { openModal, setOpenModal }
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -21,6 +21,10 @@ export default function Work() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const closeModal = () => setIsModalOpen(false)
+  const openModal = () => setIsModalOpen(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,29 +48,29 @@ export default function Work() {
     setGallery(galleryArray)
   }
 
-  const handleImageUpload = async () => {
-    setIsLoading(true)
-    const formData = new FormData()
-    photos.forEach(photo => formData.append(`images[]`, photo))
+  // const handleImageUpload = async () => {
+  //   setIsLoading(true)
+  //   const formData = new FormData()
+  //   photos.forEach(photo => formData.append(`images[]`, photo))
 
-    if (!!photos) {
-      const workResponse = await createWork(title, description)
-      const work_id = workResponse.data.work.id
+  //   if (!!photos) {
+  //     const workResponse = await createWork(title, description)
+  //     const work_id = workResponse.data.work.id
 
-      const updateWorkResponse = await updateWorkFiles(work_id, formData)
-      const newWork = updateWorkResponse.data.work
-      setCurrentWork(newWork)
+  //     const updateWorkResponse = await updateWorkFiles(work_id, formData)
+  //     const newWork = updateWorkResponse.data.work
+  //     setCurrentWork(newWork)
 
-      const galleryArray = [...gallery, newWork]
+  //     const galleryArray = [...gallery, newWork]
 
-      setGallery(galleryArray)
-    }
-    setIsLoading(false)
-    setTitle("")
-    setDescription("")
-    setPhotos([])
-    props.setOpenModal(undefined)
-  }
+  //     setGallery(galleryArray)
+  //   }
+  //   setIsLoading(false)
+  //   setTitle("")
+  //   setDescription("")
+  //   setPhotos([])
+  //   props.setOpenModal(undefined)
+  // }
 
   const setImagesArray = (e: any) => {
     const imagesArray = Array.prototype.slice.call(e.target.files)
@@ -85,12 +89,17 @@ export default function Work() {
   return (
     <div className="container-custom my-24">
       <div>
-        <MyModal>open sesame</MyModal>
-        <Button onClick={() => props.setOpenModal("default")} rightIcon={<HiPlus />}>
+        <MyModal
+          isModalOpen={isModalOpen}
+          openModal={openModal}
+          closeModal={closeModal}
+          title="Add Work Form"
+        ></MyModal>
+        {/* <Button onClick={() => props.setOpenModal("default")} startIcon={<HiPlus />}>
           Add Work...
-        </Button>
-        <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
-          {/* {!isLoggedIn && (
+        </Button> */}
+        {/* <Modal show={props.openModal === "default"} onClose={() => props.setOpenModal(undefined)}>
+          {!isLoggedIn && (
             <div className="m-20">
               <label className="mb-10">Enter Admin password</label>
               <br />
@@ -104,7 +113,7 @@ export default function Work() {
                 {isLoading ? "Loading..." : "Submit"}
               </Button>
             </div>
-          )} */}
+          )}
           {true && (
             <>
               <Modal.Header>Add Work Form</Modal.Header>
@@ -154,7 +163,7 @@ export default function Work() {
               </Modal.Footer>
             </>
           )}
-        </Modal>
+        </Modal> */}
       </div>
 
       <div className="flex flex-wrap gap-10">{renderGallery()}</div>
