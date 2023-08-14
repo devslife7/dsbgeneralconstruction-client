@@ -2,8 +2,7 @@
 // import { DirectUpload } from "activestorage"
 // import * as ActiveStorage from "@rails/activestorage"
 import { useEffect, useState } from "react"
-import { Modal } from "flowbite-react"
-import { fetchGallery, updateWorkFiles, createWork, deleteWork } from "@/utils/api_calls"
+import { fetchGallery, deleteWork } from "@/utils/api_calls"
 import GalleryCard from "@/components/gallery/GalleryCard"
 import MyModal from "@/components/shared/MyModal"
 import Button from "@/components/shared/Button"
@@ -30,7 +29,7 @@ export default function Work() {
   const renderGallery = () => {
     gallery.sort((a: any, b: any) => b.id - a.id)
     return (
-      <div className="flex flex-wrap gap-10">
+      <div className="flex flex-wrap gap-5">
         {gallery.map((work: any, index: number) => (
           <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} />
         ))}
@@ -55,7 +54,7 @@ export default function Work() {
   }
 
   return (
-    <div className="my-container my-24">
+    <div className="my-container my-8">
       {renderGallery()}
 
       <Button onClick={openModal} startIcon={<HiPlus />}>

@@ -54,7 +54,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="h-20 bg-red-400">Navbar height compensator</div>
+      <div className="h-20">Navbar height compensator</div>
       <header className="fixed top-0 z-10 w-full bg-background text-white">
         <nav className="my-container flex h-20 items-center justify-between">
           <div className="flex items-center lg:flex-1">
