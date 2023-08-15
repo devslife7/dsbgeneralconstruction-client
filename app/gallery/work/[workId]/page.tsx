@@ -30,8 +30,6 @@ export default function Page({ params: { workId } }: { params: { workId: string;
     }
 
     const response = await createComment(requstOBJ)
-    // console.log("response::::", response)
-
     setWork(response.data)
     setCommentOpen(false)
     setName("")
@@ -48,7 +46,7 @@ export default function Page({ params: { workId } }: { params: { workId: string;
       <div key={index} className="mb-10">
         <div className="flex items-center gap-2">
           <div className="avatar placeholder">
-            <div className="bg-neutral-focus text-neutral-content rounded-full max-w-8">
+            <div className="rounded-full bg-neutral-focus text-neutral-content max-w-8">
               <span className="text-lg uppercase">{comment.username.charAt(0)}</span>
             </div>
           </div>
@@ -56,12 +54,12 @@ export default function Page({ params: { workId } }: { params: { workId: string;
         </div>
         <div>{comment.content}</div>
         {/* {isLoggedIn && (
-          <button className="btn btn-error mt-6" onClick={() => handleCommentDelete(comment.id)}>
+          <button className="mt-6 btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
             Delete
           </button>
         )} */}
         {true && (
-          <button className="btn btn-error mt-6" onClick={() => handleCommentDelete(comment.id)}>
+          <button className="mt-6 btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
             Delete
           </button>
         )}
@@ -71,9 +69,7 @@ export default function Page({ params: { workId } }: { params: { workId: string;
 
   const handleCommentDelete = async (comment_id: number) => {
     const response = await deleteComment(comment_id)
-
     const idx = work.comments.findIndex((comment: { id: number }) => comment.id === response.data.comment.id)
-
     const newWorkOBJ = {
       ...work,
       comments: [...work.comments.slice(0, idx), ...work.comments.slice(idx + 1)],
@@ -81,22 +77,11 @@ export default function Page({ params: { workId } }: { params: { workId: string;
     setWork(newWorkOBJ)
   }
 
-  const handleRating = (e: any) => {
-    console.log("rating", e.target.name)
-    setRating(e.target.name)
-  }
-
-  const setSomeRating = (e: any) => {
-    return rating === e.target.name
-  }
-
-  console.log("render workID component:")
-
   return (
     <div className="my-container">
-      <div className="my-8 space-y-5 lg:flex justify-between">
+      <div className="justify-between my-8 space-y-5 lg:flex">
         <div className="max-w-[22rem] w-[22rem]">
-          <div className="flex justify-between text-gray-700">
+          <div className="flex justify-between text-gray-700 ">
             <Link href="/gallery" className=" lg:max-w-[35%] clear-left items-center mb-5">
               <IoMdArrowBack className="inline-block text-lg" />
               <span>gallery</span>
@@ -105,15 +90,25 @@ export default function Page({ params: { workId } }: { params: { workId: string;
             <Rating />
           </div>
 
-          <div className=" space-y-2">
+          <div className="space-y-2 ">
             {renderComments()}
-            <Button className="text-gray-700" onClick={() => setCommentOpen(true)}>
+            <Button
+              className={`text-gray-700 ${!!commentOpen && "hidden"}`}
+              onClick={() => setCommentOpen(true)}
+            >
               Add comment...
             </Button>
           </div>
-          <div id="Comments_form" className={`flex flex-col gap-4 max-w-md ${!commentOpen && "hidden"} `}>
-            <label className="text-2xl">Comment form:</label>
+          <div
+            id="Comments_form"
+            className={`flex flex-col gap-4 max-w-md ${
+              !commentOpen && "hidden"
+            } mt-7 border-solid border-2 p-4`}
+          >
+            <label className="text-2xl">Add Comment</label>
+            <label>Name</label>
             <input type="text" placeholder="Name..." value={name} onChange={e => setName(e.target.value)} />
+            <label>Comment</label>
             <textarea placeholder="Comment..." value={comment} onChange={e => setComment(e.target.value)} />
             <Button variant="secondary" onClick={handleCommentSubmit}>
               Submit
@@ -124,7 +119,7 @@ export default function Page({ params: { workId } }: { params: { workId: string;
           </div>
         </div>
 
-        <div className="flex flex-wrap bg-green-400 order-first">
+        <div className="flex flex-wrap order-first bg-green-400">
           <MediaViewer mediaURLS={work.image_urls} />
         </div>
       </div>
