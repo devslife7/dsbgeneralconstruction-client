@@ -1,12 +1,11 @@
 "use client"
-import Image from "next/image"
 import { IoIosLogIn, IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { fetchWork, createComment, deleteComment } from "@/utils/api_calls"
-import ImageViewer from "@/components/gallery/work/ImageViewer"
+import ImageViewer from "@/components/gallery/work/MediaViewer"
 import Button from "@/components/shared/Button"
-import { Rating } from "flowbite-react"
+import Rating from "@/components/gallery/work/Rating"
 
 export default function Page({ params: { workId } }: { params: { workId: string; isLoggedIn: boolean } }) {
   const [work, setWork] = useState({ image_urls: [], comments: [], title: "" })
@@ -91,51 +90,19 @@ export default function Page({ params: { workId } }: { params: { workId: string;
     return rating === e.target.name
   }
 
+  console.log("render workID component:")
+
   return (
     <div className="my-container">
       <div className="my-8 space-y-5 lg:flex justify-between">
         <div className="max-w-[22rem] w-[22rem]">
-          <div className="flex justify-between">
-            <Link href="/gallery" className=" lg:max-w-[35%] clear-left text-gray-700 items-center mb-5">
+          <div className="flex justify-between text-gray-700">
+            <Link href="/gallery" className=" lg:max-w-[35%] clear-left items-center mb-5">
               <IoMdArrowBack className="inline-block text-lg" />
               <span>gallery</span>
             </Link>
 
-            <div className="rating">
-              <input
-                type="radio"
-                name="rating-1"
-                className="mask mask-star-2 bg-primary"
-                onClick={e => handleRating(e)}
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                className="mask mask-star-2 bg-primary"
-                onClick={e => handleRating(e)}
-                checked={rating}
-              />
-              <input
-                type="radio"
-                name="rating-3"
-                className="mask mask-star-2 bg-primary"
-                onClick={e => handleRating(e)}
-                checked={rating}
-              />
-              <input
-                type="radio"
-                name="rating-4"
-                className="mask mask-star-2 bg-primary"
-                onClick={e => handleRating(e)}
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-5"
-                className="mask mask-star-2 bg-primary"
-                onClick={e => handleRating(e)}
-              />
-            </div>
+            <Rating />
           </div>
 
           <div className=" space-y-2">
@@ -158,7 +125,7 @@ export default function Page({ params: { workId } }: { params: { workId: string;
         </div>
 
         <div className="flex flex-wrap bg-green-400 order-first">
-          <ImageViewer work={work} />
+          <ImageViewer mediaURLS={work.image_urls} />
         </div>
       </div>
     </div>
