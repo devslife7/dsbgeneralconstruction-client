@@ -3,7 +3,7 @@ import { IoIosLogIn, IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { fetchWork, createComment, deleteComment } from "@/utils/api_calls"
-import ImageViewer from "@/components/gallery/work/MediaViewer"
+import MediaViewer from "@/components/gallery/work/MediaViewer"
 import Button from "@/components/shared/Button"
 import Rating from "@/components/gallery/work/Rating"
 
@@ -125,7 +125,7 @@ export default function Page({ params: { workId } }: { params: { workId: string;
         </div>
 
         <div className="flex flex-wrap bg-green-400 order-first">
-          <ImageViewer mediaURLS={work.image_urls} />
+          <MediaViewer mediaURLS={work.image_urls} />
         </div>
       </div>
     </div>

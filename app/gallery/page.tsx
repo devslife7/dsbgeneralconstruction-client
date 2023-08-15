@@ -60,7 +60,7 @@ export default function Work() {
       <Button onClick={openModal} startIcon={<HiPlus />}>
         Add Work
       </Button>
-      <MyModal title="Add Work Form" isModalOpen={isModalOpen} openModal={openModal} closeModal={closeModal}>
+      <MyModal title="Add Work Form" isModalOpen={isModalOpen} closeModal={closeModal}>
         <CreateWorkForm closeModal={closeModal} addToGallery={addToGallery} />
       </MyModal>
     </div>
