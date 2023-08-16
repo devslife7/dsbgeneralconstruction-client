@@ -4,13 +4,13 @@ import { createComment } from "@/utils/api_calls"
 
 type CommentPropTypes = {
   commentFormOpen: boolean
-  setCommentFormOpen: (arg: boolean) => void
+  closeCommentForm: () => void
   workId: string
   setWork: (arg: any) => void
 }
 
 export default function CommentForm(props: CommentPropTypes) {
-  const { commentFormOpen, setCommentFormOpen, workId, setWork } = props
+  const { commentFormOpen, closeCommentForm, workId, setWork } = props
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
   const [rating, setRating] = useState(0)
@@ -45,7 +45,6 @@ export default function CommentForm(props: CommentPropTypes) {
     const response = await createComment(requstOBJ)
     setWork(response.data)
 
-    setCommentFormOpen(false)
     resetForm()
   }
 
@@ -53,7 +52,7 @@ export default function CommentForm(props: CommentPropTypes) {
     setName("")
     setComment("")
     setRating(0)
-    setCommentFormOpen(false)
+    closeCommentForm()
   }
 
   return (
