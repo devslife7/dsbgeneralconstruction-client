@@ -1,6 +1,5 @@
 import Button from "@/components/shared/Button"
 import { useState } from "react"
-import RatingForm from "@/components/gallery/work/RatingForm"
 import { createComment } from "@/utils/api_calls"
 
 type CommentPropTypes = {
@@ -14,6 +13,27 @@ export default function CommentForm(props: CommentPropTypes) {
   const { commentFormOpen, setCommentFormOpen, workId, setWork } = props
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
+  const [rating, setRating] = useState(0)
+  const ratingRange = [0, 1.0, 2.0, 3.0, 4.0, 5.0]
+
+  const handleRating = (e: any) => {
+    const ratingSet = e.target.id.slice(-1)
+    setRating(parseInt(ratingSet))
+  }
+
+  const renderStars = () => {
+    return ratingRange.map((range, index) => (
+      <input
+        key={index}
+        id={`rating-${range}`}
+        type="radio"
+        name="rating-1"
+        className={`bg-primary mask mask-star ${range === 0 && "hidden"}`}
+        checked={rating === range}
+        onClick={e => handleRating(e)}
+      />
+    ))
+  }
 
   const handleCommentSubmit = async () => {
     const requstOBJ = {
@@ -24,9 +44,16 @@ export default function CommentForm(props: CommentPropTypes) {
 
     const response = await createComment(requstOBJ)
     setWork(response.data)
+
     setCommentFormOpen(false)
+    resetForm()
+  }
+
+  const resetForm = () => {
     setName("")
     setComment("")
+    setRating(0)
+    setCommentFormOpen(false)
   }
 
   return (
@@ -38,7 +65,10 @@ export default function CommentForm(props: CommentPropTypes) {
     >
       <div className="flex justify-between text-gray-700">
         <label className="text-xl ">Add Comment</label>
-        <RatingForm />
+        <div className="flex space-x-1">
+          <div className="text-xl">{rating.toFixed(1)}</div>
+          <div className="rating">{renderStars()}</div>
+        </div>
       </div>
       <input
         type="text"
@@ -57,7 +87,7 @@ export default function CommentForm(props: CommentPropTypes) {
       <Button variant="primary" onClick={handleCommentSubmit}>
         Submit
       </Button>
-      <Button variant="cancel" onClick={() => setCommentFormOpen(false)}>
+      <Button variant="cancel" onClick={resetForm}>
         Cancel
       </Button>
     </div>
