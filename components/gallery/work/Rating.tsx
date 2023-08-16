@@ -3,7 +3,14 @@ type RatingPropTypes = { className?: string; ratings: number[] }
 export default function Rating(props: RatingPropTypes) {
   const { className, ratings } = props
   const ratingRange = [0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
-  const workRating = ratings.reduce((a, b) => a + b) / ratings.length
+
+  const getWorkRating = () => {
+    if (ratings.length <= 0) return 0.0
+    return ratings.reduce((a: any, b: any) => a + b) / ratings.length
+  }
+
+  let workRating = 0.0
+  if (ratings.length > 0) workRating = ratings.reduce((a, b) => a + b) / ratings.length
 
   //   Rounds to the lowest 0.5
   const roundToLowerHalf = (rating: number) => {

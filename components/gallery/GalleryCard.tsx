@@ -5,6 +5,14 @@ import Button from "../shared/Button"
 
 export default function GalleryCard({ work, handleWorkDelete }: { work: any; handleWorkDelete: any }) {
   const coverFile = work.image_urls[0]
+
+  const getWorkRating = () => {
+    if (work.ratings.length <= 0) return 0.0
+    return work.ratings.reduce((a: any, b: any) => a + b) / work.ratings.length
+  }
+
+  const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
+
   return (
     <div className="w-[350px]">
       {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
@@ -22,9 +30,9 @@ export default function GalleryCard({ work, handleWorkDelete }: { work: any; han
         />
       )}
       <div className="flex justify-between">
-        <div>{work.title}</div>
-        <div>
-          <span>4.5</span>
+        <div className="mt-2 text-xl">{workTitle}</div>
+        <div className="flex items-center">
+          <span>{getWorkRating().toFixed(1)}</span>
           <AiFillStar className="inline-block text-lg text-primary" />
         </div>
       </div>
