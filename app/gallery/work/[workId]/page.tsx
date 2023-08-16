@@ -6,13 +6,14 @@ import { fetchWork, createComment, deleteComment } from "@/utils/api_calls"
 import MediaViewer from "@/components/gallery/work/MediaViewer"
 import Button from "@/components/shared/Button"
 import Rating from "@/components/gallery/work/Rating"
+import RatingForm from "@/components/gallery/work/RatingForm"
+// import RatingForm from "@/components/gallery/work/RatingForm"
 
 export default function Page({ params: { workId } }: { params: { workId: string; isLoggedIn: boolean } }) {
   const [work, setWork] = useState({ image_urls: [], comments: [], title: "" })
   const [commentOpen, setCommentOpen] = useState(false)
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
-  const [rating, setRating] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,32 +91,43 @@ export default function Page({ params: { workId } }: { params: { workId: string;
             <Rating />
           </div>
 
-          <div className="space-y-2 ">
-            {renderComments()}
-            <Button
-              className={`text-gray-700 ${!!commentOpen && "hidden"}`}
-              onClick={() => setCommentOpen(true)}
+          <div className="mt-7">
+            <div className="space-y-2 ">
+              {renderComments()}
+              <Button
+                className={`text-gray-700 ${!!commentOpen && "hidden"}`}
+                onClick={() => setCommentOpen(true)}
+              >
+                Add comment...
+              </Button>
+            </div>
+            <div
+              id="Comments_form"
+              className={`flex flex-col gap-4 max-w-md ${!commentOpen && "hidden"} border-solid border-2 p-4`}
             >
-              Add comment...
-            </Button>
-          </div>
-          <div
-            id="Comments_form"
-            className={`flex flex-col gap-4 max-w-md ${
-              !commentOpen && "hidden"
-            } mt-7 border-solid border-2 p-4`}
-          >
-            <label className="text-2xl">Add Comment</label>
-            <label>Name</label>
-            <input type="text" placeholder="Name..." value={name} onChange={e => setName(e.target.value)} />
-            <label>Comment</label>
-            <textarea placeholder="Comment..." value={comment} onChange={e => setComment(e.target.value)} />
-            <Button variant="secondary" onClick={handleCommentSubmit}>
-              Submit
-            </Button>
-            <Button variant="danger" onClick={() => setCommentOpen(false)}>
-              Cancel
-            </Button>
+              <label className="text-xl text-gray-700">Add Comment</label>
+              <RatingForm />
+              <input
+                type="text"
+                placeholder="Name..."
+                value={name}
+                onChange={e => setName(e.target.value)}
+                className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+              />
+              <textarea
+                placeholder="Comment..."
+                value={comment}
+                rows={4}
+                onChange={e => setComment(e.target.value)}
+                className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+              />
+              <Button variant="secondary" onClick={handleCommentSubmit}>
+                Submit
+              </Button>
+              <Button variant="danger" onClick={() => setCommentOpen(false)}>
+                Cancel
+              </Button>
+            </div>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-export default function Rating({ className, workRating = 4.7 }: { className?: string; workRating?: number }) {
+export default function Rating({ className, workRating = 4.8 }: { className?: string; workRating?: number }) {
   const ratingRange = [0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
 
   //   Rounds to the lowest 0.5
@@ -7,19 +7,25 @@ export default function Rating({ className, workRating = 4.7 }: { className?: st
     return Math.trunc(rating) + isHalfStar
   }
 
+  const isChecked = (rating: number) => {
+    console.log("rating:", rating)
+    console.log("roundToLowerHalf(workRating):", roundToLowerHalf(workRating))
+    console.log("isChecked:", roundToLowerHalf(workRating) === rating)
+    return roundToLowerHalf(workRating) === rating
+  }
+
   const renderStars = () => {
     return ratingRange.map((range, index) => (
       <input
         key={index}
-        id={`rating-${range}`}
         type="radio"
-        name="rating-1"
+        name="rating-10"
         className={`bg-primary mask mask-star mask-half-${range % 1 === 0 ? "2" : "1"} hover:cursor-default ${
-          range === 0 && "hidden"
+          range === 0 ? "hidden" : ""
         }`}
         disabled
         readOnly
-        checked={roundToLowerHalf(workRating) === range}
+        checked={isChecked(range)}
       />
     ))
   }
