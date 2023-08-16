@@ -25,12 +25,14 @@ export default function GalleryCard({ work, handleWorkDelete }: { work: any; han
         <div>{work.title}</div>
         <div>
           <span>4.5</span>
-          <AiFillStar className="inline-block text-primary text-lg" />
+          <AiFillStar className="inline-block text-lg text-primary" />
         </div>
       </div>
       <div>{work.subtitle}</div>
       <Link href={`/gallery/work/${work.id}`}>
-        <p className="text-gray-700 mt-2 mb-10 ">See more...</p>
+        <p className="mt-2 mb-10 text-gray-700 ">
+          <u>See more...</u>
+        </p>
       </Link>
 
       <Button variant="danger" onClick={() => handleWorkDelete(work.id)}>

@@ -31,10 +31,12 @@ export default function CommentForm(props: CommentPropTypes) {
         className={`bg-primary mask mask-star ${range === 0 && "hidden"}`}
         checked={rating === range}
         onClick={e => handleRating(e)}
+        readOnly
       />
     ))
   }
 
+  // creates a new comment as well as a new rating
   const handleCommentSubmit = async () => {
     const requstOBJ = {
       username: name,
@@ -43,6 +45,8 @@ export default function CommentForm(props: CommentPropTypes) {
     }
 
     const response = await createComment(requstOBJ)
+
+    console.log("response:", response)
     setWork(response.data)
 
     resetForm()
@@ -58,14 +62,14 @@ export default function CommentForm(props: CommentPropTypes) {
   return (
     <div
       id="Comments_form"
-      className={`flex flex-col gap-4 max-w-md ${
+      className={`flex flex-col mt-5 gap-4 max-w-md ${
         !commentFormOpen && "hidden"
       } border-solid border-2 p-4 rounded-md`}
     >
       <div className="flex justify-between text-gray-700">
-        <label className="text-xl ">Add Comment</label>
+        <label className="text-lg ">Add Comment</label>
         <div className="flex space-x-1">
-          <div className="text-xl">{rating.toFixed(1)}</div>
+          <div className="text-lg">{rating.toFixed(1)}</div>
           <div className="rating">{renderStars()}</div>
         </div>
       </div>
@@ -83,12 +87,14 @@ export default function CommentForm(props: CommentPropTypes) {
         onChange={e => setComment(e.target.value)}
         className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
       />
-      <Button variant="primary" onClick={handleCommentSubmit}>
-        Submit
-      </Button>
-      <Button variant="cancel" onClick={resetForm}>
-        Cancel
-      </Button>
+      <div className="flex justify-end gap-4 ">
+        <Button variant="primary" onClick={handleCommentSubmit}>
+          Post
+        </Button>
+        <Button variant="cancel" onClick={resetForm}>
+          Cancel
+        </Button>
+      </div>
     </div>
   )
 }

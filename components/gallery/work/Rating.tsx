@@ -11,9 +11,6 @@ export default function Rating(props: RatingPropTypes) {
   }
 
   const isChecked = (rating: number) => {
-    console.log("rating:", rating)
-    console.log("roundToLowerHalf(workRating):", roundToLowerHalf(workRating))
-    console.log("isChecked:", roundToLowerHalf(workRating) === rating)
     return roundToLowerHalf(workRating) === rating
   }
 
@@ -35,7 +32,10 @@ export default function Rating(props: RatingPropTypes) {
 
   return (
     <div className={`${className} flex space-x-2`}>
-      <div className="text-xl">{workRating.toFixed(1)}</div>
+      <div className="text-lg">
+        {workRating.toFixed(1)}
+        <span>(1)</span>
+      </div>
       <div className="rating rating-half">{renderStars()}</div>
     </div>
   )

@@ -26,27 +26,29 @@ export default function Page({ params: { workId } }: { params: { workId: string;
   const renderComments = () => {
     type Comment = any[]
     const cmts: Comment = work.comments
-    if (cmts === undefined) return
-    if (cmts.length < 1) return
 
     return cmts.map((comment, index) => (
-      <div key={index} className="mb-10">
-        <div className="flex items-center gap-2">
+      <div key={index}>
+        <div className="flex items-start gap-2">
           <div className="avatar placeholder">
-            <div className="rounded-full bg-neutral-focus text-neutral-content max-w-8">
-              <span className="text-lg uppercase">{comment.username.charAt(0)}</span>
+            <div className="rounded-full bg-neutral-focus text-neutral-content w-[1.8rem]">
+              <span className="text-xl uppercase">{comment.username.charAt(0)}</span>
             </div>
           </div>
-          <div className="text-lg">{comment.username}</div>
+          {/* <div className="text-gray-800 whitespace-nowrap">{comment.username}</div> */}
+          <div className="text-gray-500">
+            <span className="mr-2 text-gray-800 whitespace-nowrap">{comment.username}</span>
+            {comment.content}
+          </div>
         </div>
-        <div>{comment.content}</div>
+        {/* <div className="mt-1 text-gray-600">{comment.content}</div> */}
         {/* {isLoggedIn && (
           <button className="mt-6 btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
             Delete
           </button>
         )} */}
         {true && (
-          <button className="mt-6 btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
+          <button className="mt-2  btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
             Delete
           </button>
         )}
@@ -71,18 +73,23 @@ export default function Page({ params: { workId } }: { params: { workId: string;
           <div className="flex justify-between text-gray-700 ">
             <Link href="/gallery" className=" lg:max-w-[35%] clear-left items-center mb-5">
               <IoMdArrowBack className="inline-block text-2xl" />
-              <span>gallery</span>
+              <span>
+                <u>gallery</u>
+              </span>
             </Link>
 
             <Rating />
           </div>
 
           <div className="mt-7">
-            <div className="space-y-2 ">
+            <div className="space-y-5 ">
               {renderComments()}
-              <Button className={`text-gray-700 ${!!commentFormOpen && "hidden"}`} onClick={openCommentForm}>
-                Add comment...
-              </Button>
+              <p
+                className={`text-gray-700 cursor-pointer  ${!!commentFormOpen && "hidden"}`}
+                onClick={openCommentForm}
+              >
+                <u>Add comment...</u>
+              </p>
             </div>
             <CommentForm
               workId={workId}
