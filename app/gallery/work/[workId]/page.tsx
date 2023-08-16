@@ -105,26 +105,28 @@ export default function Page({ params: { workId } }: { params: { workId: string;
               id="Comments_form"
               className={`flex flex-col gap-4 max-w-md ${!commentOpen && "hidden"} border-solid border-2 p-4`}
             >
-              <label className="text-xl text-gray-700">Add Comment</label>
-              <RatingForm />
+              <div className="flex justify-between text-gray-700">
+                <label className="text-xl ">Add Comment</label>
+                <RatingForm />
+              </div>
               <input
                 type="text"
                 placeholder="Name..."
                 value={name}
                 onChange={e => setName(e.target.value)}
-                className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+                className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <textarea
                 placeholder="Comment..."
                 value={comment}
                 rows={4}
                 onChange={e => setComment(e.target.value)}
-                className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+                className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
-              <Button variant="secondary" onClick={handleCommentSubmit}>
+              <Button variant="primary" onClick={handleCommentSubmit}>
                 Submit
               </Button>
-              <Button variant="danger" onClick={() => setCommentOpen(false)}>
+              <Button variant="cancel" onClick={() => setCommentOpen(false)}>
                 Cancel
               </Button>
             </div>

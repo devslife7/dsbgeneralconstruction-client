@@ -19,13 +19,12 @@ export default function RatingForm() {
         className={`bg-primary mask mask-star ${range === 0 && "hidden"}`}
         checked={rating === range}
         onClick={e => handleRating(e)}
-        readOnly
       />
     ))
   }
 
   return (
-    <div className={`flex space-x-2`}>
+    <div className="flex space-x-1">
       <div className="text-xl">{rating.toFixed(1)}</div>
       <div className="rating">{renderStars()}</div>
     </div>
