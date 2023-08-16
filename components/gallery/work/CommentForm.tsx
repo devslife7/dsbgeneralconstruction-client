@@ -1,6 +1,6 @@
 import Button from "@/components/shared/Button"
 import { useState } from "react"
-import { createComment } from "@/utils/api_calls"
+import { addRatingToWork, createComment } from "@/utils/api_calls"
 
 type CommentPropTypes = {
   commentFormOpen: boolean
@@ -45,10 +45,9 @@ export default function CommentForm(props: CommentPropTypes) {
     }
 
     const response = await createComment(requstOBJ)
-
-    console.log("response:", response)
-    setWork(response.data)
-
+    const response2 = await addRatingToWork(workId, rating)
+    const newWork = { ...response.data, ratings: response2.data.work.ratings }
+    setWork(newWork)
     resetForm()
   }
 
@@ -88,11 +87,11 @@ export default function CommentForm(props: CommentPropTypes) {
         className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
       />
       <div className="flex justify-end gap-4 ">
-        <Button variant="primary" onClick={handleCommentSubmit}>
-          Post
-        </Button>
         <Button variant="cancel" onClick={resetForm}>
           Cancel
+        </Button>
+        <Button variant="primary" onClick={handleCommentSubmit}>
+          Post
         </Button>
       </div>
     </div>

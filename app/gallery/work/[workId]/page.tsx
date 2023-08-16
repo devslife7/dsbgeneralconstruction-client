@@ -9,7 +9,7 @@ import Rating from "@/components/gallery/work/Rating"
 import CommentForm from "@/components/gallery/work/CommentForm"
 
 export default function Page({ params: { workId } }: { params: { workId: string; isLoggedIn: boolean } }) {
-  const [work, setWork] = useState({ image_urls: [], comments: [], title: "" })
+  const [work, setWork] = useState({ image_urls: [], comments: [], title: "", ratings: [] })
   const [commentFormOpen, setCommentFormOpen] = useState(false)
 
   const openCommentForm = () => setCommentFormOpen(true)
@@ -47,11 +47,11 @@ export default function Page({ params: { workId } }: { params: { workId: string;
             Delete
           </button>
         )} */}
-        {true && (
-          <button className="mt-2  btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
+        {/* {true && (
+          <button className="mt-2 btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
             Delete
           </button>
-        )}
+        )} */}
       </div>
     ))
   }
@@ -78,7 +78,7 @@ export default function Page({ params: { workId } }: { params: { workId: string;
               </span>
             </Link>
 
-            <Rating />
+            <Rating ratings={work.ratings} />
           </div>
 
           <div className="mt-7">

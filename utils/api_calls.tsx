@@ -1,6 +1,7 @@
 import axios from "axios"
 const serverURL = process.env.NEXT_PUBLIC_SERVER_URL
 const worksURL = serverURL + "/works/"
+const ratingURL = worksURL + "/ratings/"
 const uploadFilesURL = serverURL + "/upload_files/"
 const commentsURL = serverURL + "/comments/"
 
@@ -36,4 +37,8 @@ export const createComment = async (requestOBJ: any) => {
 export const deleteComment = async (comment_id: number) => {
   const deleteURL = commentsURL + comment_id
   return await axios.delete(deleteURL)
+}
+
+export const addRatingToWork = async (work_id: string, rating: number) => {
+  return await axios.put(ratingURL + work_id, { rating: rating })
 }
