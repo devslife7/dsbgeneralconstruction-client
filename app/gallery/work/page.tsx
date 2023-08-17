@@ -1,12 +1,11 @@
 import Image from "next/image"
-import aboutPage from "..@/public/images/aboutPage.jpg"
 import { IoMdArrowBack } from "react-icons/io"
 import Link from "next/link"
 
 export default function work() {
   return (
     <div className="my-container">
-      <div className="my-8 lg:flex space-y-5">
+      <div className="my-8 space-y-5 lg:flex">
         <div className="flex justify-between">
           <Link href="/gallery" className=" lg:w-[35%] clear-left text-gray-700 lg:hidden items-center">
             <IoMdArrowBack className="inline-block text-lg" />
@@ -21,10 +20,10 @@ export default function work() {
             <input type="radio" name="rating-2" className="mask mask-star-2 bg-primary" />
           </div>
         </div>
-        <div className=" space-y-2">
+        <div className="space-y-2 ">
           <div className="flex items-center gap-2">
             <div className="avatar placeholder">
-              <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+              <div className="w-8 rounded-full bg-neutral-focus text-neutral-content">
                 <span className="text-lg">L</span>
               </div>
             </div>
@@ -38,11 +37,11 @@ export default function work() {
           <div className="text-gray-700">Add comment...</div>
         </div>
         <div className="lg:w-[65%] flex justify-center flex-wrap order-first my-20">
+          {/* <Image src={aboutPage} width={350} alt="image" />
           <Image src={aboutPage} width={350} alt="image" />
           <Image src={aboutPage} width={350} alt="image" />
           <Image src={aboutPage} width={350} alt="image" />
-          <Image src={aboutPage} width={350} alt="image" />
-          <Image src={aboutPage} width={350} alt="image" />
+          <Image src={aboutPage} width={350} alt="image" /> */}
         </div>
       </div>
 
