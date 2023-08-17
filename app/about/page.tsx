@@ -1,9 +1,9 @@
 import Image from "next/image"
 import AboutUs from "@/public/images/aboutPage.webp"
 
-const About = () => {
+export default function About() {
   return (
-    <div className="my-container flex items-center py-32">
+    <div className="flex items-center py-32 my-container">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 mb-14">
           <Image src={AboutUs} alt="About Us" width={800} height={600} className="object-cover" priority />
@@ -27,5 +27,3 @@ const About = () => {
     </div>
   )
 }
-
-export default About

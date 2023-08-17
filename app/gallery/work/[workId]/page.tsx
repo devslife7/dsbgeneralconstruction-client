@@ -8,7 +8,14 @@ import Button from "@/components/shared/Button"
 import Rating from "@/components/gallery/work/Rating"
 import CommentForm from "@/components/gallery/work/CommentForm"
 
-export default function Page({ params: { workId } }: { params: { workId: string; isLoggedIn: boolean } }) {
+type Props = {
+  params: {
+    workId: string
+    isLoggedIn: boolean
+  }
+}
+
+export default function Page({ params: { workId } }: Props) {
   const [work, setWork] = useState({ image_urls: [], comments: [], title: "", ratings: [] })
   const [commentFormOpen, setCommentFormOpen] = useState(false)
 

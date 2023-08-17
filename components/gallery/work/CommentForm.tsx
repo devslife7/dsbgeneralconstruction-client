@@ -2,14 +2,14 @@ import Button from "@/components/shared/Button"
 import { useState } from "react"
 import { addRatingToWork, createComment } from "@/utils/api_calls"
 
-type CommentPropTypes = {
+type Props = {
   commentFormOpen: boolean
   closeCommentForm: () => void
   workId: string
   setWork: (arg: any) => void
 }
 
-export default function CommentForm(props: CommentPropTypes) {
+export default function CommentForm(props: Props) {
   const { commentFormOpen, closeCommentForm, workId, setWork } = props
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")

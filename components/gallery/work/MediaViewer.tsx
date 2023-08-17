@@ -2,7 +2,11 @@ import Image from "next/image"
 import { PhotoProvider, PhotoView } from "react-photo-view"
 import "react-photo-view/dist/react-photo-view.css"
 
-export default function MediaViewer({ mediaURLS }: { mediaURLS: any }) {
+type Props = {
+  mediaURLS: string[]
+}
+
+export default function MediaViewer({ mediaURLS }: Props) {
   const renderVideo = (videoUrl: string) => {
     return (
       <PhotoView

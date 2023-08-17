@@ -1,3 +1,12 @@
+type Props = {
+  startIcon?: React.ReactNode
+  endIcon?: React.ReactNode
+  variant?: "primary" | "secondary" | "danger" | "cancel"
+  onClick?: () => void
+  className?: string
+  children: React.ReactNode
+}
+
 export default function Button({
   startIcon,
   endIcon,
@@ -6,14 +15,7 @@ export default function Button({
   className,
   children,
   ...props
-}: {
-  startIcon?: React.ReactNode
-  endIcon?: React.ReactNode
-  variant?: string
-  onClick?: () => void
-  className?: any
-  children: any
-}) {
+}: Props) {
   interface ButtonType {
     primary: string
     secondary: string

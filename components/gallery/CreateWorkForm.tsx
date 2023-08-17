@@ -2,13 +2,12 @@ import { useState } from "react"
 import Button from "../shared/Button"
 import { updateWorkFiles, createWork } from "@/utils/api_calls"
 
-export default function CreateWorkForm({
-  closeModal,
-  addToGallery,
-}: {
+type Props = {
   closeModal: () => void
   addToGallery: (work: any) => void
-}) {
+}
+
+export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [isLoading, setIsLoading] = useState(false)

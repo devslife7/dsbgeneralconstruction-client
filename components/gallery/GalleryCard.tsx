@@ -3,8 +3,21 @@ import Link from "next/link"
 import { AiFillStar } from "react-icons/ai"
 import Button from "../shared/Button"
 
-export default function GalleryCard({ work, handleWorkDelete }: { work: any; handleWorkDelete: any }) {
+type Props = {
+  work: {
+    id: number
+    title: string
+    subtitle: string
+    image_urls: string[]
+    ratings: number[]
+  }
+  handleWorkDelete: (id: number) => void
+}
+
+export default function GalleryCard({ work, handleWorkDelete }: Props) {
   const coverFile = work.image_urls[0]
+
+  console.log("LENGTH:", work.ratings.length)
 
   const getWorkRating = () => {
     if (work.ratings.length <= 0) return 0.0

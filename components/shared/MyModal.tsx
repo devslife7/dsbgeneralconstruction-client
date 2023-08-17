@@ -2,17 +2,19 @@ import { Dialog, Transition } from "@headlessui/react"
 import { Fragment } from "react"
 import { RiCloseFill } from "react-icons/ri"
 
+type Props = {
+  closeModal: () => void
+  isModalOpen: boolean
+  title?: string
+  children?: React.ReactNode
+}
+
 export default function MyModal({
   closeModal,
   isModalOpen,
   title = "Title",
   children = <div>Modal Content</div>,
-}: {
-  closeModal: () => void
-  isModalOpen: boolean
-  title?: string
-  children?: React.ReactNode
-}) {
+}: Props) {
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
