@@ -21,7 +21,7 @@ export default function CommentForm(props: Props) {
     setRating(parseInt(ratingSet))
   }
 
-  const renderStars = () => {
+  const renderRating = () => {
     return ratingRange.map((range, index) => (
       <input
         key={index}
@@ -69,7 +69,7 @@ export default function CommentForm(props: Props) {
         <label className="text-lg ">Add Comment</label>
         <div className="flex space-x-1">
           <div className="text-lg">{rating.toFixed(1)}</div>
-          <div className="rating">{renderStars()}</div>
+          <div className="rating">{renderRating()}</div>
         </div>
       </div>
       <input

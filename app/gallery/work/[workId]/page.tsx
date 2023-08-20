@@ -33,6 +33,7 @@ export default function Page({ params: { workId } }: Props) {
   const renderComments = () => {
     type Comment = any[]
     const cmts: Comment = work.comments
+    console.log("work.comments:", work.comments)
 
     return cmts.map((comment, index) => (
       <div key={index}>
@@ -44,7 +45,7 @@ export default function Page({ params: { workId } }: Props) {
           </div>
           {/* <div className="text-gray-800 whitespace-nowrap">{comment.username}</div> */}
           <div className="text-gray-500">
-            <span className="mr-2 text-gray-800 whitespace-nowrap">{comment.username}</span>
+            <span className="mr-2 font-medium text-gray-800 whitespace-nowrap">{comment.username}</span>
             {comment.content}
           </div>
         </div>
