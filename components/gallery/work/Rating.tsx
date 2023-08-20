@@ -20,11 +20,8 @@ export default function Rating({ className, ratings }: RatingPropTypes) {
     return Math.trunc(rating) + isHalfStar
   }
 
-  const isChecked = (rating: number) => {
-    return roundToLowerHalf(workRating) === rating
-  }
-
   const renderStars = () => {
+    const isChecked = (rating: number) => roundToLowerHalf(workRating) === rating
     return ratingRange.map((range, index) => (
       <input
         key={index}
@@ -44,6 +41,7 @@ export default function Rating({ className, ratings }: RatingPropTypes) {
     <div className={`${className} flex space-x-2`}>
       <div className="text-lg">
         {workRating.toFixed(1)}
+        {workRating}
         <span>({ratings.length})</span>
       </div>
       <div className="rating rating-half">{renderStars()}</div>

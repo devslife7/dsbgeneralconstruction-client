@@ -17,8 +17,6 @@ type Props = {
 export default function GalleryCard({ work, handleWorkDelete }: Props) {
   const coverFile = work.image_urls[0]
 
-  console.log("LENGTH:", work.ratings.length)
-
   const getWorkRating = () => {
     if (work.ratings.length <= 0) return 0.0
     return work.ratings.reduce((a: any, b: any) => a + b) / work.ratings.length

@@ -39,13 +39,12 @@ export default function Navbar() {
   }
 
   const renderNavLinks = () => {
+    const isActive = (link: string) => (pathname === link ? "text-primary" : "hover:text-gray-400")
     return navLinks.map((link, index) => (
       <Link
         key={index}
         href={link.href}
-        className={`px-2 leading-7 transition-all text-lg ${
-          pathname === link.href ? "text-primary" : "hover:text-gray-400"
-        }`}
+        className={`px-2 leading-7 transition-all text-lg ${isActive(link.href)}`}
       >
         {link.label}
       </Link>

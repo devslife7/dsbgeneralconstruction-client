@@ -79,10 +79,8 @@ export default function Page({ params: { workId } }: Props) {
         <div className="max-w-[22rem] w-[22rem]">
           <div className="flex justify-between text-gray-700 ">
             <Link href="/gallery" className=" lg:max-w-[35%] clear-left items-center mb-5">
-              <IoMdArrowBack className="inline-block text-2xl" />
-              <span>
-                <u>gallery</u>
-              </span>
+              <IoMdArrowBack className="inline-block text-xl" />
+              <u>gallery</u>
             </Link>
 
             <Rating ratings={work.ratings} />
