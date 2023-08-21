@@ -18,29 +18,26 @@ export default function Button({
   children,
   ...props
 }: Props) {
-  interface ButtonType {
+  const defaultStyle =
+    "inline-flex items-center rounded-md font-medium px-4 py-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border border-transparent"
+
+  interface VariantType {
     primary: string
     secondary: string
     danger: string
     cancel: string
   }
-  const buttonVariantStyles: ButtonType = {
-    primary: "px-4 py-2 bg-red-400 text-white hover:brightness-95 font-medium",
-    secondary:
-      "border border-transparent bg-blue-100 px-4 py-2 font-medium text-blue-700 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2",
-    danger:
-      "border border-transparent bg-red-100 px-4 py-2 font-medium text-red-600 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2",
-    cancel:
-      "border border-transparent bg-gray-100 text-gray-700 px-4 py-2 font-medium hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2",
+  const variantStyle: VariantType = {
+    primary: "bg-primary text-white hover:bg-primary-600 focus-visible:ring-red-500",
+    secondary: "bg-blue-100 text-blue-700 hover:bg-blue-200 focus-visible:ring-blue-500",
+    danger: "bg-red-100 text-red-600 hover:bg-red-200 focus-visible:ring-red-500",
+    cancel: "bg-gray-100 text-gray-700 hover:bg-gray-200 focus-visible:ring-gray-500",
   }
-
-  const defaultStyle = "inline-flex items-center rounded-md transition-all"
 
   return (
     <button
       {...props}
-      // className={baseStyle + " " + buttonVariantStyles[variant as keyof ButtonType] + className}
-      className={classNames(className, defaultStyle, buttonVariantStyles[variant as keyof ButtonType])}
+      className={classNames(className, defaultStyle, variantStyle[variant as keyof VariantType])}
     >
       {startIcon ? <div className="mr-2">{startIcon}</div> : null}
       {children}

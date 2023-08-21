@@ -54,7 +54,7 @@ export default function Work() {
   }
 
   return (
-    <div className="my-container my-8">
+    <div className="my-8 my-container">
       {renderGallery()}
 
       <Button onClick={openModal} startIcon={<HiPlus />}>
