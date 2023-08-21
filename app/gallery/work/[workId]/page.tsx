@@ -8,6 +8,7 @@ import Button from "@/components/shared/Button"
 import Rating from "@/components/gallery/work/Rating"
 import CommentForm from "@/components/gallery/work/CommentForm"
 import MyRating from "@/components/gallery/work/MyRating"
+import classNames from "classnames"
 
 type Props = {
   params: {
@@ -34,7 +35,6 @@ export default function Page({ params: { workId } }: Props) {
   const renderComments = () => {
     type Comment = any[]
     const cmts: Comment = work.comments
-    console.log("work.comments:", work.comments)
 
     return cmts.map((comment, index) => (
       <div key={index}>
@@ -92,7 +92,7 @@ export default function Page({ params: { workId } }: Props) {
             <div className="space-y-5 ">
               {renderComments()}
               <p
-                className={`text-gray-700 cursor-pointer  ${!!commentFormOpen && "hidden"}`}
+                className={classNames("text-gray-700 cursor-pointer", { hidden: commentFormOpen })}
                 onClick={openCommentForm}
               >
                 <u>Add comment...</u>

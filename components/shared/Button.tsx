@@ -1,4 +1,4 @@
-import classNames from "./classNames"
+import classNames from "classnames"
 
 type Props = {
   startIcon?: React.ReactNode
@@ -34,19 +34,17 @@ export default function Button({
       "border border-transparent bg-gray-100 text-gray-700 px-4 py-2 font-medium hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2",
   }
 
-  const baseStyle = "inline-flex items-center rounded-md transition-all"
-
-  // console.log("classNames():", classNames(baseStyle, "two", "three"))
+  const defaultStyle = "inline-flex items-center rounded-md transition-all"
 
   return (
     <button
       {...props}
       // className={baseStyle + " " + buttonVariantStyles[variant as keyof ButtonType] + className}
-      // className={classNames("testing", "hellano", "not this time fella")}
+      className={classNames(className, defaultStyle, buttonVariantStyles[variant as keyof ButtonType])}
     >
-      {startIcon && <div className="mr-2">{startIcon}</div>}
+      {startIcon ? <div className="mr-2">{startIcon}</div> : null}
       {children}
-      {endIcon && <div className="ml-2">{endIcon}</div>}
+      {endIcon ? <div className="ml-2">{endIcon}</div> : null}
     </button>
   )
 }
