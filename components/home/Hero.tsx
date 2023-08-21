@@ -24,7 +24,7 @@ export default function Hero() {
               and long-lasting beauty.
             </p>
             <Link href="/gallery">
-              <Button>Explore Gallery...</Button>
+              <Button size="large">Explore Gallery</Button>
             </Link>
           </div>
         </div>
