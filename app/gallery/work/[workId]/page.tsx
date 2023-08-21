@@ -7,6 +7,7 @@ import MediaViewer from "@/components/gallery/work/MediaViewer"
 import Button from "@/components/shared/Button"
 import Rating from "@/components/gallery/work/Rating"
 import CommentForm from "@/components/gallery/work/CommentForm"
+import MyRating from "@/components/gallery/work/MyRating"
 
 type Props = {
   params: {
@@ -84,7 +85,7 @@ export default function Page({ params: { workId } }: Props) {
               <u>gallery</u>
             </Link>
 
-            <Rating ratings={work.ratings} />
+            <MyRating ratings={work.ratings} />
           </div>
 
           <div className="mt-7">
