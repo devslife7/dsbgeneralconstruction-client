@@ -38,29 +38,25 @@ export default function Page({ params: { workId } }: Props) {
 
     return cmts.map((comment, index) => (
       <div key={index}>
-        <div className="flex items-start gap-2">
-          <div className="avatar placeholder">
-            <div className="rounded-full bg-neutral-focus text-neutral-content w-[1.8rem]">
-              <span className="text-xl uppercase">{comment.username.charAt(0)}</span>
-            </div>
+        <div className="flex gap-2">
+          <div className="inline-flex items-center justify-center w-10 h-10 bg-gray-800 rounded-full">
+            <span className="text-xl text-white uppercase">{comment.username.charAt(0)}</span>
           </div>
-          {/* <div className="text-gray-800 whitespace-nowrap">{comment.username}</div> */}
-          <div className="text-gray-500">
-            <span className="mr-2 font-medium text-gray-800 whitespace-nowrap">{comment.username}</span>
-            {comment.content}
+          <div className="text-gray-500 ">
+            <span className="font-medium text-gray-800 whitespace-nowrap">{comment.username}</span>
+            <div>{comment.content}</div>
           </div>
         </div>
-        {/* <div className="mt-1 text-gray-600">{comment.content}</div> */}
         {/* {isLoggedIn && (
           <button className="mt-6 btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
             Delete
           </button>
         )} */}
-        {/* {true && (
-          <button className="mt-2 btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
-            Delete
+        {true && (
+          <button className="mt-2 text-red-500" onClick={() => handleCommentDelete(comment.id)}>
+            <u>Delete</u>
           </button>
-        )} */}
+        )}
       </div>
     ))
   }
