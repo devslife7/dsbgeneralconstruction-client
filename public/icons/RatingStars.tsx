@@ -4,10 +4,10 @@ type Props = {
   className?: string
   size?: number
   onClick?: (e: any) => void
-  id?: string
 }
+const strokeWidth = 1.6
 
-export function StarFilled({ className, size = 0, onClick, id }: Props) {
+export function StarFilled({ className, size = 0, onClick }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,30 +16,25 @@ export function StarFilled({ className, size = 0, onClick, id }: Props) {
       onClick={onClick}
       className={className}
       stroke={primaryColor}
-      strokeWidth={1.7}
+      strokeWidth={strokeWidth}
     >
       <path
-        id={id}
         fill="currentColor"
-        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21z"
+        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2L9.19 8.62L2 9.24l5.45 4.73L5.82 21L12 17.27Z"
       />
     </svg>
   )
 }
 export function StarHalf({ className, size = 0 }: Props) {
-  const sizeAdjusted = size + 5
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={sizeAdjusted}
-      height={sizeAdjusted}
-      viewBox="0 0 24 24"
-      className={className}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} viewBox="0 0 24 24" className={className}>
       <path
-        fill="currentColor"
-        d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"
+        fill="none"
+        stroke={primaryColor}
+        strokeWidth={strokeWidth}
+        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2L9.19 8.62L2 9.24l5.45 4.73L5.82 21L12 17.27Z"
       />
+      <path fill="currentColor" d="M12 2L9.19 8.62L2 9.24l5.45 4.73L5.82 21L12 17.27V2Z" />
     </svg>
   )
 }

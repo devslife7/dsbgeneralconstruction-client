@@ -85,7 +85,7 @@ export default function Page({ params: { workId } }: Props) {
               <u>gallery</u>
             </Link>
 
-            <MyRating ratings={work.ratings} readOnly />
+            <MyRating ratings={work.ratings} />
           </div>
 
           <div className="mt-7">
