@@ -5,26 +5,26 @@ import { BsPeopleFill } from "react-icons/bs"
 export default function KeyPoints() {
   return (
     <div className="my-container">
-      <div className="gap-12 md:gap-0 my-20 flex flex-wrap justify-evenly">
-        <div className="md:text-center p-5 max-w-sm">
-          <MdAddHomeWork className="md:mx-auto text-8xl md:text-6xl mb-6 text-primary" />
-          <h1 className="text-4xl mb-5 font-bold md:text-2xl">Expertise and Experience</h1>
+      <div className="flex flex-wrap justify-start gap-12 my-20 md:gap-0 lg:justify-evenly">
+        <div className="max-w-sm p-2 md:text-center">
+          <MdAddHomeWork className="mb-6 md:mx-auto text-8xl md:text-6xl text-primary" />
+          <h1 className="mb-5 text-4xl font-bold md:text-2xl">Expertise and Experience</h1>
           <p className="text-[1.35rem] text-gray-700 md:text-lg">
             Our craftsmanship ensures that the final outcome is not only visually appealing but also
             structurally sound and durable.
           </p>
         </div>
-        <div className="md:text-center p-5 max-w-sm">
-          <BsPeopleFill className="md:mx-auto text-8xl md:text-6xl mb-6 text-primary" />
-          <h1 className="text-4xl mb-5 font-bold md:text-2xl">Portfolio and References</h1>
+        <div className="max-w-sm p-2 md:text-center">
+          <BsPeopleFill className="mb-6 md:mx-auto text-8xl md:text-6xl text-primary" />
+          <h1 className="mb-5 text-4xl font-bold md:text-2xl">Portfolio and References</h1>
           <p className="text-[1.35rem] text-gray-700 md:text-lg">
             Our proven track record is a strong indicator of our reliability, craftsmanship, and ability to
             consistently deliver outstanding results.
           </p>
         </div>
-        <div className="md:text-center p-5 max-w-sm">
-          <BiTimeFive className="md:mx-auto text-8xl md:text-6xl mb-6 text-primary" />
-          <h1 className="text-4xl mb-5 font-bold md:text-2xl">Commitment to Timelines</h1>
+        <div className="max-w-sm p-2 md:text-center">
+          <BiTimeFive className="mb-6 md:mx-auto text-8xl md:text-6xl text-primary" />
+          <h1 className="mb-5 text-4xl font-bold md:text-2xl">Commitment to Timelines</h1>
           <p className="text-[1.35rem] text-gray-700 md:text-lg">
             We prioritize punctuality and create a realistic project schedule with clear deadlines for each
             phase of the renovation.
