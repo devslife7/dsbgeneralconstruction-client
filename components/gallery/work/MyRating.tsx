@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Star, StarHalf } from "@/public/icons/RatingStars"
 import classNames from "classnames"
 
@@ -22,20 +21,16 @@ export default function MyRating({
   setRatingParent = () => {},
   parentRating = 0,
 }: Props) {
-  // const [starClicked, setStarClicked] = useState(0)
-
   const getWorkRating = () => {
     if (ratings.length <= 0) return 0
     return ratings.reduce((a, b) => a + b, 0) / ratings.length
   }
 
   const handleStarClick = (star: number) => {
-    // setStarClicked(star)
     setRatingParent(star)
   }
 
   const isClickedColor = (id: number) => {
-    // return id <= starClicked ? "text-primary" : "text-white"
     return id <= parentRating ? "text-primary" : "text-white"
   }
 
