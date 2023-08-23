@@ -5,9 +5,9 @@ type Props = {
   size?: number
   onClick?: (e: any) => void
 }
-const strokeWidth = 1.6
+const strokeWidth = 1.7
 
-export function StarFilled({ className, size = 0, onClick }: Props) {
+export function Star({ className, size = 0, onClick }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

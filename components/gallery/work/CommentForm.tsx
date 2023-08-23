@@ -1,6 +1,7 @@
 import Button from "@/components/shared/Button"
 import { useState } from "react"
 import { addRatingToWork, createComment } from "@/utils/api_calls"
+import MyRating from "./MyRating"
 
 type Props = {
   commentFormOpen: boolean
@@ -14,27 +15,6 @@ export default function CommentForm(props: Props) {
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
   const [rating, setRating] = useState(0)
-  const ratingRange = [0, 1.0, 2.0, 3.0, 4.0, 5.0]
-
-  const handleRating = (e: any) => {
-    const ratingSet = e.target.id.slice(-1)
-    setRating(parseInt(ratingSet))
-  }
-
-  const renderRating = () => {
-    return ratingRange.map((range, index) => (
-      <input
-        key={index}
-        id={`rating-${range}`}
-        type="radio"
-        name="rating-1"
-        className={`bg-primary mask mask-star ${range === 0 && "hidden"}`}
-        checked={rating === range}
-        onClick={e => handleRating(e)}
-        readOnly
-      />
-    ))
-  }
 
   // creates a new comment as well as a new rating
   const handleCommentSubmit = async () => {
@@ -44,9 +24,9 @@ export default function CommentForm(props: Props) {
       work_id: workId,
     }
 
-    const response = await createComment(requstOBJ)
-    const response2 = await addRatingToWork(workId, rating)
-    const newWork = { ...response.data, ratings: response2.data.work.ratings }
+    const responseComment = await createComment(requstOBJ)
+    const responseRating = await addRatingToWork(workId, rating)
+    const newWork = { ...responseComment.data, ratings: responseRating.data.work.ratings }
     setWork(newWork)
     resetForm()
   }
@@ -65,12 +45,9 @@ export default function CommentForm(props: Props) {
         !commentFormOpen && "hidden"
       } border-solid border-2 p-4 rounded-md`}
     >
-      <div className="flex justify-between text-gray-700">
-        <label className="text-lg ">Add Comment</label>
-        <div className="flex space-x-1">
-          <div className="text-lg">{rating.toFixed(1)}</div>
-          <div className="rating">{renderRating()}</div>
-        </div>
+      <div className="flex justify-between">
+        <h1 className="text-xl text-gray-700">Comment</h1>
+        <MyRating readOnly={false} setRatingParent={setRating} parentRating={rating} />
       </div>
       <input
         type="text"
