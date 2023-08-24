@@ -23,12 +23,7 @@ export default function CommentForm(props: Props) {
       content: comment,
       work_id: workId,
     }
-
     const response = await createCommentAndRating(requestOBJ, workId, rating)
-
-    // const responseComment = await createComment(requestOBJ)
-    // const responseRating = await addRatingToWork(workId, rating)
-    // const newWork = { ...responseComment.data, ratings: responseRating.data.work.ratings }
     setWork(response)
     resetForm()
   }

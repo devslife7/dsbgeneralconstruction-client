@@ -101,7 +101,7 @@ export default function Page({ params: { workId } }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-wrap order-first bg-green-400">
+        <div className="flex flex-wrap order-first">
           <MediaViewer mediaURLS={work.image_urls} />
         </div>
       </div>

@@ -54,9 +54,9 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
         </p>
       </Link>
 
-      <Button variant="danger" onClick={() => handleWorkDelete(work.id)}>
-        Delete
-      </Button>
+      <div className="mb-3 text-red-500" onClick={() => handleWorkDelete(work.id)}>
+        <u>Delete</u>
+      </div>
     </div>
   )
 }

@@ -19,7 +19,7 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
     photos.forEach(photo => formData.append(`images[]`, photo))
 
     if (!!photos) {
-      const workResponse = await createWork(title, description)
+      const workResponse = await createWork(title, description, photos)
       const work_id = workResponse.data.work.id
 
       const updateWorkResponse = await updateWorkFiles(work_id, formData)

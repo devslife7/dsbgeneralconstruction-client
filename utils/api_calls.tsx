@@ -10,7 +10,7 @@ export const fetchWork = async (work_id: string) => {
   return await axios.get(worksURL + work_id)
 }
 
-export const createWork = async (title: string, description: string) => {
+export const createWork = async (title: string, description: string, photos: object) => {
   const requestOBJ = {
     work: {
       title: title,
