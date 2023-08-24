@@ -70,8 +70,8 @@ export default function Page({ params: { workId } }: Props) {
   }
 
   return (
-    <div className="my-container">
-      <div className="justify-between my-8 space-y-5 lg:flex">
+    <div className="my-8 my-container">
+      <div className="justify-between space-y-5 lg:flex">
         <div className="max-w-[22rem] w-[22rem]">
           <div className="flex justify-between text-gray-700">
             <Link href="/gallery" className=" lg:max-w-[35%] clear-left items-center">

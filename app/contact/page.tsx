@@ -15,13 +15,13 @@ export default function Contact() {
 
   return (
     <div className="my-container">
-      <div className="mb-32 mt-32">
+      <div className="mt-24 mb-32 text-gray-800">
         <h1 className="text-5xl font-bold">Schedule a Free Estimate</h1>
         <p className="mb-14 md:mb-20 mt-8 max-w-2xl text-[1.4rem] font-light text-gray-700">
           We are located in Fort Washington, Maryland. We service Northern Virginia and Southern Maryland
           including PG County, Calvert County, Anne Arundel County Charles County and St. Mary&apos;s County.
         </p>
-        <div className="flex flex-wrap gap-10 md:gap-16 mb-20">{renderMediaLinks()}</div>
+        <div className="flex flex-wrap gap-10 mb-20 md:gap-16 text">{renderMediaLinks()}</div>
         <a
           href="tel:999-999-9999"
           className="bg-primary text-white border-[3px] border-solid border-transparent inline-block rounded-md text-xl px-7 py-2 md:px-10 md:py-3 md:text-2xl
@@ -30,7 +30,7 @@ export default function Contact() {
           Call now
         </a>
       </div>
-      <div className="mb-36 space-y-16 lg:flex lg:flex-wrap lg:items-end lg:justify-between gap-5">
+      <div className="gap-5 space-y-16 mb-36 lg:flex lg:flex-wrap lg:items-end lg:justify-between">
         <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[21rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly">
           <p className="text-[4.7rem] mb-7 text-green-400">
             <BsWhatsapp />

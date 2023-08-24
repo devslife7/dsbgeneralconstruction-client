@@ -1,10 +1,11 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Bars3Icon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import MobileNav from "./MobileNav"
 import { FaPhone } from "react-icons/fa"
+import classNames from "classnames"
 
 interface NavLink {
   label: string
@@ -32,7 +33,21 @@ const navLinks: NavLink[] = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrollNav, setScrollNav] = useState(false)
   const pathname = usePathname()
+  const isHome = () => pathname !== "/"
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNav)
+  }, [])
+
+  const changeNav = () => {
+    if (window.scrollY >= 100) {
+      setScrollNav(true)
+    } else {
+      setScrollNav(false)
+    }
+  }
 
   const handleMobileMenuOpen = () => {
     setMobileMenuOpen(true)
@@ -53,8 +68,12 @@ export default function Navbar() {
 
   return (
     <>
-      {/* <div className="h-20">Navbar height compensator</div> */}
-      <header className="fixed top-0 z-10 w-full text-white ">
+      <div className={classNames({ "h-20": isHome() })}></div>
+      <header
+        className={classNames("fixed top-0 z-10 w-full text-white transition-all duration-300 ease-in-out", {
+          "bg-background": scrollNav || isHome(),
+        })}
+      >
         <nav className="flex items-center justify-between h-20 my-container">
           <div className="flex items-center lg:flex-1">
             <Link href="/">
