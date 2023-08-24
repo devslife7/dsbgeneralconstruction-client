@@ -11,11 +11,11 @@ type Props = {
     ratings: number[]
   }
   handleWorkDelete: (id: number) => void
-  isLoggedIn: boolean
 }
 
-export default function GalleryCard({ work, handleWorkDelete, isLoggedIn }: Props) {
+export default function GalleryCard({ work, handleWorkDelete }: Props) {
   const coverFile = work.image_urls[0]
+  const isLoggedIn = localStorage.getItem("user")
 
   const getWorkRating = () => {
     if (work.ratings.length <= 0) return 0.0
@@ -23,6 +23,7 @@ export default function GalleryCard({ work, handleWorkDelete, isLoggedIn }: Prop
   }
 
   const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
+  // const authUser = isLoggedIn ? { user: "dN4DJ5MdkW" } : {}
 
   return (
     <div className="max-w-[400px] min-w-[400px]">

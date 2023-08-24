@@ -11,13 +11,13 @@ import classNames from "classnames"
 type Props = {
   params: {
     workId: string
-    isLoggedIn: boolean
   }
 }
 
 export default function Page({ params: { workId } }: Props) {
   const [work, setWork] = useState({ image_urls: [], comments: [], title: "", ratings: [] })
   const [commentFormOpen, setCommentFormOpen] = useState(false)
+  const isLoggedIn = localStorage.getItem("user")
 
   const openCommentForm = () => setCommentFormOpen(true)
   const closeCommentForm = () => setCommentFormOpen(false)
@@ -45,12 +45,7 @@ export default function Page({ params: { workId } }: Props) {
             <div>{comment.content}</div>
           </div>
         </div>
-        {/* {isLoggedIn && (
-          <button className="mt-6 btn btn-error" onClick={() => handleCommentDelete(comment.id)}>
-            Delete
-          </button>
-        )} */}
-        {true && (
+        {isLoggedIn && (
           <button className="mt-2 text-red-500" onClick={() => handleCommentDelete(comment.id)}>
             <u>Delete</u>
           </button>
@@ -71,7 +66,7 @@ export default function Page({ params: { workId } }: Props) {
 
   return (
     <div className="my-8">
-      <div className="space-y-5 lg:space-y-0 lg:flex my-container">
+      <div className="space-y-5 lg:space-y-0 lg:flex my-container lg:justify-between">
         <div className="min-w-[20rem]">
           <div className="flex justify-between text-gray-700">
             <Link href="/gallery" className=" lg:max-w-[35%] clear-left">

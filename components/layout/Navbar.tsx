@@ -39,6 +39,7 @@ export default function Navbar() {
 
   useEffect(() => {
     window.addEventListener("scroll", changeNav)
+    localStorage.clear()
   }, [])
 
   const changeNav = () => {

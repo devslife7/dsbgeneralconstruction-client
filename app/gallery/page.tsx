@@ -32,7 +32,7 @@ export default function Work() {
     return (
       <div className="flex flex-wrap justify-center gap-5">
         {gallery.map((work: any, index: number) => (
-          <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} isLoggedIn={isLoggedIn} />
+          <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} />
         ))}
       </div>
     )
@@ -54,6 +54,8 @@ export default function Work() {
     const pass = process.env.NEXT_PUBLIC_ADMIN_PASSWORD
     if (pass === password) {
       setIsLoggedIn(true)
+      // save to local storage here
+      localStorage.setItem("user", "dN4DJ5MdkW")
     } else {
       alert("Incorrect password, please try again")
       setPassword("")
