@@ -10,14 +10,8 @@ export const fetchWork = async (work_id: string) => {
   return await axios.get(worksURL + work_id)
 }
 
-export const createWork = async (title: string, description: string, photos: object) => {
-  const requestOBJ = {
-    work: {
-      title: title,
-      description: description,
-    },
-  }
-  return await axios.post(worksURL, requestOBJ)
+export const createWork = async (formData: any) => {
+  return await axios.post(worksURL, formData)
 }
 
 export const updateWorkFiles = async (work_id: number, formData: object) => {

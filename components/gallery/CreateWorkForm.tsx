@@ -17,15 +17,12 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
     setIsLoading(true)
     const formData = new FormData()
     photos.forEach(photo => formData.append(`images[]`, photo))
+    formData.append("title", title)
+    formData.append("description", description)
 
     if (!!photos) {
-      const workResponse = await createWork(title, description, photos)
-      const work_id = workResponse.data.work.id
-
-      const updateWorkResponse = await updateWorkFiles(work_id, formData)
-      const newWork = updateWorkResponse.data.work
-
-      addToGallery(newWork)
+      const resp = await createWork(formData)
+      addToGallery(resp.data.work)
     }
     setIsLoading(false)
     resetForm()
