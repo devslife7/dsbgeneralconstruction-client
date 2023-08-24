@@ -24,7 +24,7 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
   const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
 
   return (
-    <div className="w-[350px]">
+    <div className="max-w-[400px] min-w-[400px]">
       {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
         <video width="350" height="450" src={coverFile} controls autoPlay muted>
           Sorry, your browser doesn't support HTML5 <code>video</code>
@@ -35,7 +35,7 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
           alt={work.title}
           width="0"
           height="0"
-          sizes="100vw"
+          sizes="500px 700px"
           className="w-full h-auto"
           priority
         />

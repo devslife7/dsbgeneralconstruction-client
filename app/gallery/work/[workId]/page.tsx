@@ -71,8 +71,8 @@ export default function Page({ params: { workId } }: Props) {
 
   return (
     <div className="my-8">
-      <div className="justify-between space-y-5 lg:flex lg:my-container">
-        <div className="">
+      <div className="space-y-5 lg:space-y-0 lg:flex my-container">
+        <div className="min-w-[20rem]">
           <div className="flex justify-between text-gray-700">
             <Link href="/gallery" className=" lg:max-w-[35%] clear-left">
               <IoIosArrowBack className="inline-block text-lg" />
