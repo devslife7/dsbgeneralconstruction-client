@@ -8,6 +8,7 @@ import MyModal from "@/components/shared/MyModal"
 import Button from "@/components/shared/Button"
 import { HiPlus } from "react-icons/hi"
 import CreateWorkForm from "@/components/gallery/CreateWorkForm"
+import AdminPasswordForm from "@/components/gallery/work/AdminPasswordForm"
 
 export default function Work() {
   const [gallery, setGallery] = useState<any[]>([])
@@ -31,7 +32,7 @@ export default function Work() {
     return (
       <div className="flex flex-wrap justify-center gap-5">
         {gallery.map((work: any, index: number) => (
-          <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} />
+          <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} isLoggedIn={isLoggedIn} />
         ))}
       </div>
     )
@@ -48,9 +49,15 @@ export default function Work() {
     setGallery([...gallery, work])
   }
 
-  const handlePasswordSubmit = () => {
+  const handlePasswordSubmit = (e: any) => {
+    e.preventDefault()
     const pass = process.env.NEXT_PUBLIC_ADMIN_PASSWORD
-    setIsLoggedIn(pass === password)
+    if (pass === password) {
+      setIsLoggedIn(true)
+    } else {
+      alert("Incorrect password, please try again")
+      setPassword("")
+    }
   }
 
   return (
@@ -60,9 +67,21 @@ export default function Work() {
       <Button onClick={openModal} startIcon={<HiPlus />}>
         Add Work
       </Button>
-      <MyModal title="Add Work Form" isModalOpen={isModalOpen} closeModal={closeModal}>
-        <CreateWorkForm closeModal={closeModal} addToGallery={addToGallery} />
-      </MyModal>
+
+      {isLoggedIn ? (
+        <MyModal title="Add Work Form" isModalOpen={isModalOpen} closeModal={closeModal}>
+          <CreateWorkForm closeModal={closeModal} addToGallery={addToGallery} />
+        </MyModal>
+      ) : (
+        <MyModal title="Enter Admin Password" isModalOpen={isModalOpen} closeModal={closeModal}>
+          <AdminPasswordForm
+            password={password}
+            setPassword={setPassword}
+            closeModal={closeModal}
+            handlePasswordSubmit={handlePasswordSubmit}
+          />
+        </MyModal>
+      )}
     </div>
   )
 }

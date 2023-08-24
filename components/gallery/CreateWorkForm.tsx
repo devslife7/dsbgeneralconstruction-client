@@ -19,6 +19,15 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
   const handleImageUpload = async (e: any) => {
     e.preventDefault()
     setIsLoading(true)
+
+    // requires that title has a value
+    if (title.length === 0) {
+      alert("Please provide a Title")
+      setIsLoading(false)
+      e.target.title.focus()
+      return
+    }
+
     const formData = new FormData()
     photos.forEach(photo => formData.append(`images[]`, photo))
     formData.append("title", title)
@@ -89,7 +98,7 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
         </label>
       </div>
 
-      <div className="mt-6 space-x-4">
+      <div className="flex justify-end mt-6 space-x-4">
         <Button type="submit" variant="secondary">
           {isLoading ? "Loading..." : "Submit"}
         </Button>

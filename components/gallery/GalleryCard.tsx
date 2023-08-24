@@ -11,9 +11,10 @@ type Props = {
     ratings: number[]
   }
   handleWorkDelete: (id: number) => void
+  isLoggedIn: boolean
 }
 
-export default function GalleryCard({ work, handleWorkDelete }: Props) {
+export default function GalleryCard({ work, handleWorkDelete, isLoggedIn }: Props) {
   const coverFile = work.image_urls[0]
 
   const getWorkRating = () => {
@@ -54,9 +55,11 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
         </p>
       </Link>
 
-      <div className="mb-3 text-red-500 cursor-pointer" onClick={() => handleWorkDelete(work.id)}>
-        <u>Delete</u>
-      </div>
+      {isLoggedIn && (
+        <div className="mb-3 text-red-500 cursor-pointer" onClick={() => handleWorkDelete(work.id)}>
+          <u>Delete</u>
+        </div>
+      )}
     </div>
   )
 }
