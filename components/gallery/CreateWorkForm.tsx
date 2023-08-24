@@ -7,31 +7,45 @@ type Props = {
   addToGallery: (work: any) => void
 }
 
+// Limiting the file input to 10mb
+// const fileSizeLimit = 10_000_000
+const FILE_SIZE_LIMIT = 1000
+
 export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [photos, setPhotos] = useState<any[]>([])
 
-  const handleImageUpload = async () => {
+  const handleImageUpload = async (e: any) => {
+    e.preventDefault()
     setIsLoading(true)
     const formData = new FormData()
     photos.forEach(photo => formData.append(`images[]`, photo))
     formData.append("title", title)
     formData.append("description", description)
 
-    if (!!photos) {
+    if (!!photos.length) {
       const resp = await createWork(formData)
       addToGallery(resp.data.work)
+      resetForm()
+    } else {
+      alert("file input cannot be empty")
     }
     setIsLoading(false)
-    resetForm()
   }
   const setImagesArray = (e: any) => {
     const imagesArray = Array.prototype.slice.call(e.target.files)
-    const photosToUpload = [...photos]
-    imagesArray.some((images: any) => {
-      photosToUpload.push(images)
+    let photosToUpload = [...photos]
+    imagesArray.map((file: any) => {
+      if (file.size < FILE_SIZE_LIMIT) {
+        photosToUpload.push(file)
+      } else {
+        alert("file is too big")
+        photosToUpload = []
+        setPhotos([])
+        return
+      }
     })
     setPhotos(photosToUpload)
   }
@@ -44,7 +58,7 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
   }
 
   return (
-    <div>
+    <form>
       <div className="flex flex-col space-y-7">
         <input
           id="title"
@@ -76,13 +90,13 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
       </div>
 
       <div className="mt-6 space-x-4">
-        <Button onClick={handleImageUpload} variant="secondary">
+        <Button onClick={(e: any) => handleImageUpload(e)} type="submit" variant="secondary">
           {isLoading ? "Loading..." : "Submit"}
         </Button>
         <Button onClick={closeModal} variant="danger">
           Cancel
         </Button>
       </div>
-    </div>
+    </form>
   )
 }

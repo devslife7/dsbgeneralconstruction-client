@@ -5,9 +5,10 @@ type Props = {
   endIcon?: React.ReactNode
   variant?: "primary" | "secondary" | "danger" | "cancel"
   size?: "small" | "medium" | "large"
-  onClick?: () => void
+  onClick?: (e?: any) => void
   className?: string
   children: React.ReactNode
+  type?: "button" | "submit" | "reset"
 }
 
 export default function Button({
@@ -18,6 +19,7 @@ export default function Button({
   onClick,
   className,
   children,
+  type = "button",
   ...props
 }: Props) {
   type VariantType = {
@@ -51,6 +53,7 @@ export default function Button({
   return (
     <button
       {...props}
+      type={type}
       onClick={onClick}
       className={classNames(
         className,

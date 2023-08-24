@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { lazy } from "react"
 import { PhotoProvider, PhotoView } from "react-photo-view"
 import "react-photo-view/dist/react-photo-view.css"
 
@@ -34,7 +35,15 @@ export default function MediaViewer({ mediaURLS }: Props) {
   const renderImage = (imageURL: any) => {
     return (
       <PhotoView src={imageURL}>
-        <Image src={imageURL} alt="Work Image" width="0" height="0" sizes="100vw" className="w-full h-auto" />
+        <Image
+          src={imageURL}
+          alt="Work Image"
+          width="0"
+          height="0"
+          sizes="500px 700px"
+          className="w-full h-auto"
+          loading="lazy"
+        />
       </PhotoView>
     )
   }

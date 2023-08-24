@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { AiFillStar } from "react-icons/ai"
-import Button from "../shared/Button"
 
 type Props = {
   work: {
@@ -38,6 +37,7 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
           height="0"
           sizes="100vw"
           className="w-full h-auto"
+          priority
         />
       )}
       <div className="flex justify-between">
@@ -54,7 +54,7 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
         </p>
       </Link>
 
-      <div className="mb-3 text-red-500" onClick={() => handleWorkDelete(work.id)}>
+      <div className="mb-3 text-red-500 cursor-pointer" onClick={() => handleWorkDelete(work.id)}>
         <u>Delete</u>
       </div>
     </div>
