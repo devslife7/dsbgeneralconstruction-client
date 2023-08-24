@@ -18,12 +18,12 @@ export default function Footer() {
   }
 
   return (
-    <footer className="mt-auto bg-background text-white">
-      <div className="my-container flex h-52 flex-col items-center justify-center gap-y-4 md:flex-row md:justify-between">
-        <div className="text-center text-xl">
+    <footer className="sticky mt-auto text-white bg-background top-full">
+      <div className="flex flex-col items-center justify-center my-container h-52 gap-y-4 md:flex-row md:justify-between">
+        <div className="text-xl text-center">
           <span className="text-primary">DSB</span> General Construction
         </div>
-        <div className=" text-center">
+        <div className="text-center ">
           Copyright © 2023 <span className="text-primary">DSB</span> General Construction. All rights
           reserved.
         </div>
