@@ -1,6 +1,6 @@
 import Button from "@/components/shared/Button"
 import { useState } from "react"
-import { addRatingToWork, createComment } from "@/utils/api_calls"
+import { addRatingToWork, createComment, createCommentAndRating } from "@/utils/api_calls"
 import MyRating from "./MyRating"
 
 type Props = {
@@ -18,16 +18,18 @@ export default function CommentForm(props: Props) {
 
   // creates a new comment as well as a new rating
   const handleCommentSubmit = async () => {
-    const requstOBJ = {
+    const requestOBJ = {
       username: name,
       content: comment,
       work_id: workId,
     }
 
-    const responseComment = await createComment(requstOBJ)
-    const responseRating = await addRatingToWork(workId, rating)
-    const newWork = { ...responseComment.data, ratings: responseRating.data.work.ratings }
-    setWork(newWork)
+    const response = await createCommentAndRating(requestOBJ, workId, rating)
+
+    // const responseComment = await createComment(requestOBJ)
+    // const responseRating = await addRatingToWork(workId, rating)
+    // const newWork = { ...responseComment.data, ratings: responseRating.data.work.ratings }
+    setWork(response)
     resetForm()
   }
 

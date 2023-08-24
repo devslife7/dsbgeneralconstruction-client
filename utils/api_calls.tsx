@@ -42,3 +42,15 @@ export const deleteComment = async (comment_id: number) => {
 export const addRatingToWork = async (work_id: string, rating: number) => {
   return await axios.put(ratingURL + work_id, { rating: rating })
 }
+
+export const createCommentAndRating = async (requestOBJ: any, work_id: string, rating: number) => {
+  let newWork = {}
+  const responseComment = await createComment(requestOBJ)
+  if (rating !== 0) {
+    const responseRating = await addRatingToWork(work_id, rating)
+    newWork = { ...responseComment.data, ratings: responseRating.data.work.ratings }
+  } else {
+    newWork = responseComment.data
+  }
+  return newWork
+}
