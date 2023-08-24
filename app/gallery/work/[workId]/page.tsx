@@ -1,5 +1,5 @@
 "use client"
-import { IoMdArrowBack } from "react-icons/io"
+import { IoIosArrowBack } from "react-icons/io"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { fetchWork, deleteComment } from "@/utils/api_calls"
@@ -70,13 +70,13 @@ export default function Page({ params: { workId } }: Props) {
   }
 
   return (
-    <div className="my-8 my-container">
-      <div className="justify-between space-y-5 lg:flex">
-        <div className="max-w-[22rem] w-[22rem]">
+    <div className="my-8">
+      <div className="justify-between space-y-5 lg:flex lg:my-container">
+        <div className="">
           <div className="flex justify-between text-gray-700">
-            <Link href="/gallery" className=" lg:max-w-[35%] clear-left items-center">
-              <IoMdArrowBack className="inline-block text-xl" />
-              <u>gallery</u>
+            <Link href="/gallery" className=" lg:max-w-[35%] clear-left">
+              <IoIosArrowBack className="inline-block text-lg" />
+              <u>Gallery</u>
             </Link>
 
             <MyRating ratings={work.ratings} />
@@ -101,7 +101,7 @@ export default function Page({ params: { workId } }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-wrap order-first">
+        <div className="flex flex-wrap justify-center order-first">
           <MediaViewer mediaURLS={work.image_urls} />
         </div>
       </div>

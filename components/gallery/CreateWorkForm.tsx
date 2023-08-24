@@ -1,15 +1,14 @@
 import { useState } from "react"
 import Button from "../shared/Button"
-import { updateWorkFiles, createWork } from "@/utils/api_calls"
+import { createWork } from "@/utils/api_calls"
 
 type Props = {
   closeModal: () => void
   addToGallery: (work: any) => void
 }
 
-// Limiting the file input to 10mb
-// const fileSizeLimit = 10_000_000
-const FILE_SIZE_LIMIT = 1000
+// Limiting the file input to 10mb = 10_000_000
+const FILE_SIZE_LIMIT = 10_000_000
 
 export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
   const [title, setTitle] = useState("")
@@ -35,15 +34,16 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
     setIsLoading(false)
   }
   const setImagesArray = (e: any) => {
+    const form = e.target.form
     const imagesArray = Array.prototype.slice.call(e.target.files)
     let photosToUpload = [...photos]
     imagesArray.map((file: any) => {
       if (file.size < FILE_SIZE_LIMIT) {
         photosToUpload.push(file)
       } else {
-        alert("file is too big")
+        alert("One or more files are too big to upload, try again.")
+        form.reset()
         photosToUpload = []
-        setPhotos([])
         return
       }
     })
@@ -58,7 +58,7 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
   }
 
   return (
-    <form>
+    <form onSubmit={(e: any) => handleImageUpload(e)}>
       <div className="flex flex-col space-y-7">
         <input
           id="title"
@@ -90,7 +90,7 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
       </div>
 
       <div className="mt-6 space-x-4">
-        <Button onClick={(e: any) => handleImageUpload(e)} type="submit" variant="secondary">
+        <Button type="submit" variant="secondary">
           {isLoading ? "Loading..." : "Submit"}
         </Button>
         <Button onClick={closeModal} variant="danger">

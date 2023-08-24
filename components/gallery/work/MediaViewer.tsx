@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { lazy } from "react"
 import { PhotoProvider, PhotoView } from "react-photo-view"
 import "react-photo-view/dist/react-photo-view.css"
 
