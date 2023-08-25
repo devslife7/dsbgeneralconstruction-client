@@ -30,7 +30,7 @@ export default function Work() {
   const renderGallery = () => {
     gallery.sort((a: any, b: any) => b.id - a.id)
     return (
-      <div className="flex flex-wrap justify-center gap-5">
+      <div className="flex flex-wrap justify-center gap-5 lg:justify-start">
         {gallery.map((work: any, index: number) => (
           <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} />
         ))}

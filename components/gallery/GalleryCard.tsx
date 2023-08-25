@@ -6,7 +6,7 @@ type Props = {
   work: {
     id: number
     title: string
-    subtitle: string
+    description: string
     image_urls: string[]
     ratings: number[]
   }
@@ -21,12 +21,11 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
     if (work.ratings.length <= 0) return 0.0
     return work.ratings.reduce((a: any, b: any) => a + b) / work.ratings.length
   }
-
   const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
-  // const authUser = isLoggedIn ? { user: "dN4DJ5MdkW" } : {}
 
+  console.log("work:", work)
   return (
-    <div className="max-w-[400px] min-w-[400px]">
+    <div className="w-[26rem] lg:max-w-[19rem]">
       {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
         <video width="350" height="450" src={coverFile} controls autoPlay muted>
           Sorry, your browser doesn't support HTML5 <code>video</code>
@@ -49,7 +48,7 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
           <AiFillStar className="inline-block text-lg text-primary" />
         </div>
       </div>
-      <div>{work.subtitle}</div>
+      <div>{work.description}</div>
       <Link href={`/gallery/work/${work.id}`}>
         <p className="mt-2 mb-10 text-gray-700 ">
           <u>See more...</u>
