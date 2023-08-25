@@ -96,7 +96,7 @@ export default function Page({ params: { workId } }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center order-first">
+        <div className="flex flex-wrap justify-center order-first lg:justify-start">
           <MediaViewer mediaURLS={work.image_urls} />
         </div>
       </div>
