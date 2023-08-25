@@ -49,7 +49,7 @@ export default function MediaViewer({ mediaURLS }: Props) {
   return (
     <PhotoProvider>
       {mediaURLS.map((url: string, index: number) => (
-        <div key={index} className="max-w-[400px] min-w-[500px]">
+        <div key={index} className="w-[40rem] lg:max-w-[20rem]">
           {url && !!url.match(/.mp4|.mov/) ? renderVideo(url) : renderImage(url)}
         </div>
       ))}
