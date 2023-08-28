@@ -50,9 +50,12 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
                 </div>
             </div>
             <div>{work.description}</div>
-            <Link href={`/gallery/work/${work.id}`} className="flex items-center mt-5 text-sm opacity-60">
+            <Link
+                href={`/gallery/work/${work.id}`}
+                className="flex items-center mt-5 text-sm group opacity-60"
+            >
                 <p className="">Explore More</p>
-                <GrFormNext className="mt-[2px] text-lg" />
+                <GrFormNext className="mt-[2px] text-lg transition-transform group-hover:translate-x-0.5" />
             </Link>
 
             {isLoggedIn && (
