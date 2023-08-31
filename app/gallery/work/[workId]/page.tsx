@@ -14,10 +14,12 @@ type Props = {
     }
 }
 
+// export async GrNetwork()
+
 export default function Page({ params: { workId } }: Props) {
     const [work, setWork] = useState({ image_urls: [], comments: [], title: "", ratings: [] })
     const [commentFormOpen, setCommentFormOpen] = useState(false)
-    const isLoggedIn = localStorage.getItem("user")
+    // const isLoggedIn = localStorage.getItem("user")
 
     const openCommentForm = () => setCommentFormOpen(true)
     const closeCommentForm = () => setCommentFormOpen(false)
@@ -47,7 +49,7 @@ export default function Page({ params: { workId } }: Props) {
                         <div>{comment.content}</div>
                     </div>
                 </div>
-                {isLoggedIn && (
+                {true && (
                     <button className="mt-2 text-red-500" onClick={() => handleCommentDelete(comment.id)}>
                         <u>Delete</u>
                     </button>
@@ -81,7 +83,7 @@ export default function Page({ params: { workId } }: Props) {
                         <MyRating ratings={work.ratings} />
                     </div>
 
-                    <div className="mt-7">
+                    {/* <div className="mt-7">
                         <div className="space-y-5 ">
                             {renderComments()}
                             <p
@@ -99,11 +101,11 @@ export default function Page({ params: { workId } }: Props) {
                             commentFormOpen={commentFormOpen}
                             closeCommentForm={closeCommentForm}
                         />
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="flex flex-wrap justify-center order-first lg:justify-start">
-                    <MediaViewer mediaURLS={work.image_urls} />
+                    {/* <MediaViewer mediaURLS={work.image_urls} /> */}
                 </div>
             </div>
         </div>

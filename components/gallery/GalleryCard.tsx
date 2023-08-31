@@ -16,7 +16,7 @@ type Props = {
 
 export default function GalleryCard({ work, handleWorkDelete }: Props) {
     const coverFile = work.image_urls[0]
-    const isLoggedIn = localStorage.getItem("user")
+    // const isLoggedIn = localStorage.getItem("user")
 
     const getWorkRating = () => {
         if (work.ratings.length <= 0) return 0.0
@@ -58,7 +58,7 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
                 <GrFormNext className="mt-[2px] text-lg transition-transform group-hover:translate-x-0.5" />
             </Link>
 
-            {isLoggedIn && (
+            {true && (
                 <div className="mb-3 text-red-500 cursor-pointer" onClick={() => handleWorkDelete(work.id)}>
                     <u>Delete</u>
                 </div>

@@ -1,9 +1,7 @@
-import Button from "../shared/Button"
-
 export default function GallerySection() {
-  return (
-    <div className="my-container flex items-center justify-center bg-orange-50 h-screen">
-      <div className="text-5xl">GallerySection</div>
-    </div>
-  )
+    return (
+        <div className="flex items-center justify-center h-screen my-container bg-orange-50">
+            <div className="text-5xl">GallerySection</div>
+        </div>
+    )
 }
