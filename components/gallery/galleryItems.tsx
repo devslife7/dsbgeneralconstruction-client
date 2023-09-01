@@ -1,3 +1,4 @@
+"use client"
 import { deleteWork } from "@/utils/api_calls"
 import GalleryCard from "./GalleryCard"
 
