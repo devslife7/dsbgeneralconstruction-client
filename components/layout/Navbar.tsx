@@ -37,17 +37,17 @@ export default function Navbar() {
     const pathname = usePathname()
     const isHome = () => pathname !== "/"
 
-    useEffect(() => {
-        window.addEventListener("scroll", changeNav)
-    }, [])
+    // useEffect(() => {
+    //     window.addEventListener("scroll", changeNav)
+    // }, [])
 
-    const changeNav = () => {
-        if (window.scrollY >= 100) {
-            setScrollNav(true)
-        } else {
-            setScrollNav(false)
-        }
-    }
+    // const changeNav = () => {
+    //     if (window.scrollY >= 100) {
+    //         setScrollNav(true)
+    //     } else {
+    //         setScrollNav(false)
+    //     }
+    // }
 
     const handleMobileMenuOpen = () => {
         setMobileMenuOpen(true)
