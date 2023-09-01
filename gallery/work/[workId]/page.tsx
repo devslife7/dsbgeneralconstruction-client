@@ -8,16 +8,6 @@ import CommentForm from "@/components/gallery/work/CommentForm"
 import MyRating from "@/components/gallery/work/MyRating"
 import { cn } from "@/lib/utils"
 
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-// test
-
 type Props = {
     params: {
         workId: string

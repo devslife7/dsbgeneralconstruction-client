@@ -15,7 +15,7 @@ export default function Hero() {
                     alt="Hero Kitchen"
                 />
             </div>
-            <div className="h-full bg-black bg-opacity-70">
+            <div className="h-full bg-black/50">
                 <div className="flex items-center justify-center h-full text-center text-white my-container">
                     <div className="relative max-w-4xl py-14 lg:py-20">
                         <h1 className="text-4xl font-bold md:text-5xl lg:text-7xl">Your Dream Home Awaits</h1>
