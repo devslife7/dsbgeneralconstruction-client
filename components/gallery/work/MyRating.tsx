@@ -3,9 +3,8 @@
   readOnly: provide ratings Array
   inputMode: provide parent Rating State controls (i.e. setRatingParent={setRating} parentRating={rating})
 */
-
+import { cn } from "@/lib/utils"
 import { Star, StarHalf } from "@/public/icons/RatingStars"
-import classNames from "classnames"
 
 type Props = {
     className?: string
@@ -57,7 +56,7 @@ export default function MyRating({
                 <Star
                     key={star}
                     size={size}
-                    className={classNames(
+                    className={cn(
                         "peer peer-hover:text-primary-500 hover:text-primary-500 hover:cursor-pointer",
                         isClickedColor(star)
                     )}
@@ -68,7 +67,7 @@ export default function MyRating({
     }
 
     return (
-        <div className={classNames(className, "flex flex-row-reverse text-lg")}>
+        <div className={cn("flex flex-row-reverse text-lg", className)}>
             {renderStars(readOnly)}
             {!readOnly && <span className="mr-1 text-gray-700 ">{parentRating.toFixed(1)}</span>}
             {readOnly && (

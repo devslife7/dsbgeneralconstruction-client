@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import MobileNav from "./MobileNav"
 import { FaPhone } from "react-icons/fa"
-import classNames from "classnames"
+import { cn } from "@/lib/utils"
 
 interface NavLink {
     label: string
@@ -68,14 +68,11 @@ export default function Navbar() {
 
     return (
         <>
-            <div className={classNames({ "h-20": isHome() })}></div>
+            <div className={cn({ "h-20": isHome() })}></div>
             <header
-                className={classNames(
-                    "fixed top-0 z-10 w-full text-white transition-all duration-300 ease-in-out",
-                    {
-                        "bg-background": scrollNav || isHome(),
-                    }
-                )}
+                className={cn("fixed top-0 z-10 w-full text-white transition-all duration-300 ease-in-out", {
+                    "bg-background": scrollNav || isHome(),
+                })}
             >
                 <nav className="flex items-center justify-between h-20 my-container">
                     <div className="flex items-center lg:flex-1">

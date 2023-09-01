@@ -6,7 +6,7 @@ import { fetchWork, deleteComment } from "@/utils/api_calls"
 import MediaViewer from "@/components/gallery/work/MediaViewer"
 import CommentForm from "@/components/gallery/work/CommentForm"
 import MyRating from "@/components/gallery/work/MyRating"
-import classNames from "classnames"
+import { cn } from "@/lib/utils"
 
 type Props = {
     params: {
@@ -87,7 +87,7 @@ export default function Page({ params: { workId } }: Props) {
                         <div className="space-y-5 ">
                             {renderComments()}
                             <p
-                                className={classNames("text-gray-700 cursor-pointer", {
+                                className={cn("text-gray-700 cursor-pointer", {
                                     hidden: commentFormOpen,
                                 })}
                                 onClick={openCommentForm}
