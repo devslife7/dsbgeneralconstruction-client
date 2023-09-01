@@ -12,7 +12,7 @@ type Props = {
         image_urls: string[]
         ratings: number[]
     }
-    handleWorkDelete: (id: number) => void
+    handleWorkDelete?: (id: number) => void
 }
 
 export default function GalleryCard({ work, handleWorkDelete }: Props) {
@@ -25,7 +25,6 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
     }
     const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
 
-    console.log("work:", work)
     return (
         <div className="w-[26rem] lg:max-w-[19rem]">
             {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
@@ -59,11 +58,11 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
                 <GrFormNext className="mt-[2px] text-lg transition-transform group-hover:translate-x-0.5" />
             </Link>
 
-            {true && (
+            {/* {true && (
                 <div className="mb-3 text-red-500 cursor-pointer" onClick={() => handleWorkDelete(work.id)}>
                     <u>Delete</u>
                 </div>
-            )}
+            )} */}
         </div>
     )
 }

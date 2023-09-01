@@ -7,9 +7,18 @@ import CreateWorkForm from "@/components/gallery/CreateWorkForm"
 import AdminPasswordForm from "@/components/gallery/work/AdminPasswordForm"
 import { GalleryItems } from "@/components/gallery/galleryItems"
 
+type WorkProps = {
+    id: number
+    title: string
+    description: string
+    image_urls: string[]
+    ratings: number[]
+}
+
 export default async function Work() {
     const response = await fetch("http://localhost:3000/works")
-    const gallery = await response.json()
+    const gallery: WorkProps[] = await response.json()
+    // console.log(">>>>data", data[0].title)
 
     // const [gallery, setGallery] = useState<any[]>([])
     // const [isLoggedIn, setIsLoggedIn] = useState(false)
