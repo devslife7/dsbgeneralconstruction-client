@@ -30,8 +30,8 @@
         ".next/types/**/*.ts",
         "app/layout.tsx",
         "./app/page.tsx",
-        "app/gallery/[id]/page.jsx",
-        "app/gallery/[id]/page.jsx",
+        "gallery/[id]/page.jsx",
+        "gallery/[id]/page.jsx",
         "node_modules/MyModal.tsx"
     ],
     "exclude": ["node_modules"]
