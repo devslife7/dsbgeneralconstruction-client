@@ -6,7 +6,7 @@ type GalleryProp = {
     ratings: number[]
 }
 
-import Work from "./Work"
+import Work from "../../components/Work"
 
 export default async function page() {
     const res = await fetch("http://localhost:3000/works")
