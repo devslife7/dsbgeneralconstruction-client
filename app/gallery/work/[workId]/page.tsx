@@ -72,7 +72,8 @@ export default function Page({ params: { workId } }: Props) {
 
     return (
         <div className="my-8">
-            <div className="space-y-5 lg:space-y-0 lg:flex my-container lg:justify-between lg:gap-4">
+            adf
+            {/* <div className="space-y-5 lg:space-y-0 lg:flex my-container lg:justify-between lg:gap-4">
                 <div className="w-full lg:max-w-xs">
                     <div className="flex justify-between text-gray-700">
                         <Link href="/gallery" className=" lg:max-w-[35%] clear-left">
@@ -83,7 +84,7 @@ export default function Page({ params: { workId } }: Props) {
                         <MyRating ratings={work.ratings} />
                     </div>
 
-                    {/* <div className="mt-7">
+                    <div className="mt-7">
                         <div className="space-y-5 ">
                             {renderComments()}
                             <p
@@ -101,13 +102,13 @@ export default function Page({ params: { workId } }: Props) {
                             commentFormOpen={commentFormOpen}
                             closeCommentForm={closeCommentForm}
                         />
-                    </div> */}
+                    </div>
                 </div>
 
                 <div className="flex flex-wrap justify-center order-first lg:justify-start">
-                    {/* <MediaViewer mediaURLS={work.image_urls} /> */}
+                    <MediaViewer mediaURLS={work.image_urls} />
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
