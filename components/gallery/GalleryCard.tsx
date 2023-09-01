@@ -27,7 +27,8 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
 
     return (
         <div className="w-[26rem] lg:max-w-[19rem]">
-            {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
+            test
+            {/* {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
                 <video width="350" height="450" src={coverFile} controls autoPlay muted>
                     Sorry, your browser doesn't support HTML5 <code>video</code>
                 </video>
@@ -58,7 +59,7 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
                 <GrFormNext className="mt-[2px] text-lg transition-transform group-hover:translate-x-0.5" />
             </Link>
 
-            {/* {true && (
+            {true && (
                 <div className="mb-3 text-red-500 cursor-pointer" onClick={() => handleWorkDelete(work.id)}>
                     <u>Delete</u>
                 </div>

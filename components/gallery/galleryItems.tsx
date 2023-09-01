@@ -20,10 +20,10 @@ export function GalleryItems({ gallery = [] }: { gallery: WorkProps[] }) {
     gallery.sort((a: any, b: any) => b.id - a.id)
     return (
         <div className="flex flex-wrap justify-center gap-5 lg:justify-start">
-            {gallery.map((work: any, index: number) => (
+            {/* {gallery.map((work: any, index: number) => (
                 // <GalleryCard key={index} work={work} handleWorkDelete={handleWorkDelete} />
                 <GalleryCard key={index} work={work} />
-            ))}
+            ))} */}
         </div>
     )
 }
