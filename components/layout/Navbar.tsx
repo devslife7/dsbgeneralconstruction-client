@@ -18,8 +18,8 @@ const navLinks: NavLink[] = [
         href: "/",
     },
     {
-        label: "Gallery",
-        href: "/gallery",
+        label: "Work",
+        href: "/work",
     },
     {
         label: "About",
