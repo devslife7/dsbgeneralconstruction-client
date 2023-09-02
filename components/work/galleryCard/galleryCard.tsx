@@ -5,8 +5,8 @@ import { AiFillStar } from "react-icons/ai"
 import { GrFormNext } from "react-icons/gr"
 import { useRouter } from "next/navigation"
 import { deleteWork } from "@/lib/api_calls/api_calls"
-import { SlOptionsVertical } from "react-icons/sl"
-import CardDropDown from "./cardDropDown"
+import OptionButtons from "./optionButtons"
+import MediaViewer from "./mediaViewer"
 
 type WorkProps = {
     id: number
@@ -29,11 +29,6 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
 
     // Capitalized first letter of work title
     const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
-
-    const handleWorkDelete2 = async () => {
-        await deleteWork(work.id)
-        router.refresh()
-    }
 
     return (
         <div className="w-[26rem] lg:max-w-[20rem] rounded-md h-full bg-white shadow-lg">
@@ -70,20 +65,10 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                     <p className="">Explore More</p>
                     <GrFormNext className="mt-[2px] text-lg transition-transform group-hover:translate-x-0.5" />
                 </Link> */}
-                {/* {true && (
-                    <div className="mb-3 text-red-500 cursor-pointer" onClick={handleWorkDelete2}>
-                        <u>Delete</u>
-                    </div>
-                )} */}
             </div>
-            <div className="flex items-center border-t opacity-50 border-black/40">
-                <div className="w-1/2 py-2 text-xs text-center">gallery</div>
-                <div className="w-1/2 py-2 text-xs text-center border-l border-black/40">reviews</div>
-                <div className="flex justify-center w-1/6 py-2 text-xs border-l border-black/40">
-                    <SlOptionsVertical className="w-auto text-base" />
-                    <CardDropDown />
-                </div>
-            </div>
+            <OptionButtons workId={work.id} />
+
+            {/* <MediaViewer mediaURLS={work.image_urls} /> */}
         </div>
     )
 }

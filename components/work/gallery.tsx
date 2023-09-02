@@ -1,5 +1,5 @@
 import { fetchGallery } from "@/lib/api_calls/getGallery"
-import GalleryCard from "./galleryCard"
+import GalleryCard from "./galleryCard/galleryCard"
 import AddWorkButton from "./addWorkButton"
 
 export default async function Gallery() {
@@ -7,10 +7,14 @@ export default async function Gallery() {
 
     gallery.sort((a: any, b: any) => b.id - a.id)
     return (
-        <div className="flex flex-wrap justify-center gap-10 mx-auto lg:justify-start lg:container lg:px-8">
-            {gallery.map((work: any, index: number) => (
-                <GalleryCard key={index} work={work} />
-            ))}
+        <div className="lg:container lg:px-8">
+            <div className="mt-10 text-5xl font-bold opacity-70">Our Work</div>
+
+            <div className="flex flex-wrap justify-center gap-20 mx-auto my-10 lg:gap-10 lg:justify-start ">
+                {gallery.map((work: any, index: number) => (
+                    <GalleryCard key={index} work={work} />
+                ))}
+            </div>
         </div>
     )
 }
