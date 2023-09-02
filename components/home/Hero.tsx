@@ -5,8 +5,8 @@ import Button from "../ui/button"
 
 export default function Hero() {
     return (
-        <div className="h-[70vh] lg:h-[60vh] relative">
-            <div className="absolute w-full h-full -z-10">
+        <div className="h-[70vh] lg:h-[54rem] bg-backgroundGray">
+            {/* <div className="absolute w-full h-full -z-10">
                 <Image
                     alt="Hero Kitchen"
                     src={heroBackground}
@@ -17,9 +17,9 @@ export default function Hero() {
                     priority
                     className="object-cover w-full h-full"
                 />
-            </div>
-            <div className="h-full bg-black/50">
-                <div className="flex items-center justify-center h-full text-center text-white my-container">
+            </div> */}
+            <div className="h-full rounded-md bg-black/50 my-container">
+                <div className="flex items-center justify-center h-full text-center text-white">
                     <div className="relative max-w-4xl py-14 lg:py-20">
                         <h1 className="text-4xl font-bold md:text-5xl lg:text-7xl">Your Dream Home Awaits</h1>
                         <p className="max-w-xl mx-auto mt-5 mb-10 font-light text-md md:text-xl lg:text-xl lg:leading-relaxed">
