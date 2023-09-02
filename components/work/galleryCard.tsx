@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { AiFillStar } from "react-icons/ai"
 import { GrFormNext } from "react-icons/gr"
+import { useRouter } from "next/navigation"
 
 type Props = {
     work: {
@@ -17,6 +18,7 @@ type Props = {
 }
 
 export default function GalleryCard({ work, handleWorkDelete }: Props) {
+    const router = useRouter()
     const coverFile = work.image_urls[0]
 
     const getWorkRating = () => {
@@ -29,6 +31,8 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
 
     const handleWorkDelete2 = async () => {
         await deleteWork(work.id)
+
+        router.refresh()
         // const idx = gallery.findIndex((work: any) => work.id === work_id)
         // const galleryArray = [...gallery.slice(0, idx), ...gallery.slice(idx + 1)]
         // setGallery(galleryArray)
