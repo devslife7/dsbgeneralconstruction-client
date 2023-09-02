@@ -23,7 +23,7 @@ export default function Hero() {
                             Our skilled artisans pour their heart and soul into every project, ensuring
                             impeccable finishes and long-lasting beauty.
                         </p>
-                        <Link href="/gallery">
+                        <Link href="/work">
                             <Button size="lg" className="lg:text-lg">
                                 Explore Gallery
                             </Button>

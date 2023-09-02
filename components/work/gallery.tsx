@@ -1,5 +1,6 @@
 import { fetchGallery } from "@/lib/api_calls/getGallery"
 import GalleryCard from "./galleryCard"
+import AddWorkButton from "./addWorkButton"
 
 export default async function Gallery() {
     const gallery = await fetchGallery()
@@ -12,6 +13,7 @@ export default async function Gallery() {
                     <GalleryCard key={index} work={work} />
                 ))}
             </div>
+            <AddWorkButton />
         </div>
     )
 }
