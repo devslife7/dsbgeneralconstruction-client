@@ -8,11 +8,14 @@ export default function Hero() {
         <div className="h-[70vh] lg:h-[60vh] relative">
             <div className="absolute w-full h-full -z-10">
                 <Image
-                    src={heroBackground}
-                    className="object-cover w-full h-full"
-                    placeholder="blur"
-                    priority
                     alt="Hero Kitchen"
+                    src={heroBackground}
+                    placeholder="blur"
+                    quality={100}
+                    sizes="100vw"
+                    fill
+                    priority
+                    className="object-cover w-full h-full"
                 />
             </div>
             <div className="h-full bg-black/50">

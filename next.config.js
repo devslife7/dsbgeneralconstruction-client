@@ -16,6 +16,10 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "dsbgeneralconstruction-api-production.up.railway.app",
             },
+            {
+                protocol: "https",
+                hostname: "images.unsplash.com",
+            },
         ],
     },
 }

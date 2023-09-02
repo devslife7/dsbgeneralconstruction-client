@@ -1,10 +1,10 @@
 "use client"
-import { deleteWork } from "@/lib/api_calls/api_calls"
 import Image from "next/image"
 import Link from "next/link"
 import { AiFillStar } from "react-icons/ai"
 import { GrFormNext } from "react-icons/gr"
 import { useRouter } from "next/navigation"
+import { deleteWork } from "@/lib/api_calls/api_calls"
 
 type WorkProps = {
     id: number
@@ -32,9 +32,9 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
     }
 
     return (
-        <div className="w-[26rem] lg:max-w-[19rem]">
-            <div className="relative">
-                {/* {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
+        <div className="w-[24rem] lg:max-w-[16rem]">
+            <div>
+                {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
                     <video width="350" height="450" src={coverFile} controls autoPlay muted>
                         Sorry, your browser doesn't support HTML5 <code>video</code>
                     </video>
@@ -42,26 +42,14 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                     <Image
                         src={coverFile}
                         alt={work.title}
-                        // width="300"
-                        // height="300"
-                        fill
-                        // sizes="(max-width: 3000px) 100vw 700px"
-                        sizes="100vw"
-                        className="w-full h-auto"
+                        width={384}
+                        height={479}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 14vw"
+                        // sizes="100vw"
+                        className="w-full"
                         priority
                     />
-                )} */}
-                <Image
-                    src={coverFile}
-                    alt={work.title}
-                    width="300"
-                    height="300"
-                    // fill
-                    // sizes="(max-width: 700px) 100vw 200px"
-                    // sizes="100vw"
-                    className=""
-                    priority
-                />
+                )}
             </div>
             <div className="flex justify-between">
                 <div className="mt-2 text-xl">{workTitle}</div>
