@@ -1,6 +1,7 @@
 import { SlOptionsVertical } from "react-icons/sl"
 import { LuEdit3 } from "react-icons/lu"
-import { BiSolidTrashAlt } from "react-icons/bi"
+import { BiSolidTrashAlt, BiSolidComment } from "react-icons/bi"
+import { AiOutlinePicture } from "react-icons/ai"
 import { deleteWork } from "@/lib/api_calls/api_calls"
 import {
     DropdownMenu,
@@ -54,7 +55,10 @@ export default function OptionButtons({ workId }: { workId: number }) {
     return (
         <div className="flex items-center border-t opacity-50 border-black/40">
             <Dialog>
-                <DialogTrigger className="w-1/2 py-2 text-xs text-center">reviews</DialogTrigger>
+                <DialogTrigger className="flex items-center justify-center w-1/2 gap-2 py-2 text-sm text-center">
+                    <BiSolidComment className="mt-1 text-primary" />
+                    reviews
+                </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>Reviews</DialogTitle>
@@ -65,7 +69,10 @@ export default function OptionButtons({ workId }: { workId: number }) {
                     </DialogHeader>
                 </DialogContent>
             </Dialog>
-            <div className="w-1/2 py-2 text-xs text-center border-l border-black/40">gallery</div>
+            <div className="flex items-center justify-center w-1/2 gap-2 py-2 text-xs text-center border-l border-black/40">
+                <AiOutlinePicture className="text-primary" />
+                gallery
+            </div>
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex justify-center w-1/6 py-2 text-xs border-l border-black/40">
                     <SlOptionsVertical className="w-auto text-base" />
