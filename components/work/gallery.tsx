@@ -19,6 +19,11 @@ export default async function Gallery() {
     )
 }
 
+// import { WorkProps } from "@/types/work"
+// import { WorkProps } from "@/types/work"
+// import { WorkProps } from "@/types/work"
+// import { WorkProps } from "@/types/work"
+
 // export function GalleryItems({ gallery = [] }: { gallery: WorkProps[] }) {
 //     // const handleWorkDelete = async (work_id: number) => {
 //     //     await deleteWork(work_id)
