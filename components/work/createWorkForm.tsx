@@ -5,8 +5,6 @@ import { CgSpinnerAlt } from "react-icons/cg"
 import { useRouter } from "next/navigation"
 
 // Limiting the file input to 10mb = 10_000_000
-// Limiting the file input to 10mb = 10_000_000
-// Limiting the file input to 10mb = 10_000_000
 const FILE_SIZE_LIMIT = 10_000_000
 
 export default function CreateWorkForm({ closeModal }: { closeModal: () => void }) {
