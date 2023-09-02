@@ -6,18 +6,15 @@ import { AiFillStar } from "react-icons/ai"
 import { GrFormNext } from "react-icons/gr"
 import { useRouter } from "next/navigation"
 
-type Props = {
-    work: {
-        id: number
-        title: string
-        description: string
-        image_urls: string[]
-        ratings: number[]
-    }
-    handleWorkDelete?: (id: number) => void
+type WorkProps = {
+    id: number
+    title: string
+    description: string
+    image_urls: string[]
+    ratings: number[]
 }
 
-export default function GalleryCard({ work, handleWorkDelete }: Props) {
+export default function GalleryCard({ work }: { work: WorkProps }) {
     const router = useRouter()
     const coverFile = work.image_urls[0]
 
@@ -31,11 +28,7 @@ export default function GalleryCard({ work, handleWorkDelete }: Props) {
 
     const handleWorkDelete2 = async () => {
         await deleteWork(work.id)
-
         router.refresh()
-        // const idx = gallery.findIndex((work: any) => work.id === work_id)
-        // const galleryArray = [...gallery.slice(0, idx), ...gallery.slice(idx + 1)]
-        // setGallery(galleryArray)
     }
 
     return (

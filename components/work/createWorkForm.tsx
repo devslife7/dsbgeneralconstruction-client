@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Button } from "../ui/button"
 import { createWork } from "@/lib/api_calls/api_calls"
+import { CgSpinnerAlt } from "react-icons/cg"
+import { useRouter } from "next/navigation"
 
 // Limiting the file input to 10mb = 10_000_000
 const FILE_SIZE_LIMIT = 10_000_000
@@ -10,12 +12,12 @@ export default function CreateWorkForm({ closeModal }: { closeModal: () => void 
     const [description, setDescription] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [photos, setPhotos] = useState<any[]>([])
+    const router = useRouter()
 
     const handleImageUpload = async (e: any) => {
         e.preventDefault()
         setIsLoading(true)
 
-        // requires that title has a value
         if (title.length === 0) {
             alert("Please provide a Title")
             setIsLoading(false)
@@ -30,7 +32,7 @@ export default function CreateWorkForm({ closeModal }: { closeModal: () => void 
 
         if (!!photos.length) {
             const resp = await createWork(formData)
-            // addToGallery(resp.data.work)
+            router.refresh()
             resetForm()
         } else {
             alert("file input cannot be empty")
@@ -94,11 +96,12 @@ export default function CreateWorkForm({ closeModal }: { closeModal: () => void 
             </div>
 
             <div className="flex justify-end mt-6 space-x-4">
-                <Button type="submit" variant="secondary">
-                    {isLoading ? "Loading..." : "Submit"}
-                </Button>
                 <Button onClick={closeModal} variant="danger">
                     Cancel
+                </Button>
+                <Button type="submit" variant="secondary">
+                    {isLoading && <CgSpinnerAlt className="text-xl animate-spin" />}
+                    Submit
                 </Button>
             </div>
         </form>

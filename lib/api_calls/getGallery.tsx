@@ -11,7 +11,7 @@ type GalleryProp = {
 
 // export const fetchGallery = async () => await axios.get(worksURL)
 export async function fetchGallery() {
-    const res = await fetch(worksURL, { cache: "no-store" })
+    const res = await fetch(worksURL, { cache: "no-cache" })
 
     if (!res.ok) {
         throw new Error(res.statusText)
