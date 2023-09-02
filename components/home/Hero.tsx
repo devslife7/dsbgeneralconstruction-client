@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import heroBackground from "@/public/images/heroImage.jpg"
-import { Button } from "../ui/button"
+import Button from "../ui/button"
 
 export default function Hero() {
     return (
@@ -12,7 +12,7 @@ export default function Hero() {
                     src={heroBackground}
                     placeholder="blur"
                     quality={100}
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
                     fill
                     priority
                     className="object-cover w-full h-full"

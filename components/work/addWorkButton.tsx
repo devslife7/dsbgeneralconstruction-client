@@ -1,6 +1,6 @@
 "use client"
 import { Modal } from "@/components/ui/modal"
-import { Button } from "@/components/ui/button"
+import Button from "@/components/ui/button"
 import { HiPlus } from "react-icons/hi"
 import CreateWorkForm from "./createWorkForm"
 import AdminPasswordForm from "./adminLoginForm"

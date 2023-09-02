@@ -70,9 +70,7 @@ export default function Navbar() {
         <>
             <div className={cn({ "h-20": isHome() })}></div>
             <header
-                className={cn("fixed top-0 z-10 w-full text-white transition-all duration-300 ease-in-out", {
-                    "bg-background": scrollNav || isHome(),
-                })}
+                className={cn("fixed top-0 z-10 w-full text-white transition-all duration-300 ease-in-out")}
             >
                 <nav className="flex items-center justify-between h-20 my-container">
                     <div className="flex items-center lg:flex-1">
