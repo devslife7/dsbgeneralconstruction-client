@@ -8,7 +8,7 @@ import { VariantProps, cva } from "class-variance-authority"
 import { forwardRef } from "react"
 
 const buttonStyles = cva(
-    "inline-flex cursor-pointer items-center gap-2 justify-center w-auto px-auto rounded-md transition-all font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border border-transparent disabled:cursor-not-allowed disabled:opacity-60",
+    "inline-flex cursor-pointer items-center gap-2 justify-center w-auto px-auto transition-all font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border border-transparent disabled:cursor-not-allowed disabled:opacity-60",
     {
         variants: {
             variant: {
@@ -19,9 +19,9 @@ const buttonStyles = cva(
                 cancel: "bg-gray-100 text-gray-700 hover:bg-gray-200 focus-visible:ring-gray-500",
             },
             size: {
-                sm: "px-4 py-1 text-base",
-                md: "px-4 py-2",
-                lg: "px-6 py-2",
+                sm: "px-6 py-1 text-base",
+                md: "px-6 py-2",
+                lg: "px-8 py-2",
             },
             mobile: { true: "w-full lg:w-auto" },
         },

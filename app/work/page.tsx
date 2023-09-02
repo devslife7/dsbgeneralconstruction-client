@@ -4,7 +4,7 @@ import { Suspense } from "react"
 
 export default function page() {
     return (
-        <div className="bg-backgroundGray">
+        <div>
             <Suspense fallback={<div>Loading...</div>}>
                 <Gallery />
             </Suspense>
