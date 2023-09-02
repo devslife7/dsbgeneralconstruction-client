@@ -34,7 +34,7 @@ export default function AddWorkButton() {
     }
 
     return (
-        <div className="my-8 my-container">
+        <div className=" my-container">
             <Button onClick={openModal}>
                 <HiPlus />
                 Add Work

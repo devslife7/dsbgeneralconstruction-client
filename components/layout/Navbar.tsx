@@ -59,7 +59,7 @@ export default function Navbar() {
             <Link
                 key={index}
                 href={link.href}
-                className={`px-2 leading-7 transition-all text-lg ${isActive(link.href)}`}
+                className={`px-2 leading-7 transition-all font-extralight ${isActive(link.href)}`}
             >
                 {link.label}
             </Link>
@@ -68,26 +68,19 @@ export default function Navbar() {
 
     return (
         <>
-            <div className={cn({ "h-20": isHome() })}></div>
-            <header
-                className={cn("fixed top-0 z-10 w-full text-white transition-all duration-300 ease-in-out")}
-            >
-                <nav className="flex items-center justify-between h-20 my-container">
+            <div className="h-20 lg:h-32"></div>
+            <header className="fixed top-0 z-10 w-full transition-all duration-300 ease-in-out bg-backgroundGray">
+                <nav className="flex items-center justify-between h-20 lg:h-32 my-container">
                     <div className="flex items-center lg:flex-1">
                         <Link href="/">
-                            <span className="text-2xl font-semibold">
+                            <span className="text-2xl font-medium opacity-80">
                                 <span className="text-primary">DSB</span> General Construction
                             </span>
                         </Link>
                     </div>
                     <div className="hidden lg:flex lg:gap-x-7">{renderNavLinks()}</div>
-                    <a
-                        href="tel:999-999-9999"
-                        className="items-center hidden px-4 py-2 ml-8 leading-7 transition-all duration-300 ease-in-out border-2 rounded-md border-primary lg:flex hover:bg-primary"
-                    >
-                        <FaPhone className="inline-block text-xl text-primary" />
-                        <span className="ml-3 text-lg">999-999-9999</span>
-                    </a>
+
+                    <span className="ml-5 font-extralight">123-456-7890</span>
                     <div className="flex lg:hidden">
                         <button
                             type="button"
