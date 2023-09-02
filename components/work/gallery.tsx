@@ -7,7 +7,7 @@ export default async function Gallery() {
 
     gallery.sort((a: any, b: any) => b.id - a.id)
     return (
-        <div className="flex flex-wrap justify-center gap-10 lg:justify-start">
+        <div className="flex flex-wrap justify-center gap-10 mx-auto lg:justify-start lg:container lg:px-8">
             {gallery.map((work: any, index: number) => (
                 <GalleryCard key={index} work={work} />
             ))}
