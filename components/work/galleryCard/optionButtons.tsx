@@ -53,11 +53,11 @@ export default function OptionButtons({ workId }: { workId: number }) {
     // }
 
     return (
-        <div className="flex items-center border-t opacity-50 border-black/40">
+        <div className="flex items-center border-t border-black/30">
             <Dialog>
-                <DialogTrigger className="flex items-center justify-center w-1/2 gap-2 py-2 text-sm text-center">
+                <DialogTrigger className="flex items-center justify-center w-1/2 gap-2 py-2 text-xs text-center">
                     <BiSolidComment className="mt-1 text-primary" />
-                    reviews
+                    <div className="opacity-70">reviews</div>
                 </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
@@ -71,11 +71,11 @@ export default function OptionButtons({ workId }: { workId: number }) {
             </Dialog>
             <div className="flex items-center justify-center w-1/2 gap-2 py-2 text-xs text-center border-l border-black/40">
                 <AiOutlinePicture className="text-primary" />
-                gallery
+                <div className="opacity-70">gallery</div>
             </div>
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex justify-center w-1/6 py-2 text-xs border-l border-black/40">
-                    <SlOptionsVertical className="w-auto text-base" />
+                    <SlOptionsVertical className="w-auto text-base opacity-70" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                     <DropdownMenuItem>
