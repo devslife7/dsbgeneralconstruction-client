@@ -1,51 +1,48 @@
 import Link from "next/link"
 import Image from "next/image"
 import heroBackground from "@/public/images//hero-house.webp"
-import Button from "../ui/button"
+import Button, { buttonStyles } from "../ui/button"
+import { cn } from "@/lib/utils"
 
 export default function Hero() {
     return (
-        <div className="h-[70vh] lg:h-[54rem">
-            {/* <div className="absolute w-full h-full -z-10">
+        // <div className="h-[54rem]">
+        <div className=" h-[54rem] relative container mx-auto px-4 lg:px-8">
+            <div className="w-full h-full px-8 bg-black/40">
                 <Image
                     alt="Hero Kitchen"
                     src={heroBackground}
                     placeholder="blur"
                     quality={100}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 60vw"
                     priority
-                    className="object-cover w-full h-full"
+                    className="object-cover px-8 -z-10"
                 />
-            </div> */}
-            <div className="relative h-full rounded-md my-container">
-                <div className="w-full h-full bg-green-400 -z-1">
-                    {/* <Image
-                        alt="Hero Kitchen"
-                        src={heroBackground}
-                        placeholder="blur"
-                        quality={100}
-                        // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
-                        priority
-                        // className="object-cover"
-                    /> */}
-                </div>
-                <div className="absolute flex items-center justify-center h-full text-center text-white bg-red-400 ">
-                    <div className="relative max-w-4xl py-14 lg:py-20">
-                        <h1 className="text-4xl font-bold md:text-5xl lg:text-7xl">Your Dream Home Awaits</h1>
-                        <p className="max-w-xl mx-auto mt-5 mb-10 font-light text-md md:text-xl lg:text-xl lg:leading-relaxed">
+                <div className="absolute flex items-center justify-center w-full h-full mx-auto text-center text-white left-40 lg:text-left lg:justify-start ">
+                    <div className="relative max-w-2xl py-14 lg:py-20 ">
+                        <h1 className="text-2xl font-semibold md:text-5xl lg:text-7xl ">
+                            Exceptional Home Remodeling & Renovations
+                        </h1>
+                        {/* <p className="max-w-xl mt-5 mb-10 font-light text-md md:text-xl lg:text-xl lg:leading-relaxed">
                             Our skilled artisans pour their heart and soul into every project, ensuring
                             impeccable finishes and long-lasting beauty.
-                        </p>
-                        <Link href="/work">
-                            <Button size="lg" className="font-light lg:text-lg">
-                                Explore Gallery
-                            </Button>
+                        </p> */}
+                        <Link
+                            href="/work"
+                            className={cn(buttonStyles({ size: "lg" }), "font-light lg:text-lg mt-10")}
+                        >
+                            Explore Gallery
                         </Link>
+
+                        {/* <ScrollLink to="contact" className={buttonStyles({ size: "lg" })}>
+            <Translator content="heroButton" />
+        </ScrollLink> */}
                     </div>
                 </div>
             </div>
         </div>
+        // </div>
     )
 }
 

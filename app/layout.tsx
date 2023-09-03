@@ -2,9 +2,10 @@ import "./globals.css"
 import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Lobster, Roboto } from "next/font/google"
 
 const inter = Inter({ subsets: ["latin"] })
+const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] })
 
 export const metadata: Metadata = {
     title: "dsbgeneralconstruction",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={`${inter.className} bg-backgroundGray`}>
+            <body className={`${inter.className} bg-custom-white`}>
                 <Navbar />
                 {children}
                 <Footer />

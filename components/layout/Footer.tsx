@@ -18,7 +18,7 @@ export default function Footer() {
     }
 
     return (
-        <footer className="sticky mt-auto text-white bg-background top-full">
+        <footer className="sticky mt-auto top-full bg-custom-black text-custom-white">
             <div className="flex flex-col items-center justify-center my-container h-52 gap-y-4 md:flex-row md:justify-between">
                 <div className="text-xl text-center">
                     <span className="text-primary">DSB</span> General Construction

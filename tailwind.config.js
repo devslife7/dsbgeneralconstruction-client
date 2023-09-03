@@ -50,8 +50,10 @@ module.exports = {
                     800: "#744100",
                     900: "#462700",
                 },
-                background: "#232323",
-                backgroundGray: "#f5f5f5",
+                custom: {
+                    white: "#f5f5f5",
+                    black: "#232323",
+                },
             },
         },
     },
