@@ -35,9 +35,8 @@ export default function AddWorkButton() {
 
     return (
         <div className=" my-container">
-            <Button onClick={openModal}>
+            <Button onClick={openModal} className="w-10 h-10 p-0 bg-gray-300 rounded-full hover:bg-gray-400">
                 <HiPlus />
-                Add Work
             </Button>
 
             <Modal title="Add Work Form" isModalOpen={isModalOpen} closeModal={closeModal}>
