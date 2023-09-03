@@ -19,14 +19,10 @@ export default function Hero() {
                     className="object-cover lg:px-8 -z-10"
                 />
                 <div className="absolute flex items-center justify-center w-full h-full mx-auto text-center text-white lg:w-auto lg:text-left lg:justify-start">
-                    <div className="max-w-2xl py-14 lg:py-20 ">
-                        <p className="text-5xl font-semibold leading-tight lg:leading-tight lg:text-7xl">
+                    <div className="max-w-[18rem] lg:max-w-2xl py-14 lg:py-20 lg:ml-10">
+                        <p className="text-4xl font-semibold leading-tight md:text-5xl lg:leading-tight lg:text-7xl">
                             Exceptional Home Remodeling & Renovations
                         </p>
-                        {/* <p className="max-w-xl mt-5 mb-10 font-light text-md md:text-xl lg:text-xl lg:leading-relaxed">
-                            Our skilled artisans pour their heart and soul into every project, ensuring
-                            impeccable finishes and long-lasting beauty.
-                        </p> */}
                         <Link
                             href="/work"
                             className={cn(buttonStyles({ size: "lg" }), "font-light lg:text-lg mt-10")}
