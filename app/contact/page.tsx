@@ -1,8 +1,5 @@
 import Link from "next/link"
 import { socialMediaLinks } from "@/lib/data/socialMediaLinks"
-import { FaMapLocationDot } from "react-icons/fa6"
-import { BsWhatsapp } from "react-icons/bs"
-import { MdMailOutline } from "react-icons/md"
 
 export default function Contact() {
     const renderMediaLinks = () => {
@@ -38,23 +35,17 @@ export default function Contact() {
             </div>
             <div className="gap-5 space-y-16 mb-36 lg:flex lg:flex-wrap lg:items-end lg:justify-between">
                 <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[21rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly">
-                    <p className="text-[4.7rem] mb-7 text-green-400">
-                        <BsWhatsapp />
-                    </p>
+                    <p className="text-[4.7rem] mb-7 text-green-400"></p>
                     <div className="text-[2.2rem]">WhatsApp</div>
                     <div className="text-2xl font-light">+1 999 999 9999</div>
                 </div>
                 <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[17rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly order-first">
-                    <p className="text-[4.7rem] mb-7 text-blue-500">
-                        <MdMailOutline />
-                    </p>
+                    <p className="text-[4.7rem] mb-7 text-blue-500"></p>
                     <div className="text-[1.8rem]">Send us an email</div>
                     <div className="text-xl font-light">email123@gmail.com</div>
                 </div>
                 <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[16rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly">
-                    <p className="text-[4.7rem] mb-7 text-primary">
-                        <FaMapLocationDot />
-                    </p>
+                    <p className="text-[4.7rem] mb-7 text-primary"></p>
                     <div className="text-[1.8rem]">Our Location</div>
                     <div className="text-xl font-light">Fort Washington, MD 20744</div>
                 </div>
