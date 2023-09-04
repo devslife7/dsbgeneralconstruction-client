@@ -1,6 +1,6 @@
 // "use client"
-import { deleteWork } from "@/utils/api_calls"
-import GalleryCard from "./GalleryCard"
+// import { deleteWork } from "@/utils/api_calls"
+// import GalleryCard from "./GalleryCard"
 
 type WorkProps = {
     id: number
