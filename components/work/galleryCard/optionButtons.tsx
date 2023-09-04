@@ -1,6 +1,6 @@
 import { deleteWork } from "@/lib/api_calls/api_calls"
 import { SlOptionsVertical } from "react-icons/sl"
-import { Edit, Delete, Gallery, Reviews, Options } from "@/public/svgs"
+import { EditSVG, DeleteSVG, GallerySVG, ReviewsSVG, OptionsSVG } from "@/public/svgs"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -54,7 +54,7 @@ export default function OptionButtons({ workId }: { workId: number }) {
         <div className="flex items-center border-t border-black/30">
             <Dialog>
                 <DialogTrigger className="flex items-center justify-center w-1/2 gap-2 py-2 text-xs text-center">
-                    <Reviews className="text-sm mt-[.1rem] text-primary" />
+                    <ReviewsSVG className="text-sm mt-[.1rem] text-primary" />
                     <div className="opacity-70">reviews</div>
                 </DialogTrigger>
                 <DialogContent>
@@ -68,20 +68,20 @@ export default function OptionButtons({ workId }: { workId: number }) {
                 </DialogContent>
             </Dialog>
             <div className="flex items-center justify-center w-1/2 gap-2 py-2 text-xs text-center border-l border-black/40">
-                <Gallery className="text-base text-primary" />
+                <GallerySVG className="text-base text-primary" />
                 <div className="opacity-70">gallery</div>
             </div>
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex justify-center w-1/6 py-2 text-xs border-l border-black/40">
-                    <Options className="w-auto text-base opacity-70" />
+                    <OptionsSVG className="w-auto text-base opacity-70" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="text-gray-600">
                     <DropdownMenuItem>
-                        <Edit className="mr-4 text-base text-green-500" />
+                        <EditSVG className="mr-4 text-base text-green-500" />
                         Edit
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={handleWorkDelete}>
-                        <Delete className="mr-4 text-red-500" />
+                        <DeleteSVG className="mr-4 text-red-500" />
                         Delete
                     </DropdownMenuItem>
                 </DropdownMenuContent>

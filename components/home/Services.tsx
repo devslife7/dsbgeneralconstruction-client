@@ -1,5 +1,3 @@
-import { RxDotFilled } from "react-icons/rx"
-
 const servicesList = [
     "Concrete",
     "Remodeling",
@@ -22,7 +20,7 @@ export default function Services() {
                 <span key={idx} className="inline-block leading-relaxed">
                     {serviceName}
                 </span>
-                <RxDotFilled className="inline-block mx-2 text-primary" />
+                {/* <RxDotFilled className="inline-block mx-2 text-primary" /> */}
             </>
         ))
     }

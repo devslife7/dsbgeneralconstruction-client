@@ -1,11 +1,11 @@
 "use client"
 import { useEffect, useState } from "react"
 import { RxHamburgerMenu } from "react-icons/rx"
+
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import MobileNav from "./MobileNav"
-import { FaPhone } from "react-icons/fa"
-import { cn } from "@/lib/utils"
+import { MenuSVG } from "@/public/svgs"
 
 interface NavLink {
     label: string
@@ -86,7 +86,7 @@ export default function Navbar() {
                     </p>
                     <button className="p-2.5 lg:hidden" onClick={handleMobileMenuOpen}>
                         <span className="sr-only">Open main menu</span>
-                        <RxHamburgerMenu className="text-3xl" aria-hidden="true" />
+                        <MenuSVG className="text-3xl opacity-80" aria-hidden="true" />
                     </button>
                 </nav>
                 {mobileMenuOpen && (

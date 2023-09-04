@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { deleteWork } from "@/lib/api_calls/api_calls"
 import OptionButtons from "./optionButtons"
 import MediaViewer from "./mediaViewer"
-import StarFilled from "@/public/svgs/StarFilled.svg"
+import StarFilledSVG from "@/public/svgs/StarFilled.svg"
 
 type WorkProps = {
     id: number
@@ -56,7 +56,7 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                             {getWorkRating()}
                         </span>
                         {/* <AiFillStar className="inline-block text-lg text-primary" /> */}
-                        <StarFilled className="text-primary" />
+                        <StarFilledSVG className="text-primary" />
                     </div>
                 </div>
                 <div className="opacity-60">{work.description}</div>
