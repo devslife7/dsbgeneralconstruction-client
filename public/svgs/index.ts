@@ -1,2 +1,6 @@
-export { default as StarFilled } from "./StarFilled.svg"
-export { default as Edit } from "./StarFilled.svg"
+export { default as StarFilled } from "./starFilled.svg"
+export { default as Edit } from "./edit.svg"
+export { default as Delete } from "./delete.svg"
+export { default as Gallery } from "./gallery.svg"
+export { default as Reviews } from "./reviews.svg"
+export { default as Options } from "./options.svg"

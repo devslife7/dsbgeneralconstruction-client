@@ -1,9 +1,6 @@
 import { deleteWork } from "@/lib/api_calls/api_calls"
 import { SlOptionsVertical } from "react-icons/sl"
-import { AiOutlinePicture } from "react-icons/ai"
-import { LuEdit3 } from "react-icons/lu"
-import Edit from "@/public/svgs/edit.svg"
-import { BiSolidTrashAlt, BiSolidComment } from "react-icons/bi"
+import { Edit, Delete, Gallery, Reviews, Options } from "@/public/svgs"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -57,7 +54,7 @@ export default function OptionButtons({ workId }: { workId: number }) {
         <div className="flex items-center border-t border-black/30">
             <Dialog>
                 <DialogTrigger className="flex items-center justify-center w-1/2 gap-2 py-2 text-xs text-center">
-                    <BiSolidComment className="mt-1 text-primary" />
+                    <Reviews className="text-sm mt-[.1rem] text-primary" />
                     <div className="opacity-70">reviews</div>
                 </DialogTrigger>
                 <DialogContent>
@@ -71,20 +68,20 @@ export default function OptionButtons({ workId }: { workId: number }) {
                 </DialogContent>
             </Dialog>
             <div className="flex items-center justify-center w-1/2 gap-2 py-2 text-xs text-center border-l border-black/40">
-                <AiOutlinePicture className="text-primary" />
+                <Gallery className="text-base text-primary" />
                 <div className="opacity-70">gallery</div>
             </div>
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex justify-center w-1/6 py-2 text-xs border-l border-black/40">
-                    <SlOptionsVertical className="w-auto text-base opacity-70" />
+                    <Options className="w-auto text-base opacity-70" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="text-gray-600">
                     <DropdownMenuItem>
                         <Edit className="mr-4 text-base text-green-500" />
                         Edit
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={handleWorkDelete}>
-                        <BiSolidTrashAlt className="mr-4 text-red-500" />
+                        <Delete className="mr-4 text-red-500" />
                         Delete
                     </DropdownMenuItem>
                 </DropdownMenuContent>

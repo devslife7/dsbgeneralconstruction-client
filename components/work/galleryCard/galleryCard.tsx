@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { deleteWork } from "@/lib/api_calls/api_calls"
 import OptionButtons from "./optionButtons"
 import MediaViewer from "./mediaViewer"
-import { StarFilled } from "@/public/svgs"
+import StarFilled from "@/public/svgs/StarFilled.svg"
 
 type WorkProps = {
     id: number
