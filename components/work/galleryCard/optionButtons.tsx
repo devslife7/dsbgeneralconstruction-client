@@ -1,8 +1,9 @@
-import { SlOptionsVertical } from "react-icons/sl"
-import { LuEdit3 } from "react-icons/lu"
-import { BiSolidTrashAlt, BiSolidComment } from "react-icons/bi"
-import { AiOutlinePicture } from "react-icons/ai"
 import { deleteWork } from "@/lib/api_calls/api_calls"
+import { SlOptionsVertical } from "react-icons/sl"
+import { AiOutlinePicture } from "react-icons/ai"
+import { LuEdit3 } from "react-icons/lu"
+import Edit from "@/public/svgs/edit.svg"
+import { BiSolidTrashAlt, BiSolidComment } from "react-icons/bi"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -79,7 +80,7 @@ export default function OptionButtons({ workId }: { workId: number }) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                     <DropdownMenuItem>
-                        <LuEdit3 className="mr-4 text-base text-green-500" />
+                        <Edit className="mr-4 text-base text-green-500" />
                         Edit
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={handleWorkDelete}>

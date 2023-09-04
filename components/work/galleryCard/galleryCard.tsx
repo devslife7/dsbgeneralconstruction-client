@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation"
 import { deleteWork } from "@/lib/api_calls/api_calls"
 import OptionButtons from "./optionButtons"
 import MediaViewer from "./mediaViewer"
-import { AiFillStar } from "react-icons/ai"
-import { GrFormNext } from "react-icons/gr"
 import { StarFilled } from "@/public/svgs"
 
 type WorkProps = {
@@ -52,11 +50,13 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
             </div>
             <div className="px-4 mb-5">
                 <div className="flex justify-between">
-                    <div className="mt-2 text-xl">{workTitle}</div>
-                    <div className="flex items-center bg-pink-400">
-                        <span className="text-center bg-blue-700">{getWorkRating()}</span>
+                    <div className="mt-2 text-xl opacity-80">{workTitle}</div>
+                    <div className="flex items-center ">
+                        <span className="mt-[0.1rem] mr-[0.1rem] text-sm text-center opacity-70">
+                            {getWorkRating()}
+                        </span>
                         {/* <AiFillStar className="inline-block text-lg text-primary" /> */}
-                        <StarFilled className="bg-red-500 text-primary" />
+                        <StarFilled className="text-primary" />
                     </div>
                 </div>
                 <div className="opacity-60">{work.description}</div>
