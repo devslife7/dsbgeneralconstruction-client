@@ -1,8 +1,8 @@
 import { useState } from "react"
 import Button from "../ui/button"
 import { createWork } from "@/lib/api_calls/api_calls"
-import { CgSpinnerAlt } from "react-icons/cg"
 import { useRouter } from "next/navigation"
+import { SpinnerSVG } from "@/public/svgs"
 
 // Limiting the file input to 10mb = 10_000_000
 const FILE_SIZE_LIMIT = 10_000_000
@@ -96,11 +96,11 @@ export default function CreateWorkForm({ closeModal }: { closeModal: () => void 
             </div>
 
             <div className="flex justify-end mt-6 space-x-4">
-                <Button onClick={closeModal} variant="danger">
+                {/* <Button onClick={closeModal} variant="danger">
                     Cancel
-                </Button>
+                </Button> */}
                 <Button type="submit" variant="secondary">
-                    {isLoading && <CgSpinnerAlt className="text-xl animate-spin" />}
+                    {true && <SpinnerSVG className="text-2xl animate-spin" />}
                     Submit
                 </Button>
             </div>

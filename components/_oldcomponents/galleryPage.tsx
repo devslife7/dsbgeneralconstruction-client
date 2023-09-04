@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 // import { fetchGallery, deleteWork } from "@/utils/api_calls"
 import { Modal } from "@/components/ui/modal"
-// import { Button } from "@/components/ui/button"
+// import Button from "@/components/ui/button"
 // import CreateWorkForm from "@/components/gallery/CreateWorkForm"
 // import AdminPasswordForm from "@/components/gallery/work/AdminPasswordForm"
 // import { GalleryItems } from "@/components/gallery/galleryItems"

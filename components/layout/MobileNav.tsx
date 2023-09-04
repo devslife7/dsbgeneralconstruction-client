@@ -1,8 +1,8 @@
+import { HomeWorkSVG } from "@/public/svgs"
 import { Dialog } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { MdHomeWork } from "react-icons/md"
 
 type Props = {
     mobileMenuOpen: boolean
@@ -30,7 +30,7 @@ export default function MobileNav({ mobileMenuOpen, setMobileMenuOpen, navLinks 
             <div className="fixed inset-0 z-10" />
             <Dialog.Panel className="fixed top-0 bottom-0 right-0 z-10 w-full overflow-y-auto bg-custom-black bg-opacity-[0.99] text-white px-6 py-6 max-w-[15rem] sm:ring-1 sm:ring-gray-900/10">
                 <div className="flex items-center justify-between">
-                    <MdHomeWork className="text-4xl text-primary" />
+                    <HomeWorkSVG className="text-4xl text-primary" />
                     <button type="button" className="-m-2.5 rounded-md p-2.5 " onClick={closeMobileMenu}>
                         <span className="sr-only">Close menu</span>
                         <XMarkIcon className="w-6 h-6" aria-hidden="true" />

@@ -1,5 +1,4 @@
 import { deleteWork } from "@/lib/api_calls/api_calls"
-import { SlOptionsVertical } from "react-icons/sl"
 import { EditSVG, DeleteSVG, GallerySVG, ReviewsSVG, OptionsSVG } from "@/public/svgs"
 import {
     DropdownMenu,

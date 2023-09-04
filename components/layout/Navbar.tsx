@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import { RxHamburgerMenu } from "react-icons/rx"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"

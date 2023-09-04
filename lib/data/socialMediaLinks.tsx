@@ -1,24 +1,25 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa"
+import { FacebookSVG, InstagramSVG, TwitterSVG, YoutubeSVG } from "@/public/svgs"
 
 export const socialMediaLinks = [
-  {
-    label: "Facebook",
-    href: "https://www.instagram.com/dsbgeneralconstruction/",
-    icon: <FaFacebook />,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/dsbgeneralconstruction/",
-    icon: <FaInstagram />,
-  },
-  {
-    label: "Twitter",
-    href: "https://www.instagram.com/dsbgeneralconstruction/",
-    icon: <FaTwitter />,
-  },
-  {
-    label: "Youtube",
-    href: "https://www.instagram.com/dsbgeneralconstruction/",
-    icon: <FaYoutube />,
-  },
+    {
+        label: "Facebook",
+        href: "https://www.instagram.com/dsbgeneralconstruction/",
+        // icon: <FaFacebook />,
+        icon: <FacebookSVG />,
+    },
+    {
+        label: "Instagram",
+        href: "https://www.instagram.com/dsbgeneralconstruction/",
+        icon: <InstagramSVG />,
+    },
+    {
+        label: "Twitter",
+        href: "https://www.instagram.com/dsbgeneralconstruction/",
+        icon: <TwitterSVG />,
+    },
+    {
+        label: "Youtube",
+        href: "https://www.instagram.com/dsbgeneralconstruction/",
+        icon: <YoutubeSVG />,
+    },
 ]

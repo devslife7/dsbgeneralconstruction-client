@@ -1,10 +1,10 @@
 "use client"
 import { Modal } from "@/components/ui/modal"
 import Button from "@/components/ui/button"
-import { HiPlus } from "react-icons/hi"
 import CreateWorkForm from "./createWorkForm"
 import AdminPasswordForm from "./adminLoginForm"
 import { useState } from "react"
+import { PlusSVG } from "@/public/svgs"
 
 type WorkProps = {
     id: number
@@ -36,7 +36,7 @@ export default function AddWorkButton() {
     return (
         <div className=" my-container">
             <Button onClick={openModal} className="w-10 h-10 p-0 bg-gray-300 rounded-full hover:bg-gray-400">
-                <HiPlus />
+                <PlusSVG />
             </Button>
 
             <Modal title="Add Work Form" isModalOpen={isModalOpen} closeModal={closeModal}>
