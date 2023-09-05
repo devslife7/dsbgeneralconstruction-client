@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import heroBackground from "@/public/images//hero-house.webp"
-import Button, { buttonStyles } from "../ui/button"
+import { buttonStyles } from "../ui/button"
 import { cn } from "@/lib/utils"
 
 export default function Hero() {
@@ -20,7 +20,7 @@ export default function Hero() {
                 />
                 <div className="absolute flex items-center justify-center w-full h-full mx-auto text-center text-white lg:w-auto lg:text-left lg:justify-start">
                     <div className="max-w-[18rem] lg:max-w-2xl py-14 lg:py-20 lg:ml-10">
-                        <p className="text-4xl font-semibold leading-tight md:text-5xl lg:leading-tight lg:text-7xl">
+                        <p className="text-4xl font-semibold leading-tight font-roboto md:text-5xl lg:leading-tight lg:text-7xl">
                             Exceptional Home Remodeling & Renovations
                         </p>
                         <Link

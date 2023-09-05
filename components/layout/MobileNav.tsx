@@ -1,6 +1,5 @@
-import { HomeWorkSVG } from "@/public/svgs"
+import { CloseSVG, HomeWorkSVG } from "@/public/svgs"
 import { Dialog } from "@headlessui/react"
-import { XMarkIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -33,7 +32,7 @@ export default function MobileNav({ mobileMenuOpen, setMobileMenuOpen, navLinks 
                     <HomeWorkSVG className="text-4xl text-primary" />
                     <button type="button" className="-m-2.5 rounded-md p-2.5 " onClick={closeMobileMenu}>
                         <span className="sr-only">Close menu</span>
-                        <XMarkIcon className="w-6 h-6" aria-hidden="true" />
+                        <CloseSVG className="w-6 h-6" aria-hidden="true" />
                     </button>
                 </div>
                 <div className="flow-root mt-10">

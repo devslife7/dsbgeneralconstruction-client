@@ -10,13 +10,6 @@ module.exports = {
         "./public/**/*.html",
     ],
     theme: {
-        // container: {
-        //     center: true,
-        //     padding: "2rem",
-        //     screens: {
-        //         "2xl": "1400px",
-        //     },
-        // },
         extend: {
             keyframes: {
                 "accordion-down": {
@@ -35,6 +28,8 @@ module.exports = {
             fontFamily: {
                 satoshi: ["Satoshi", "sans-serif"],
                 inter: ["Inter", "sans-serif"],
+                roboto: ["var(--font-roboto)", "sans-serif"],
+                titillium: ["var(--font-titillium)", "sans-serif"],
             },
             colors: {
                 primary: {

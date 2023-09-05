@@ -100,7 +100,7 @@ export default function CreateWorkForm({ closeModal }: { closeModal: () => void 
                     Cancel
                 </Button> */}
                 <Button type="submit" variant="secondary">
-                    {true && <SpinnerSVG className="text-2xl animate-spin" />}
+                    {isLoading && <SpinnerSVG className="text-2xl animate-spin" />}
                     Submit
                 </Button>
             </div>

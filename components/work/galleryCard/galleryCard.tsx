@@ -15,19 +15,6 @@ type WorkProps = {
     ratings: number[]
 }
 
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-// redeploy test
-
 export default function GalleryCard({ work }: { work: WorkProps }) {
     const router = useRouter()
     const coverFile = work.image_urls[0]
