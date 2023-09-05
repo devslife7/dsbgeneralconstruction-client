@@ -25,7 +25,7 @@ export default function AboutSection() {
                 src={KitchenBg}
                 height={900}
                 alt="kitchen"
-                className="mx-auto mt-10 bg-blue-500 lg:mx-0 lg:mt-0"
+                className="mx-auto mt-10 lg:mx-0 lg:mt-0"
             />
         </div>
     )
