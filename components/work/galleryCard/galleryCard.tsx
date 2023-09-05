@@ -19,6 +19,14 @@ type WorkProps = {
 // redeploy test
 // redeploy test
 // redeploy test
+// redeploy test
+// redeploy test
+// redeploy test
+// redeploy test
+// redeploy test
+// redeploy test
+// redeploy test
+// redeploy test
 
 export default function GalleryCard({ work }: { work: WorkProps }) {
     const router = useRouter()
