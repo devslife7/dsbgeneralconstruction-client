@@ -55,8 +55,7 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                         <span className="mt-[0.1rem] mr-[0.1rem] text-sm text-center opacity-70">
                             {getWorkRating()}
                         </span>
-                        {/* <AiFillStar className="inline-block text-lg text-primary" /> */}
-                        <StarFilledSVG className="text-primary" />
+                        {/* <StarFilledSVG className="text-primary" /> */}
                     </div>
                 </div>
                 <div className="opacity-60">{work.description}</div>
