@@ -4,9 +4,9 @@
     npm install react-icons
 */
 
+import { CloseSVG } from "@/public/svgs"
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment } from "react"
-import { RiCloseFill } from "react-icons/ri"
 
 type Props = {
     closeModal: () => void
@@ -50,8 +50,8 @@ export function Modal({
                             <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white rounded-lg shadow-xl">
                                 <Dialog.Title className="flex justify-between mb-8 text-2xl font-medium leading-6 text-center text-gray-900">
                                     {title}
-                                    <RiCloseFill
-                                        className="text-2xl text-gray-500 rounded-md hover:bg-gray-100 hover:cursor-pointer hover:text-red-500"
+                                    <CloseSVG
+                                        className="text-gray-500 rounded-md text-1xl hover:bg-gray-100 hover:cursor-pointer hover:text-red-500"
                                         onClick={closeModal}
                                     />
                                 </Dialog.Title>
