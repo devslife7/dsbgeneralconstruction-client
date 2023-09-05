@@ -15,73 +15,73 @@ export const servicesData = [
     {
         title: "Remodeling",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Our goal is to enhance the aesthetics, functionality, and value of your space, delivering results that match your unique vision and needs.",
         src: kitchenMobile,
     },
     {
         title: "Concrete",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Let us help you with your concrete needs, whether it's a residential or commercial project, and we'll ensure your satisfaction with our professional services.",
         src: concrete,
     },
     {
         title: "Fences",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Whether you're looking for a wooden, vinyl, or chain-link iron fence, we have the skills and materials to bring your vision to life. ",
         src: fences,
     },
     {
         title: "Flooring",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Our team of experts excels in the installation, repair, and maintenance of various flooring types, including hardwood, laminate, tile, carpet, and more.",
         src: flooring,
     },
     {
         title: "Electrical",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Whether it's fixing faulty circuits, installing lighting fixtures, or setting up electrical panels we have the expertise to ensure your electrical systems run smoothly and safely. ",
         src: electrical,
     },
     {
         title: "Carpentry",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "With a team of skilled carpenters, we offer a wide range of carpentry solutions, including custom woodworking, cabinetry, furniture construction, and structural framing.",
         src: carpentry,
     },
     {
         title: "Hauling",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "We proudly offer hauling services to help you with your transportation and disposal needs. ",
         src: hauling,
     },
     {
         title: "Land Clearing",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Do you need to reclaim overgrown or unused land? We have the expertise and equipment to efficiently clear the area.",
         src: landClearing,
     },
     {
         title: "Painting",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "We handle everything from interior and exterior painting to specialty finishes and coatings. ",
         src: painting,
     },
     {
         title: "Moving",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Our experienced movers are trained to handle fragile items, heavy furniture, and valuable possessions with precision and attention to detail.",
         src: movers,
     },
     {
         title: "Landscaping",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Trust us to turn your outdoor space into a picturesque oasis that complements your lifestyle and adds value to your property.",
         src: landscaping,
     },
     {
         title: "Plumbing",
         Description:
-            "Describe your image here. Use catchy text to tell people the story behind the photo. Go to Manage Media” to add your content.",
+            "Whether it's a minor repair or a major installation, you can trust us to handle your plumbing needs with professionalism and expertise.",
         src: plumbing,
     },
 ]
