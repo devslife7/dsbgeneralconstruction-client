@@ -17,3 +17,5 @@ export { default as FacebookSVG } from "./socials/facebook.svg"
 export { default as InstagramSVG } from "./socials/instagram.svg"
 export { default as TwitterSVG } from "./socials/twitter.svg"
 export { default as YoutubeSVG } from "./socials/youtube.svg"
+
+export { default as LogoSVG } from "./logo.svg"

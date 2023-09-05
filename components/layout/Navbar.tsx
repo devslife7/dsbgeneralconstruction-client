@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import MobileNav from "./MobileNav"
-import { MenuSVG } from "@/public/svgs"
+import { LogoSVG, MenuSVG } from "@/public/svgs"
 
 interface NavLink {
     label: string
@@ -75,7 +75,8 @@ export default function Navbar() {
             <header className="fixed top-0 z-10 w-full transition-all duration-300 ease-in-out bg-custom-white">
                 <nav className="flex items-center justify-between h-32 my-container">
                     <div className="mt-6 lg:mt-0 lg:flex-1">
-                        <Link href="/" className="text-xl font-semibold opacity-80">
+                        <Link href="/" className="text-xl font-semibold opacity-80 leading-none">
+                            <LogoSVG className="text-primary inline-block mb-2 mr-2 text-3xl"/>
                             <span className="text-primary">DSB</span> General Construction
                         </Link>
                         <p className="mt-2 text-sm break-normal lg:hidden lg:ml-5 font-extralight">
