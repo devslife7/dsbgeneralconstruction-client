@@ -1,5 +1,5 @@
 import { deleteWork } from "@/lib/api_calls/api_calls"
-import { EditSVG, DeleteSVG, GallerySVG, ReviewsSVG, OptionsSVG } from "@/public/svgs"
+import { DeleteSVG, GallerySVG, ReviewsSVG, OptionsSVG } from "@/public/svgs"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -76,7 +76,7 @@ export default function OptionButtons({ workId }: { workId: number }) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="text-gray-600">
                     <DropdownMenuItem>
-                        <EditSVG className="mr-4 text-base text-green-500" />
+                        {/* <EditSVG className="mr-4 text-base text-green-500" /> */}
                         Edit
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={handleWorkDelete}>
