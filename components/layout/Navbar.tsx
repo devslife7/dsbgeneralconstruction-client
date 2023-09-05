@@ -72,6 +72,7 @@ export default function Navbar() {
     return (
         <>
             <div className="h-32"></div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 sm:p-4 lg:grid-cols-4"></div>
             <header className="fixed top-0 z-10 w-full transition-all duration-300 ease-in-out bg-custom-white">
                 <nav className="flex items-center justify-between h-32 my-container">
                     <div className="mt-6 lg:mt-0 lg:flex-1">
