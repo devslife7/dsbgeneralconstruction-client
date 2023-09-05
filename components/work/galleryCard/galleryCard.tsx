@@ -30,7 +30,7 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
     const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
 
     return (
-        <div className="lg:max-w-[20rem] h-full bg-white shadow-lg">
+        <div className="w-full lg:max-w-[20rem] h-full bg-white shadow-lg">
             <div>
                 {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
                     <video width="350" height="450" src={coverFile} controls autoPlay muted>
