@@ -8,7 +8,7 @@ export default function page() {
             <Suspense fallback={<div>Loading...</div>}>
                 <Gallery />
             </Suspense>
-            <AddWorkButton />
+            {/* <AddWorkButton /> */}
         </div>
     )
 }

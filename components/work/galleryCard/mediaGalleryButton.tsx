@@ -16,7 +16,7 @@ const testGallery = [
 ]
 
 export default function MediaGalleryButton({ mediaURLS = testGallery }: Props) {
-    const renderVideo = (videoUrl: string) => {
+    const renderVideo = (videoUrl: string, index: number) => {
         return (
             <PhotoView
                 width={600}
@@ -33,14 +33,14 @@ export default function MediaGalleryButton({ mediaURLS = testGallery }: Props) {
                     )
                 }}
             >
-                <video width="400" height="350" src={videoUrl} autoPlay muted>
+                <video width="400" height="350" src={videoUrl} autoPlay muted hidden={index !== 0}>
                     Sorry, your browser doesn't support HTML5 <code>video</code>
                 </video>
             </PhotoView>
         )
     }
 
-    const renderImage = (imageURL: any) => {
+    const renderImage = (imageURL: string, index: number) => {
         return (
             <PhotoView src={imageURL}>
                 <Image
@@ -50,16 +50,17 @@ export default function MediaGalleryButton({ mediaURLS = testGallery }: Props) {
                     height="0"
                     sizes="500px 700px"
                     className="w-full h-auto"
+                    hidden={index !== 0}
                 />
             </PhotoView>
         )
     }
 
     return (
-        <PhotoProvider>
+        <PhotoProvider className="opacity-100">
             {mediaURLS.map((url: string, index: number) => (
-                <div key={index} className="w-[30rem] lg:max-w-[24rem]">
-                    {url && !!url.match(/.mp4|.mov/) ? renderVideo(url) : renderImage(url)}
+                <div key={index} className="w-full max-w-lg lg:max-w-sm">
+                    {url && !!url.match(/.mp4|.mov/) ? renderVideo(url, index) : renderImage(url, index)}
                 </div>
             ))}
         </PhotoProvider>
