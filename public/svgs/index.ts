@@ -1,5 +1,5 @@
-// export { default as StarFilledSVG } from "./starFilled.svg"
-// export { default as EditSVG } from "./edit.svg"
+export { default as StarFilledSVG } from "./starFilled.svg"
+export { default as EditSVG } from "./edit.svg"
 export { default as DeleteSVG } from "./delete.svg"
 export { default as GallerySVG } from "./gallery.svg"
 export { default as ReviewsSVG } from "./reviews.svg"
