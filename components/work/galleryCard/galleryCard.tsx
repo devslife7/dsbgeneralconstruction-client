@@ -15,6 +15,11 @@ type WorkProps = {
     ratings: number[]
 }
 
+// redeploy test
+// redeploy test
+// redeploy test
+// redeploy test
+
 export default function GalleryCard({ work }: { work: WorkProps }) {
     const router = useRouter()
     const coverFile = work.image_urls[0]
@@ -55,7 +60,7 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                         <span className="mt-[0.1rem] mr-[0.1rem] text-sm text-center opacity-70">
                             {getWorkRating()}
                         </span>
-                        {/* <StarFilledSVG className="text-primary" /> */}
+                        <StarFilledSVG className="text-primary" />
                     </div>
                 </div>
                 <div className="opacity-60">{work.description}</div>
