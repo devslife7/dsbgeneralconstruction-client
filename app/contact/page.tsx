@@ -1,55 +1,40 @@
-import Link from "next/link"
-import { socialMediaLinks } from "@/lib/data/socialMediaLinks"
+// import Link from "next/link"
+// import { socialMediaLinks } from "@/lib/data/socialMediaLinks"
+import ContactForm from "@/components/home/ContactForm"
+import ContactSection from "@/components/home/ContactSection"
 
 export default function Contact() {
-    const renderMediaLinks = () => {
-        return socialMediaLinks.map((link, index) => (
-            <Link
-                key={index}
-                className="text-5xl hover:text-primary"
-                href={link.href}
-                aria-label={link.label}
-            >
-                {link.icon}
-            </Link>
-        ))
-    }
-
     return (
-        <div className="my-container">
-            <div className="mt-24 mb-32 text-gray-800">
-                <h1 className="text-5xl font-bold">Schedule a Free Estimate</h1>
-                <p className="mb-14 md:mb-20 mt-8 max-w-2xl text-[1.4rem] font-light text-gray-700">
-                    We are located in Fort Washington, Maryland. We service Northern Virginia and Southern
-                    Maryland including PG County, Calvert County, Anne Arundel County Charles County and St.
-                    Mary&apos;s County.
-                </p>
-                <div className="flex flex-wrap gap-10 mb-20 md:gap-16 text">{renderMediaLinks()}</div>
-                <a
-                    href="tel:999-999-9999"
-                    className="bg-primary text-white border-[3px] border-solid border-transparent inline-block rounded-md text-xl px-7 py-2 md:px-10 md:py-3 md:text-2xl
-              hover:border-solid hover:bg-transparent hover:border-[3px] hover:border-primary hover:text-primary transition-all ease-in-out duration-300 "
-                >
-                    Call now
-                </a>
-            </div>
-            <div className="gap-5 space-y-16 mb-36 lg:flex lg:flex-wrap lg:items-end lg:justify-between">
-                <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[21rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly">
-                    <p className="text-[4.7rem] mb-7 text-green-400"></p>
-                    <div className="text-[2.2rem]">WhatsApp</div>
-                    <div className="text-2xl font-light">+1 999 999 9999</div>
+        <div>
+            <div id="contact" className="grid my-2 my-container py-14 lg:grid-cols-2">
+                <div className=" xl:pl-20">
+                    <h2 className="text-3xl font-semibold opacity-70 mb-2 lg:text-5xl lg:mb-4">
+                        Let's Discuss <br /> Your Next Project
+                    </h2>
+                    <p className="opacity-60 mb-4 lg:text-lg">
+                        Fill out the form, call or text us to <br /> set up a free in-home consultation.
+                    </p>
+                    <p className="opacity-60 text-lg lg:text-xl">email@email.com</p>
+                    <p className="mb-4 opacity-60 text-lg lg:text-xl">123-456-7890</p>
+                    <h3 className="font-medium text-lg opacity-70 lg:text-2xl ">Service Areas:</h3>
+                    <p className="opacity-60 mb-8 lg:text-lg">
+                        Northern Virginia, Fairfax, Alexandria, <br />
+                        Arlington, Sprinfield, Annandale{" "}
+                    </p>
                 </div>
-                <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[17rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly order-first">
-                    <p className="text-[4.7rem] mb-7 text-blue-500"></p>
-                    <div className="text-[1.8rem]">Send us an email</div>
-                    <div className="text-xl font-light">email123@gmail.com</div>
-                </div>
-                <div className="bg-gray-100 bg-opacity-80 mx-auto md:mx-0 px-10 py-10 h-[16rem] max-w-[28rem] md:w-[28rem] rounded-md flex flex-col justify-evenly">
-                    <p className="text-[4.7rem] mb-7 text-primary"></p>
-                    <div className="text-[1.8rem]">Our Location</div>
-                    <div className="text-xl font-light">Fort Washington, MD 20744</div>
+
+                <div className="w-full">
+                    <ContactForm />
                 </div>
             </div>
+
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d36093.48986257273!2d-77.15705092411386!3d38.872872950293186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1693938889264!5m2!1sen!2sus"
+                width="100%"
+                height="500"
+                loading="lazy"
+                className="mb-10"
+            ></iframe>
         </div>
     )
 }
