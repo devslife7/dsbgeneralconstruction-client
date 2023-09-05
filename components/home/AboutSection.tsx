@@ -4,9 +4,9 @@ import Button from "../ui/button"
 
 export default function AboutSection() {
     return (
-        <div className="my-12 text-center lg:text-left my-container lg:flex lg:flex-row-reverse lg:items-center lg:justify-between">
-            <div className="w-full max-w-lg m-auto space-y-8 lg:space-y-10">
-                <div className="text-3xl font-bold lg:font-normal lg:text-5xl">
+        <div className="grid my-12 text-center my-container lg:text-left lg:grid-cols-2">
+            <div className="w-full max-w-lg m-auto space-y-8 lg:order-1 lg:space-y-10 lg:max-xl:ml-6">
+                <div className="text-3xl font-medium lg:font-normal lg:text-5xl">
                     The Leading Bay Area Remodeling Company
                 </div>
                 <p className="text-lg font-light opacity-70">
@@ -16,7 +16,12 @@ export default function AboutSection() {
                 </p>
                 <Button>More About Us</Button>
             </div>
-            <Image src={KitchenBg} height={900} alt="kitchen" className="mt-10 lg:mt-0" />
+            <Image
+                src={KitchenBg}
+                height={900}
+                alt="kitchen"
+                className="mx-auto mt-10 bg-blue-500 lg:mx-0 lg:mt-0"
+            />
         </div>
     )
 }
