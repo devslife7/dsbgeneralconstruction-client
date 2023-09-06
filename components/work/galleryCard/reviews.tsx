@@ -58,7 +58,7 @@ export default function Reviews({ work = workDefault }: { work: WorkProps }) {
             <DialogHeader>
                 <DialogTitle>Reviews</DialogTitle>
                 <DialogDescription>
-                    {work.comments.length > 0 ? (
+                    {/* {work.comments.length > 0 ? (
                         renderComments()
                     ) : (
                         <div className="my-10">
@@ -69,7 +69,18 @@ export default function Reviews({ work = workDefault }: { work: WorkProps }) {
                                 <u>add review</u>
                             </div>
                         </div>
-                    )}
+                    )} */}
+
+                    {renderComments()}
+
+                    <div className="my-10">
+                        <div className="text-center opacity-70 mb-4">
+                            No reviews yet, be the first one to review.
+                        </div>
+                        <div className="text-center opacity-70 cursor-pointer" onClick={commentFormOpen}>
+                            <u>add review</u>
+                        </div>
+                    </div>
 
                     <CommentForm
                         isCommentFormOpen={openCommentForm}
