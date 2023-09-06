@@ -15,12 +15,11 @@ export default async function Gallery() {
                 </p>
             </div>
 
-            {/* <div className="flex flex-wrap justify-center gap-20 lg:gap-10 lg:justify-start">
+            <div className="flex flex-wrap justify-center gap-20 lg:gap-10 lg:justify-start">
                 {gallery.map((work: any, index: number) => (
                     <GalleryCard key={index} work={work} />
                 ))}
-            </div> */}
-            <MediaGalleryButton />
+            </div>
         </div>
     )
 }

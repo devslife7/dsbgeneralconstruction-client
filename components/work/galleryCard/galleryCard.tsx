@@ -6,6 +6,7 @@ import { deleteWork } from "@/lib/api_calls/api_calls"
 import OptionButtons from "./optionButtons"
 import MediaViewer from "./mediaViewer"
 import StarFilledSVG from "@/public/svgs/starFilled.svg"
+import MediaGalleryButton from "./mediaGalleryButton"
 
 type WorkProps = {
     id: number
@@ -32,7 +33,7 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
     return (
         <div className="w-full sm:max-w-md lg:max-w-xs h-full bg-white shadow-lg">
             <div>
-                {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
+                {/* {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
                     <video width="350" height="450" src={coverFile} controls autoPlay muted>
                         Sorry, your browser doesn't support HTML5 <code>video</code>
                     </video>
@@ -46,7 +47,8 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                         className="w-full"
                         priority
                     />
-                )}
+                )} */}
+                <MediaGalleryButton mediaURLS={work.image_urls} />
             </div>
             <div className="px-4 mb-5">
                 <div className="flex justify-between">
@@ -67,9 +69,7 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                     <GrFormNext className="mt-[2px] text-lg transition-transform group-hover:translate-x-0.5" />
                 </Link> */}
             </div>
-            <OptionButtons workId={work.id} />
-
-            {/* <MediaViewer mediaURLS={work.image_urls} /> */}
+            <OptionButtons work={work} />
         </div>
     )
 }
