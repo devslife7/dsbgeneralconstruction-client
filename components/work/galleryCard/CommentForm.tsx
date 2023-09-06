@@ -26,7 +26,6 @@ export default function CommentForm({ isCommentFormOpen, closeCommentForm, workI
         }
         const response = await createCommentAndRating(requestOBJ, workId, rating)
         // setWork(response)
-        console.log("response: ", response)
         router.refresh()
         resetForm()
     }
