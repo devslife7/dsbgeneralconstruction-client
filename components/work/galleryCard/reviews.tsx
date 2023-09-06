@@ -49,7 +49,7 @@ export default function Reviews({ work }: { work: WorkProps }) {
             <DialogHeader>
                 <DialogTitle>Reviews</DialogTitle>
                 <DialogDescription>
-                    {work.comments.length > 0 ? (
+                    {/* {work.comments.length > 0 ? (
                         renderComments()
                     ) : (
                         <div className="my-10">
@@ -60,7 +60,7 @@ export default function Reviews({ work }: { work: WorkProps }) {
                                 <u>add review</u>
                             </div>
                         </div>
-                    )}
+                    )} */}
 
                     <CommentForm
                         isCommentFormOpen={openCommentForm}
