@@ -12,7 +12,16 @@ type WorkProps = {
     comments: any[]
 }
 
-export default function Reviews({ work }: { work: WorkProps }) {
+const workDefault = {
+    id: 0,
+    title: "string",
+    description: "string",
+    image_urls: [],
+    ratings: [],
+    comments: [],
+}
+
+export default function Reviews({ work = workDefault }: { work: WorkProps }) {
     const [openCommentForm, setOpenCommentForm] = useState(false)
 
     const commentFormOpen = () => setOpenCommentForm(true)
