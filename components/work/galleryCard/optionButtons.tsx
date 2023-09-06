@@ -1,3 +1,4 @@
+"use client"
 import { deleteWork } from "@/lib/api_calls/api_calls"
 import { DeleteSVG, GallerySVG, ReviewsSVG, OptionsSVG, EditSVG } from "@/public/svgs"
 import {

@@ -2,19 +2,20 @@ import Button from "@/components/ui/button"
 import { useState } from "react"
 import { addRatingToWork, createComment, createCommentAndRating } from "@/lib/api_calls/api_calls"
 import MyRating from "../../_oldcomponents/work/MyRating"
+import { useRouter } from "next/navigation"
 
 type Props = {
-    commentFormOpen: boolean
+    isCommentFormOpen: boolean
     closeCommentForm: () => void
     workId: string
-    setWork: (arg: any) => void
+    setWork?: (arg: any) => void
 }
 
-export default function CommentForm(props: Props) {
-    const { commentFormOpen, closeCommentForm, workId, setWork } = props
+export default function CommentForm({ isCommentFormOpen, closeCommentForm, workId, setWork }: Props) {
     const [name, setName] = useState("")
     const [comment, setComment] = useState("")
     const [rating, setRating] = useState(0)
+    const router = useRouter()
 
     // creates a new comment as well as a new rating
     const handleCommentSubmit = async () => {
@@ -24,7 +25,9 @@ export default function CommentForm(props: Props) {
             work_id: workId,
         }
         const response = await createCommentAndRating(requestOBJ, workId, rating)
-        setWork(response)
+        // setWork(response)
+        console.log("response: ", response)
+        router.refresh()
         resetForm()
     }
 
@@ -38,9 +41,7 @@ export default function CommentForm(props: Props) {
     return (
         <div
             id="Comments_form"
-            className={`flex flex-col mt-5 gap-4 max-w-md ${
-                !commentFormOpen && "hidden"
-            } border-solid border-2 p-4 rounded-md`}
+            className={`flex flex-col mt-5 gap-4 max-w-md ${!isCommentFormOpen && "hidden"}  p-4`}
         >
             <div className="flex justify-between">
                 <h1 className="text-xl text-gray-700">Comment</h1>
@@ -63,9 +64,6 @@ export default function CommentForm(props: Props) {
             <div className="flex justify-end space-x-2">
                 <Button variant="primary" onClick={handleCommentSubmit}>
                     Post
-                </Button>
-                <Button variant="cancel" onClick={resetForm}>
-                    Cancel
                 </Button>
             </div>
         </div>

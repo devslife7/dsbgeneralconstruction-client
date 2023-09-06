@@ -1,12 +1,7 @@
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
+"use client"
+import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import CommentForm from "./CommentForm"
+import { useState } from "react"
 
 type WorkProps = {
     id: number
@@ -18,6 +13,11 @@ type WorkProps = {
 }
 
 export default function Reviews({ work }: { work: WorkProps }) {
+    const [openCommentForm, setOpenCommentForm] = useState(false)
+
+    const commentFormOpen = () => setOpenCommentForm(true)
+    const closeCommentForm = () => setOpenCommentForm(false)
+
     const renderComments = () => {
         type Comment = any[]
         const cmts: Comment = work.comments
@@ -56,13 +56,17 @@ export default function Reviews({ work }: { work: WorkProps }) {
                             <div className="text-center opacity-70 mb-4">
                                 No reviews yet, be the first one to review.
                             </div>
-                            <div className="text-center opacity-70 cursor-pointer">
+                            <div className="text-center opacity-70 cursor-pointer" onClick={commentFormOpen}>
                                 <u>add review</u>
                             </div>
                         </div>
                     )}
 
-                    <CommentForm />
+                    <CommentForm
+                        isCommentFormOpen={openCommentForm}
+                        closeCommentForm={closeCommentForm}
+                        workId={work.id.toString()}
+                    />
                 </DialogDescription>
             </DialogHeader>
         </DialogContent>

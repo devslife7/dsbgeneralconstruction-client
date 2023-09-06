@@ -1,10 +1,4 @@
-"use client"
-import Image from "next/image"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { deleteWork } from "@/lib/api_calls/api_calls"
 import OptionButtons from "./optionButtons"
-import MediaViewer from "./mediaViewer"
 import StarFilledSVG from "@/public/svgs/starFilled.svg"
 import MediaGalleryButton from "./mediaGalleryButton"
 
@@ -18,10 +12,6 @@ type WorkProps = {
 }
 
 export default function GalleryCard({ work }: { work: WorkProps }) {
-    const router = useRouter()
-
-    console.log("work:", work)
-
     const getWorkRating = () => {
         if (work.ratings.length <= 0) return 0
         const rating = work.ratings.reduce((a: any, b: any) => a + b) / work.ratings.length
