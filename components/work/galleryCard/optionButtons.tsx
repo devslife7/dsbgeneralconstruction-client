@@ -38,7 +38,7 @@ export default function OptionButtons({ work }: { work: WorkProps }) {
                 </DialogTrigger>
                 <Reviews work={work} />
             </Dialog>
-            <div className="w-1/2 h-8 relative overflow-hidden">
+            <div className="w-1/2 h-8 relative overflow-hidden cursor-pointer">
                 <MediaGalleryButton mediaURLS={work.image_urls} className="z-10 opacity-0 relative" />
                 <div className="absolute top-0 left-0 flex items-center justify-center text-xs gap-1  w-full h-full text-center">
                     <GallerySVG className="text-base text-primary" />
