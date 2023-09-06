@@ -28,10 +28,8 @@ export default function Reviews({ work = workDefault }: { work: WorkProps }) {
     const closeCommentForm = () => setOpenCommentForm(false)
 
     const renderComments = () => {
-        type Comment = any[]
-        const cmts: Comment = work.comments
-
-        return cmts.map((comment, index) => (
+        console.log("work.comments: ", work.comments)
+        return work.comments.map((comment, index) => (
             <div key={index}>
                 <div className="flex gap-2">
                     <div className="inline-flex items-center justify-center w-10 h-10 bg-gray-800 rounded-full">

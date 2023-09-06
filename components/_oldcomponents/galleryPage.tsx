@@ -17,7 +17,6 @@ type WorkProps = {
 export default async function Work() {
     const response = await fetch("http://localhost:3000/works")
     const gallery: WorkProps[] = await response.json()
-    // console.log(">>>>data", data[0].title)
 
     // const [gallery, setGallery] = useState<any[]>([])
     // const [isLoggedIn, setIsLoggedIn] = useState(false)
