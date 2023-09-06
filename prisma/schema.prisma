@@ -11,14 +11,16 @@ datasource db {
 }
 
 model Work {
-  id Int @id @default(autoincrement())
-  title String @db.VarChar(255)
-  description String @db.VarChar(255)
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  reviews     Review[]
 }
 
-// model Users { 
-//   id Int @id @default(autoincrement())
-//   email String @db.VarChar(255) @unique
-//   name String @db.VarChar(255)
-//   password String @db.VarChar(255)
-// }
+model Review {
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
+  workId      Int
+  work        Work   @relation(fields: [workId], references: [id])
+}

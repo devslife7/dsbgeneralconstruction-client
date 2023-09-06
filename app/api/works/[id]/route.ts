@@ -15,3 +15,9 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     const work = await prisma.work.update({ where: { id: Number(id) }, data: body })
     return NextResponse.json(work)
 }
+
+export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+    const id = params.id
+    const work = await prisma.work.delete({ where: { id: Number(id) } })
+    return NextResponse.json(work)
+}
