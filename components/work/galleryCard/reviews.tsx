@@ -2,6 +2,9 @@
 import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import CommentForm from "./CommentForm"
 import { useState } from "react"
+import { DeleteSVG } from "@/public/svgs"
+import { deleteComment } from "@/lib/api_calls/api_calls"
+import { useRouter } from "next/navigation"
 
 type WorkProps = {
     id: number
@@ -23,23 +26,41 @@ const workDefault = {
 
 export default function Reviews({ work = workDefault }: { work: WorkProps }) {
     const [openCommentForm, setOpenCommentForm] = useState(false)
+    const router = useRouter()
 
     const commentFormOpen = () => setOpenCommentForm(true)
     const closeCommentForm = () => setOpenCommentForm(false)
 
+    const handleCommentDelete = async (comment_id: number) => {
+        const response = await deleteComment(comment_id)
+        router.refresh()
+        // const idx = work.comments.findIndex(
+        //     (comment: { id: number }) => comment.id === response.data.comment.id
+        // )
+        // const newWorkOBJ = {
+        //     ...work,
+        //     comments: [...work.comments.slice(0, idx), ...work.comments.slice(idx + 1)],
+        // }
+        // setWork(newWorkOBJ)
+    }
+
     const renderComments = () => {
         console.log("work.comments: ", work.comments)
         return work.comments.map((comment, index) => (
-            <div key={index}>
+            <div key={index} className="my-10">
                 <div className="flex gap-2">
-                    <div className="inline-flex items-center justify-center w-10 h-10 bg-gray-800 rounded-full">
+                    <div className="inline-flex items-center justify-center w-11 h-10 bg-gray-800 rounded-full">
                         <span className="text-xl text-white uppercase">{comment.username.charAt(0)}</span>
                     </div>
-                    <div className="text-gray-500 ">
-                        <span className="font-medium text-gray-800 whitespace-nowrap">
-                            {comment.username}
+                    <div className="text-gray-500 w-full">
+                        <span className="font-medium text-gray-800 whitespace-nowrap flex justify-between w-full items-center">
+                            <div>{comment.username}</div>
+                            <DeleteSVG
+                                className="text-red-500 text-xl"
+                                onClick={() => handleCommentDelete(comment.id)}
+                            />
                         </span>
-                        <div>{comment.content}</div>
+                        <div className="text-left">{comment.content}</div>
                     </div>
                 </div>
                 {/* {true && (
