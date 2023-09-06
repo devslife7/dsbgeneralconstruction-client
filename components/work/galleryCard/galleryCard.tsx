@@ -14,11 +14,13 @@ type WorkProps = {
     description: string
     image_urls: string[]
     ratings: number[]
+    comments: any[]
 }
 
 export default function GalleryCard({ work }: { work: WorkProps }) {
     const router = useRouter()
-    const coverFile = work.image_urls[0]
+
+    console.log("work:", work)
 
     const getWorkRating = () => {
         if (work.ratings.length <= 0) return 0
@@ -32,24 +34,8 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
 
     return (
         <div className="w-full sm:max-w-md lg:max-w-xs h-full bg-white shadow-lg">
-            <div>
-                {/* {coverFile && !!coverFile.match(/.mp4|.mov/) ? (
-                    <video width="350" height="450" src={coverFile} controls autoPlay muted>
-                        Sorry, your browser doesn't support HTML5 <code>video</code>
-                    </video>
-                ) : (
-                    <Image
-                        src={coverFile}
-                        alt={work.title}
-                        width={384}
-                        height={479}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 20vw"
-                        className="w-full"
-                        priority
-                    />
-                )} */}
-                <MediaGalleryButton mediaURLS={work.image_urls} />
-            </div>
+            <MediaGalleryButton mediaURLS={work.image_urls} />
+
             <div className="px-4 mb-5">
                 <div className="flex justify-between">
                     <div className="mt-2 text-xl opacity-80">{workTitle}</div>
@@ -61,13 +47,6 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                     </div>
                 </div>
                 <div className="opacity-60">{work.description}</div>
-                {/* <Link
-                    href={`/gallery/work/${work.id}`}
-                    className="flex items-center mt-5 text-sm group opacity-60"
-                >
-                    <p className="">Explore More</p>
-                    <GrFormNext className="mt-[2px] text-lg transition-transform group-hover:translate-x-0.5" />
-                </Link> */}
             </div>
             <OptionButtons work={work} />
         </div>

@@ -1,7 +1,7 @@
 import Button from "@/components/ui/button"
 import { useState } from "react"
 import { addRatingToWork, createComment, createCommentAndRating } from "@/lib/api_calls/api_calls"
-import MyRating from "./MyRating"
+import MyRating from "../../_oldcomponents/work/MyRating"
 
 type Props = {
     commentFormOpen: boolean

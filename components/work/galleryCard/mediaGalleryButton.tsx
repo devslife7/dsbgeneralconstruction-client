@@ -1,12 +1,11 @@
 "use client"
-import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { PhotoProvider, PhotoView } from "react-photo-view"
 import "react-photo-view/dist/react-photo-view.css"
 
 type Props = {
     mediaURLS?: string[]
-    transparent?: boolean
+    className?: string
 }
 
 const testGallery = [
@@ -17,7 +16,7 @@ const testGallery = [
     "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
 ]
 
-export default function MediaGalleryButton({ mediaURLS = testGallery, transparent }: Props) {
+export default function MediaGalleryButton({ mediaURLS = testGallery, className }: Props) {
     const renderVideo = (videoUrl: string, index: number) => {
         return (
             <PhotoView
@@ -48,11 +47,9 @@ export default function MediaGalleryButton({ mediaURLS = testGallery, transparen
                 <Image
                     src={imageURL}
                     alt="Work Image"
-                    width={600}
-                    height={500}
-                    // fill
+                    width={384}
+                    height={479}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 20vw"
-                    // className="w-full inset-0 m-auto object-cover "
                     hidden={index !== 0}
                     priority={index === 0}
                 />
@@ -63,12 +60,7 @@ export default function MediaGalleryButton({ mediaURLS = testGallery, transparen
     return (
         <PhotoProvider>
             {mediaURLS.map((url: string, index: number) => (
-                <div
-                    key={index}
-                    className={cn("relative z-10", {
-                        "opacity-0": transparent,
-                    })}
-                >
+                <div key={index} className={className}>
                     {url && !!url.match(/.mp4|.mov/) ? renderVideo(url, index) : renderImage(url, index)}
                 </div>
             ))}
