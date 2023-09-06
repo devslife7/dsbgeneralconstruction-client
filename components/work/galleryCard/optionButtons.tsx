@@ -27,6 +27,7 @@ export default function OptionButtons({ work }: { work: WorkProps }) {
         await deleteWork(work.id)
         router.refresh()
     }
+    console.log("work: ", work)
 
     return (
         <div className="flex items-center border-t border-black/30">

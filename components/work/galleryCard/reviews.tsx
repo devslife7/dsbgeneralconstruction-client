@@ -58,7 +58,7 @@ export default function Reviews({ work = workDefault }: { work: WorkProps }) {
             <DialogHeader>
                 <DialogTitle>Reviews</DialogTitle>
                 <DialogDescription>
-                    {!!work.comments.length ? (
+                    {work.comments.length > 0 ? (
                         renderComments()
                     ) : (
                         <div className="my-10">
