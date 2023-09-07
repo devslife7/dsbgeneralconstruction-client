@@ -3,7 +3,7 @@ import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/c
 import CommentForm from "./CommentForm"
 import { useState } from "react"
 import { DeleteSVG } from "@/public/svgs"
-import { deleteComment } from "@/lib/api_calls/api_calls"
+import { deleteReview } from "@/lib/api_calls/api_calls"
 import { useRouter } from "next/navigation"
 
 type WorkProps = {
@@ -16,48 +16,35 @@ type WorkProps = {
 }
 
 export default function Reviews({ work }: { work: WorkProps }) {
-    const [openCommentForm, setOpenCommentForm] = useState(false)
+    const [isReviewFormOpen, setIsReviewFormOpen] = useState(false)
     const router = useRouter()
 
-    const commentFormOpen = () => setOpenCommentForm(true)
-    const closeCommentForm = () => setOpenCommentForm(false)
+    const openReviewForm = () => setIsReviewFormOpen(true)
+    const closeReviewForm = () => setIsReviewFormOpen(false)
 
-    const handleCommentDelete = async (comment_id: number) => {
-        const response = await deleteComment(comment_id)
+    const handleReviewDelete = async (reviewId: number) => {
+        await deleteReview(reviewId)
         router.refresh()
-        // const idx = work.comments.findIndex(
-        //     (comment: { id: number }) => comment.id === response.data.comment.id
-        // )
-        // const newWorkOBJ = {
-        //     ...work,
-        //     comments: [...work.comments.slice(0, idx), ...work.comments.slice(idx + 1)],
-        // }
-        // setWork(newWorkOBJ)
     }
 
-    const renderComments = () => {
-        return work.Review.map((comment, index) => (
+    const renderReviews = () => {
+        return work.Review.map((review, index) => (
             <div key={index} className="my-10">
                 <div className="flex gap-2">
-                    <div className="inline-flex items-center justify-center w-11 h-10 bg-gray-800 rounded-full">
-                        <span className="text-xl text-white uppercase">{comment.name.charAt(0)}</span>
+                    <div className="inline-flex items-center justify-center w-12 h-10 bg-gray-800 rounded-full">
+                        <span className="text-xl text-white uppercase">{review.name.charAt(0)}</span>
                     </div>
                     <div className="text-gray-500 w-full">
                         <span className="font-medium text-gray-800 whitespace-nowrap flex justify-between w-full items-center">
-                            <div>{comment.username}</div>
-                            <DeleteSVG
-                                className="text-red-500 text-xl"
-                                onClick={() => handleCommentDelete(comment.id)}
-                            />
+                            <div>{review.name}</div>
                         </span>
-                        <div className="text-left">{comment.content}</div>
+                        <div className="text-left">{review.comment}</div>
                     </div>
+                    <DeleteSVG
+                        className="text-red-500 text-3xl hover:cursor-pointer hover:bg-gray-100 rounded-sm"
+                        onClick={() => handleReviewDelete(review.id)}
+                    />
                 </div>
-                {/* {true && (
-                    <button className="mt-2 text-red-500" onClick={() => handleCommentDelete(comment.id)}>
-                        <u>Delete</u>
-                    </button>
-                )} */}
             </div>
         ))
     }
@@ -67,33 +54,21 @@ export default function Reviews({ work }: { work: WorkProps }) {
             <DialogHeader>
                 <DialogTitle>Reviews</DialogTitle>
                 <DialogDescription>
-                    {/* {work.comments.length > 0 ? (
-                        renderComments()
+                    {work.Review.length > 0 ? (
+                        renderReviews()
                     ) : (
                         <div className="my-10">
                             <div className="text-center opacity-70 mb-4">
                                 No reviews yet, be the first one to review.
                             </div>
-                            <div className="text-center opacity-70 cursor-pointer" onClick={commentFormOpen}>
+                            <div className="text-center opacity-70 cursor-pointer" onClick={openReviewForm}>
                                 <u>add review</u>
                             </div>
                         </div>
-                    )} */}
-
-                    {renderComments()}
-
-                    <div className="my-10">
-                        <div className="text-center opacity-70 mb-4">
-                            No reviews yet, be the first one to review.
-                        </div>
-                        <div className="text-center opacity-70 cursor-pointer" onClick={commentFormOpen}>
-                            <u>add review</u>
-                        </div>
-                    </div>
-
+                    )}
                     <CommentForm
-                        isCommentFormOpen={openCommentForm}
-                        closeCommentForm={closeCommentForm}
+                        isCommentFormOpen={isReviewFormOpen}
+                        closeCommentForm={closeReviewForm}
                         workId={work.id.toString()}
                     />
                 </DialogDescription>
