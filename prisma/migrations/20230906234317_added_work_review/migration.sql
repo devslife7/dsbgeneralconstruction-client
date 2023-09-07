@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Work` ADD COLUMN `rating` DOUBLE NULL DEFAULT 0;

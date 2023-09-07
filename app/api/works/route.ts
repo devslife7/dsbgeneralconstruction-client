@@ -4,7 +4,7 @@ import { NextResponse } from "next/server"
 const prisma = new PrismaClient()
 
 export async function GET(request: Request) {
-    const works = await prisma.work.findMany()
+    const works = await prisma.work.findMany({ include: { Review: true } })
     return NextResponse.json(works)
 }
 

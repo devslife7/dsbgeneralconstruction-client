@@ -13,14 +13,16 @@ datasource db {
 model Work {
   id          Int      @id @default(autoincrement())
   title       String
-  description String
-  reviews     Review[]
+  description String?
+  Review      Review[]
+  rating      Float?   @default(0)
 }
 
 model Review {
-  id          Int    @id @default(autoincrement())
-  title       String
-  description String
-  workId      Int
-  work        Work   @relation(fields: [workId], references: [id])
+  id      Int    @id @default(autoincrement())
+  name    String
+  comment String
+  rating  Int
+  workId  Int
+  work    Work   @relation(fields: [workId], references: [id])
 }
