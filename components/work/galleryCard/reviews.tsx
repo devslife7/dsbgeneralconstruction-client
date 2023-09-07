@@ -11,20 +11,11 @@ type WorkProps = {
     title: string
     description: string
     image_urls: string[]
-    ratings: number[]
-    comments: any[]
+    rating: number
+    Review: any[]
 }
 
-const workDefault = {
-    id: 0,
-    title: "string",
-    description: "string",
-    image_urls: [],
-    ratings: [],
-    comments: [],
-}
-
-export default function Reviews({ work = workDefault }: { work: WorkProps }) {
+export default function Reviews({ work }: { work: WorkProps }) {
     const [openCommentForm, setOpenCommentForm] = useState(false)
     const router = useRouter()
 
@@ -45,12 +36,11 @@ export default function Reviews({ work = workDefault }: { work: WorkProps }) {
     }
 
     const renderComments = () => {
-        console.log("work.comments: ", work.comments)
-        return work.comments.map((comment, index) => (
+        return work.Review.map((comment, index) => (
             <div key={index} className="my-10">
                 <div className="flex gap-2">
                     <div className="inline-flex items-center justify-center w-11 h-10 bg-gray-800 rounded-full">
-                        <span className="text-xl text-white uppercase">{comment.username.charAt(0)}</span>
+                        <span className="text-xl text-white uppercase">{comment.name.charAt(0)}</span>
                     </div>
                     <div className="text-gray-500 w-full">
                         <span className="font-medium text-gray-800 whitespace-nowrap flex justify-between w-full items-center">

@@ -4,11 +4,13 @@ import { NextResponse } from "next/server"
 const prisma = new PrismaClient()
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
+    const workId = Number(params.id)
+
     // Responds with 400 if no work with provided id was found
-    const work = await prisma.work.findUnique({ where: { id: Number(params.id) } })
+    const work = await prisma.work.findUnique({ where: { id: workId } })
     if (!work) return NextResponse.json("No work with provided was found.", { status: 400 })
 
-    const reviews = await prisma.review.findMany({ where: { workId: Number(params.id) } })
+    const reviews = await prisma.review.findMany({ where: { workId: workId } })
     return NextResponse.json(reviews)
 }
 

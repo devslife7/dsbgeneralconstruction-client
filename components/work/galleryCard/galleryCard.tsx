@@ -7,17 +7,17 @@ type WorkProps = {
     title: string
     description: string
     image_urls: string[]
-    ratings: number[]
-    comments: any[]
+    rating: number
+    Review: any[]
 }
 
 export default function GalleryCard({ work }: { work: WorkProps }) {
-    const getWorkRating = () => {
-        if (work.ratings.length <= 0) return 0
-        const rating = work.ratings.reduce((a: any, b: any) => a + b) / work.ratings.length
+    // const getWorkRating = () => {
+    //     if (work.ratings.length <= 0) return 0
+    //     const rating = work.ratings.reduce((a: any, b: any) => a + b) / work.ratings.length
 
-        return rating === 0 ? 0 : rating.toFixed(1)
-    }
+    //     return rating === 0 ? 0 : rating.toFixed(1)
+    // }
 
     // Capitalized first letter of work title
     const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
@@ -31,7 +31,8 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                     <div className="mt-2 text-xl opacity-80">{workTitle}</div>
                     <div className="flex items-center ">
                         <span className="mt-[0.1rem] mr-[0.1rem] text-sm text-center opacity-70">
-                            {getWorkRating()}
+                            {/* {getWorkRating()} */}
+                            {work.rating}
                         </span>
                         <StarFilledSVG className="text-primary" />
                     </div>

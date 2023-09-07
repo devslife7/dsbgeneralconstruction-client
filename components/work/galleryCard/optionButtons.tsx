@@ -17,8 +17,8 @@ type WorkProps = {
     title: string
     description: string
     image_urls: string[]
-    ratings: number[]
-    comments: any[]
+    rating: number
+    Review: any[]
 }
 
 export default function OptionButtons({ work }: { work: WorkProps }) {

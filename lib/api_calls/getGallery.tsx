@@ -1,4 +1,5 @@
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL
+// const serverURL = process.env.NEXT_PUBLIC_SERVER_URL
+const serverURL = "http://localhost:3005/api"
 const worksURL = serverURL + "/works/"
 
 type GalleryProp = {
@@ -13,9 +14,11 @@ type GalleryProp = {
 export async function fetchGallery() {
     const res = await fetch(worksURL, { cache: "no-cache" })
 
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
+    console.log("fetchGallery res: ", res)
+
+    // if (!res.ok) {
+    //     throw new Error(res.statusText)
+    // }
 
     // await new Promise(resolve => setTimeout(resolve, 2000))
     const gallery: GalleryProp[] = await res.json()
