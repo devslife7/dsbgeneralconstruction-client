@@ -12,13 +12,6 @@ type WorkProps = {
 }
 
 export default function GalleryCard({ work }: { work: WorkProps }) {
-    // const getWorkRating = () => {
-    //     if (work.ratings.length <= 0) return 0
-    //     const rating = work.ratings.reduce((a: any, b: any) => a + b) / work.ratings.length
-
-    //     return rating === 0 ? 0 : rating.toFixed(1)
-    // }
-
     // Capitalized first letter of work title
     const workTitle = work.title.charAt(0).toUpperCase() + work.title.slice(1)
 

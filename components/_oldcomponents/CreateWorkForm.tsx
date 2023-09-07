@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Button from "../ui/button"
-import { createWork } from "@/lib/api_calls/api_calls"
+// import { createWork } from "@/lib/api_calls/api_calls"
 
 type Props = {
     closeModal: () => void
@@ -34,8 +34,8 @@ export default function CreateWorkForm({ closeModal, addToGallery }: Props) {
         formData.append("description", description)
 
         if (!!photos.length) {
-            const resp = await createWork(formData)
-            addToGallery(resp.data.work)
+            // const resp = await createWork(formData)
+            // addToGallery(resp.data.work)
             resetForm()
         } else {
             alert("file input cannot be empty")

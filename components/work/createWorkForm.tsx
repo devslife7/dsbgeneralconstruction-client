@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Button from "../ui/button"
-import { createWork } from "@/lib/api_calls/api_calls"
+// import { createWork } from "@/lib/api_calls/api_calls"
 import { useRouter } from "next/navigation"
 import { SpinnerSVG } from "@/public/svgs"
 
@@ -31,7 +31,7 @@ export default function CreateWorkForm({ closeModal }: { closeModal: () => void 
         formData.append("description", description)
 
         if (!!photos.length) {
-            const resp = await createWork(formData)
+            // const resp = await createWork(formData)
             router.refresh()
             resetForm()
         } else {
