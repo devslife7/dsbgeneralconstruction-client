@@ -1,8 +1,9 @@
 import Button from "@/components/ui/button"
 import { useState } from "react"
-import { addRatingToWork, createComment, createCommentAndRating } from "@/lib/api_calls/api_calls"
+// import { addRatingToWork, createComment, createCommentAndRating } from "@/lib/api_calls/api_calls"
 import MyRating from "../../_oldcomponents/work/MyRating"
 import { useRouter } from "next/navigation"
+import { createReview } from "@/lib/api_calls/reviews"
 
 type Props = {
     isCommentFormOpen: boolean
@@ -17,15 +18,13 @@ export default function CommentForm({ isCommentFormOpen, closeCommentForm, workI
     const [rating, setRating] = useState(0)
     const router = useRouter()
 
-    // creates a new comment as well as a new rating
     const handleCommentSubmit = async () => {
         const requestOBJ = {
-            username: name,
-            content: comment,
-            work_id: workId,
+            name,
+            comment,
+            rating,
         }
-        const response = await createCommentAndRating(requestOBJ, workId, rating)
-        // setWork(response)
+        await createReview(requestOBJ, Number(workId))
         router.refresh()
         resetForm()
     }
