@@ -1,5 +1,5 @@
 "use client"
-import { deleteWork } from "@/lib/api_calls/api_calls"
+// import { deleteWork } from "@/lib/api_calls/api_calls"
 import { DeleteSVG, GallerySVG, ReviewsSVG, OptionsSVG, EditSVG } from "@/public/svgs"
 import {
     DropdownMenu,
@@ -11,6 +11,7 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog"
 import { useRouter } from "next/navigation"
 import MediaGalleryButton from "./mediaGalleryButton"
 import Reviews from "./reviews"
+import { deleteWork } from "@/lib/api_calls/works"
 
 type WorkProps = {
     id: number
@@ -27,7 +28,6 @@ export default function OptionButtons({ work }: { work: WorkProps }) {
         await deleteWork(work.id)
         router.refresh()
     }
-    console.log("work: ", work)
 
     return (
         <div className="flex items-center border-t border-black/30">

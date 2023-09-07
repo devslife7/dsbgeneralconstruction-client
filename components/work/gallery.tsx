@@ -1,4 +1,4 @@
-import { fetchGallery } from "@/lib/api_calls/getGallery"
+import { fetchGallery } from "@/lib/api_calls/works"
 import GalleryCard from "./galleryCard/galleryCard"
 import MediaGalleryButton from "./galleryCard/mediaGalleryButton"
 

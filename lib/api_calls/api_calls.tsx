@@ -5,10 +5,13 @@ const ratingURL = worksURL + "/ratings/"
 const uploadFilesURL = serverURL + "/upload_files/"
 const commentsURL = serverURL + "/comments/"
 
-export const fetchGallery = async () => await axios.get(worksURL)
-export const fetchWork = async (work_id: string) => {
-    return await axios.get(worksURL + work_id)
+export async function fetchGallery() {
+    const res = await fetch(worksURL)
+    return res.json()
 }
+// export const fetchWork = async (work_id: string) => {
+//     return await axios.get(worksURL + work_id)
+// }
 
 // export const createWork = async (formData: any) => {
 //     return await axios.post(worksURL, formData)

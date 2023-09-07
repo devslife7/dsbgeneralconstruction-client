@@ -3,8 +3,9 @@ import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/c
 import CommentForm from "./CommentForm"
 import { useState } from "react"
 import { DeleteSVG } from "@/public/svgs"
-import { deleteReview } from "@/lib/api_calls/api_calls"
+// import { deleteReview } from "@/lib/api_calls/api_calls"
 import { useRouter } from "next/navigation"
+import { deleteReview } from "@/lib/api_calls/reviews"
 
 type WorkProps = {
     id: number
@@ -23,7 +24,7 @@ export default function Reviews({ work }: { work: WorkProps }) {
     const closeReviewForm = () => setIsReviewFormOpen(false)
 
     const handleReviewDelete = async (reviewId: number) => {
-        await deleteReview(reviewId)
+        const res = await deleteReview(reviewId)
         router.refresh()
     }
 
