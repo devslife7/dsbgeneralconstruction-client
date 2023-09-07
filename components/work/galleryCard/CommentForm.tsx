@@ -1,6 +1,5 @@
 import Button from "@/components/ui/button"
 import { useState } from "react"
-// import { addRatingToWork, createComment, createCommentAndRating } from "@/lib/api_calls/api_calls"
 import MyRating from "../../_oldcomponents/work/MyRating"
 import { useRouter } from "next/navigation"
 import { createReview } from "@/lib/api_calls/reviews"

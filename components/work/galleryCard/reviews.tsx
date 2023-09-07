@@ -2,8 +2,7 @@
 import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import CommentForm from "./CommentForm"
 import { useState } from "react"
-import { DeleteSVG } from "@/public/svgs"
-// import { deleteReview } from "@/lib/api_calls/api_calls"
+import { DeleteSVG, StarFilledSVG } from "@/public/svgs"
 import { useRouter } from "next/navigation"
 import { deleteReview } from "@/lib/api_calls/reviews"
 
@@ -43,6 +42,10 @@ export default function Reviews({ work }: { work: WorkProps }) {
                         </span>
                         <div className="text-left">{review.comment}</div>
                     </div>
+                    <div className="flex items-start gap-[0.18rem]">
+                        <span className="text-base">{review.rating}</span>
+                        <StarFilledSVG className="text-primary text-xl" />
+                    </div>
                     <DeleteSVG
                         className="text-red-500 text-3xl hover:cursor-pointer hover:bg-gray-100 rounded-sm"
                         onClick={() => handleReviewDelete(review.id)}
@@ -64,11 +67,14 @@ export default function Reviews({ work }: { work: WorkProps }) {
                             <div className="text-center opacity-70 mb-4">
                                 No reviews yet, be the first one to review.
                             </div>
-                            <div className="text-center opacity-70 cursor-pointer" onClick={openReviewForm}>
+                            {/* <div className="text-center opacity-70 cursor-pointer" onClick={openReviewForm}>
                                 <u>add review</u>
-                            </div>
+                            </div> */}
                         </div>
                     )}
+                    <div className="text-center opacity-70 cursor-pointer" onClick={openReviewForm}>
+                        <u>add review</u>
+                    </div>
                     <CommentForm
                         isCommentFormOpen={isReviewFormOpen}
                         closeCommentForm={closeReviewForm}

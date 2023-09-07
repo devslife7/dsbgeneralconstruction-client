@@ -31,8 +31,7 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                     <div className="mt-2 text-xl opacity-80">{workTitle}</div>
                     <div className="flex items-center ">
                         <span className="mt-[0.1rem] mr-[0.1rem] text-sm text-center opacity-70">
-                            {/* {getWorkRating()} */}
-                            {work.rating}
+                            {work.rating > 0 ? work.rating.toFixed(1) : work.rating}
                         </span>
                         <StarFilledSVG className="text-primary" />
                     </div>
