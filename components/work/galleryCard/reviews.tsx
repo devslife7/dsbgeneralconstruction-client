@@ -4,6 +4,7 @@ import CommentForm from "./CommentForm"
 import { useState } from "react"
 import { DeleteSVG, StarFilledSVG } from "@/public/svgs"
 import { useRouter } from "next/navigation"
+import { cn } from "@/lib/utils"
 
 type WorkProps = {
     id: number
@@ -61,7 +62,7 @@ export default function Reviews({ work, deleteReview, createReview }: Props) {
     }
 
     return (
-        <DialogContent className="h-full lg:h-[70vh]">
+        <DialogContent className={cn("", { "h-full": work.Review.length > 0 })}>
             <DialogHeader>
                 <DialogTitle>
                     <div className="flex justify-between">
@@ -90,7 +91,7 @@ export default function Reviews({ work, deleteReview, createReview }: Props) {
                             </div> */}
                         </div>
                     )}
-                    <div className="text-center opacity-70 cursor-pointer" onClick={toggleReviewForm}>
+                    <div className="text-center opacity-70 cursor-pointer mb-10" onClick={toggleReviewForm}>
                         <u>add review</u>
                     </div>
                     <CommentForm
