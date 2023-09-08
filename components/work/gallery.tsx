@@ -1,4 +1,3 @@
-import { fetchGallery } from "@/lib/api_calls/works"
 import GalleryCard from "./galleryCard/galleryCard"
 import { listWorks } from "@/lib/models/work"
 

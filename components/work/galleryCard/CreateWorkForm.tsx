@@ -1,6 +1,5 @@
 import { useState } from "react"
 import Button from "../../ui/button"
-// import { createWork } from "@/lib/api_calls/api_calls"
 
 type Props = {
     closeModal: () => void
