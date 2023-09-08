@@ -1,7 +1,7 @@
 import OptionButtons from "./optionButtons"
 import StarFilledSVG from "@/public/svgs/starFilled.svg"
 import MediaGalleryButton from "./mediaGalleryButton"
-import { deleteWork } from "@/lib/actions/work"
+import { deleteWork } from "@/lib/models/work"
 
 type WorkProps = {
     id: number

@@ -10,7 +10,7 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog"
 // import { useRouter } from "next/navigation"
 import MediaGalleryButton from "./mediaGalleryButton"
 import Reviews from "./reviews"
-import { deleteWork } from "@/lib/actions/work"
+import { deleteWork } from "@/lib/models/work"
 import { useRouter } from "next/navigation"
 
 type WorkProps = {

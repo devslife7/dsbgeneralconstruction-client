@@ -24,8 +24,6 @@ export default function Reviews({ work }: { work: WorkProps }) {
 
     const handleReviewDelete = async (reviewId: number) => {
         const res = await deleteReview(reviewId)
-
-        console.log(">>>>res", res)
         router.refresh()
     }
 

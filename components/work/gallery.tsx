@@ -1,10 +1,9 @@
 import { fetchGallery } from "@/lib/api_calls/works"
 import GalleryCard from "./galleryCard/galleryCard"
-import { listWorks } from "@/lib/actions/work"
+import { listWorks } from "@/lib/models/work"
 
 export default async function Gallery() {
     const gallery = await listWorks()
-    console.log("gallery: ", gallery)
 
     gallery.sort((a: any, b: any) => b.id - a.id)
     return (
