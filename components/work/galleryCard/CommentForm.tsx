@@ -2,30 +2,40 @@ import Button from "@/components/ui/button"
 import { useState } from "react"
 import MyRating from "../../_oldcomponents/work/MyRating"
 import { useRouter } from "next/navigation"
-import { createReview } from "@/lib/api_calls/reviews"
+import { SpinnerSVG } from "@/public/svgs"
 
 type Props = {
     isCommentFormOpen: boolean
     closeCommentForm: () => void
     workId: string
     setWork?: (arg: any) => void
+    createReview: (data: any, workId: number) => void
 }
 
-export default function CommentForm({ isCommentFormOpen, closeCommentForm, workId, setWork }: Props) {
+export default function CommentForm({
+    isCommentFormOpen,
+    closeCommentForm,
+    workId,
+    setWork,
+    createReview,
+}: Props) {
     const [name, setName] = useState("")
     const [comment, setComment] = useState("")
     const [rating, setRating] = useState(0)
+    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
     const handleCommentSubmit = async () => {
-        const requestOBJ = {
+        setIsLoading(true)
+        const data = {
             name,
             comment,
             rating,
         }
-        await createReview(requestOBJ, Number(workId))
+        await createReview(data, Number(workId))
         router.refresh()
         resetForm()
+        setIsLoading(false)
     }
 
     const resetForm = () => {
@@ -59,7 +69,8 @@ export default function CommentForm({ isCommentFormOpen, closeCommentForm, workI
                 className="block w-full px-3 py-2 mt-1 text-sm bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
             />
             <div className="flex justify-end space-x-2">
-                <Button variant="primary" onClick={handleCommentSubmit}>
+                <Button variant="primary" onClick={handleCommentSubmit} disabled={isLoading}>
+                    {isLoading && <SpinnerSVG className="animate-spin" />}
                     Post
                 </Button>
             </div>

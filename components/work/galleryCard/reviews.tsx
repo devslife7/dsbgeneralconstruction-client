@@ -4,7 +4,6 @@ import CommentForm from "./CommentForm"
 import { useState } from "react"
 import { DeleteSVG, StarFilledSVG } from "@/public/svgs"
 import { useRouter } from "next/navigation"
-import { deleteReview } from "@/lib/api_calls/reviews"
 
 type WorkProps = {
     id: number
@@ -15,15 +14,23 @@ type WorkProps = {
     Review: any[]
 }
 
-export default function Reviews({ work }: { work: WorkProps }) {
+type Props = {
+    work: WorkProps
+    deleteReview: (reviewId: number) => void
+    createReview: (data: any, workId: number) => void
+}
+
+export default function Reviews({ work, deleteReview, createReview }: Props) {
     const [isReviewFormOpen, setIsReviewFormOpen] = useState(false)
     const router = useRouter()
 
     const openReviewForm = () => setIsReviewFormOpen(true)
     const closeReviewForm = () => setIsReviewFormOpen(false)
 
+    const toggleReviewForm = () => setIsReviewFormOpen(prevState => !prevState)
+
     const handleReviewDelete = async (reviewId: number) => {
-        const res = await deleteReview(reviewId)
+        await deleteReview(reviewId)
         router.refresh()
     }
 
@@ -31,7 +38,7 @@ export default function Reviews({ work }: { work: WorkProps }) {
         return work.Review.map((review, index) => (
             <div key={index} className="my-10">
                 <div className="flex gap-2">
-                    <div className="inline-flex items-center justify-center w-12 h-10 bg-gray-800 rounded-full">
+                    <div className="inline-flex items-center justify-center w-14 h-10 bg-gray-800 rounded-full">
                         <span className="text-xl text-white uppercase">{review.name.charAt(0)}</span>
                     </div>
                     <div className="text-gray-500 w-full">
@@ -54,9 +61,22 @@ export default function Reviews({ work }: { work: WorkProps }) {
     }
 
     return (
-        <DialogContent>
+        <DialogContent className="h-full lg:h-[70vh]">
             <DialogHeader>
-                <DialogTitle>Reviews</DialogTitle>
+                <DialogTitle>
+                    <div className="flex justify-between">
+                        <div>
+                            <div className="mb-2 text-xl opacity-80">{work.title}</div>
+                            <div className="font-normal text-lg opacity-60">{work.description}</div>
+                        </div>
+                        <div className="flex mt-5">
+                            <div className="font-normal text-xl opacity-70 mt-[0.1rem] mr-1">
+                                {work.rating.toFixed(1)}
+                            </div>
+                            <StarFilledSVG className="text-primary text-[1.7rem]" />
+                        </div>
+                    </div>
+                </DialogTitle>
                 <DialogDescription>
                     {work.Review.length > 0 ? (
                         renderReviews()
@@ -70,13 +90,14 @@ export default function Reviews({ work }: { work: WorkProps }) {
                             </div> */}
                         </div>
                     )}
-                    <div className="text-center opacity-70 cursor-pointer" onClick={openReviewForm}>
+                    <div className="text-center opacity-70 cursor-pointer" onClick={toggleReviewForm}>
                         <u>add review</u>
                     </div>
                     <CommentForm
                         isCommentFormOpen={isReviewFormOpen}
                         closeCommentForm={closeReviewForm}
                         workId={work.id.toString()}
+                        createReview={createReview}
                     />
                 </DialogDescription>
             </DialogHeader>

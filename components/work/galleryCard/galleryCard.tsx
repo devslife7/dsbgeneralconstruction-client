@@ -1,7 +1,6 @@
 import OptionButtons from "./optionButtons"
 import StarFilledSVG from "@/public/svgs/starFilled.svg"
 import MediaGalleryButton from "./mediaGalleryButton"
-import { deleteWork } from "@/lib/models/work"
 
 type WorkProps = {
     id: number
@@ -29,7 +28,7 @@ export default function GalleryCard({ work }: { work: WorkProps }) {
                 </div>
                 <div className="opacity-60">{work.description}</div>
             </div>
-            <OptionButtons work={work} deleteWork={deleteWork} />
+            <OptionButtons work={work} />
         </div>
     )
 }

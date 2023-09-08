@@ -18,3 +18,12 @@ export async function deleteWork(workId: number) {
         },
     })
 }
+
+export async function createWork(data: any) {
+    "use server"
+    return await prisma.work.create({
+        data: {
+            ...data,
+        },
+    })
+}
