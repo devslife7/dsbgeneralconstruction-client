@@ -49,7 +49,7 @@ export default function Reviews({ work, deleteReview, createReview }: Props) {
                     </div>
                     <div className="flex items-start gap-[0.18rem]">
                         <span className="text-base">{review.rating}</span>
-                        <StarFilledSVG className="text-primary text-xl" />
+                        <StarFilledSVG className="text-primary text-xl mt-[0.1rem]" />
                     </div>
                     <DeleteSVG
                         className="text-red-500 text-3xl hover:cursor-pointer hover:bg-gray-100 rounded-sm"
