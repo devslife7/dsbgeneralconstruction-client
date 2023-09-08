@@ -4,6 +4,11 @@ import { listWorks } from "@/lib/models/work"
 export default async function Gallery() {
     const gallery = await listWorks()
 
+    // Sort by id in descending order
+    // Sort by id in descending order
+    // Sort by id in descending order
+    // Sort by id in descending order
+
     gallery.sort((a: any, b: any) => b.id - a.id)
     return (
         <div className="mt-10 mx-auto lg:container lg:px-8">
