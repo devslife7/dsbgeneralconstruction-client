@@ -24,6 +24,7 @@ const buttonStyles = cva(
                 lg: "px-8 py-2",
             },
             mobile: { true: "w-full lg:w-auto" },
+            wide: { true: "w-full" },
         },
         defaultVariants: {
             variant: "primary",
@@ -37,9 +38,13 @@ interface ButtonProps
         VariantProps<typeof buttonStyles> {}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ variant, size, mobile, className, ...props }, ref) => {
+    ({ variant, size, mobile, wide, className, ...props }, ref) => {
         return (
-            <button ref={ref} className={cn(buttonStyles({ variant, size, mobile, className }))} {...props} />
+            <button
+                ref={ref}
+                className={cn(buttonStyles({ variant, size, mobile, wide, className }))}
+                {...props}
+            />
         )
     }
 )

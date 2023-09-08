@@ -86,9 +86,6 @@ export default function Reviews({ work, deleteReview, createReview }: Props) {
                             <div className="text-center opacity-70 mb-4">
                                 No reviews yet, be the first one to review.
                             </div>
-                            {/* <div className="text-center opacity-70 cursor-pointer" onClick={openReviewForm}>
-                                <u>add review</u>
-                            </div> */}
                         </div>
                     )}
                     <div className="text-center opacity-70 cursor-pointer mb-10" onClick={toggleReviewForm}>

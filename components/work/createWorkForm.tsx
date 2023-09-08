@@ -1,4 +1,3 @@
-"use client"
 import { useState } from "react"
 import Button from "../ui/button"
 import { useRouter } from "next/navigation"
@@ -9,16 +8,18 @@ const FILE_SIZE_LIMIT = 10_000_000
 
 type Props = {
     createWork: (data: any) => void
+    closeDialog: () => void
 }
 
-export default function CreateWorkForm({ createWork }: Props) {
+export default function CreateWorkForm({ createWork, closeDialog }: Props) {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [photos, setPhotos] = useState<any[]>([])
     const router = useRouter()
 
-    const handleImageUpload = async (e: any) => {
+    const handleCreateWork = async (e: any) => {
+        setIsLoading(true)
         e.preventDefault()
 
         const data = {
@@ -28,6 +29,8 @@ export default function CreateWorkForm({ createWork }: Props) {
 
         await createWork(data)
         router.refresh()
+        resetForm()
+        setIsLoading(false)
 
         // setIsLoading(true)
 
@@ -73,11 +76,11 @@ export default function CreateWorkForm({ createWork }: Props) {
         setTitle("")
         setDescription("")
         setPhotos([])
-        // closeModal()
+        closeDialog()
     }
 
     return (
-        <form onSubmit={(e: any) => handleImageUpload(e)}>
+        <form onSubmit={(e: any) => handleCreateWork(e)}>
             <div className="flex flex-col space-y-7">
                 <input
                     id="title"
@@ -108,15 +111,9 @@ export default function CreateWorkForm({ createWork }: Props) {
                 </label> */}
             </div>
 
-            <div className="flex justify-end mt-6 space-x-4">
-                {/* <Button onClick={closeModal} variant="danger">
-                    Cancel
-                </Button> */}
-                <Button type="submit" variant="secondary">
-                    {isLoading && <SpinnerSVG className="text-2xl animate-spin" />}
-                    Submit
-                </Button>
-            </div>
+            <Button type="submit" variant="secondary" wide className="mt-6">
+                {isLoading ? <SpinnerSVG className="text-2xl animate-spin" /> : "Submit"}
+            </Button>
         </form>
     )
 }
