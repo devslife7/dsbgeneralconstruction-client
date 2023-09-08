@@ -10,3 +10,11 @@ export async function listWorks() {
         },
     })
 }
+export async function deleteWork(workId: number) {
+    "use server"
+    return await prisma.work.delete({
+        where: {
+            id: workId,
+        },
+    })
+}

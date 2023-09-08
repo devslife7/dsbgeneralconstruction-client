@@ -7,10 +7,11 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Dialog, DialogTrigger } from "@/components/ui/dialog"
-import { useRouter } from "next/navigation"
+// import { useRouter } from "next/navigation"
 import MediaGalleryButton from "./mediaGalleryButton"
 import Reviews from "./reviews"
-import { deleteWork } from "@/lib/api_calls/works"
+import { deleteWork } from "@/lib/actions/work"
+import { useRouter } from "next/navigation"
 
 type WorkProps = {
     id: number
@@ -21,7 +22,12 @@ type WorkProps = {
     Review: any[]
 }
 
-export default function OptionButtons({ work }: { work: WorkProps }) {
+type Props = {
+    work: WorkProps
+    deleteWork: (workId: number) => void
+}
+
+export default function OptionButtons({ work, deleteWork }: Props) {
     const router = useRouter()
     const handleWorkDelete = async () => {
         await deleteWork(work.id)
