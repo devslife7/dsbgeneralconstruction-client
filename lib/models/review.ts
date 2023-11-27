@@ -26,11 +26,6 @@ export async function createReview(data: any, workId: number) {
         },
     })
 
-    // Update the rating of the work
-    // Update the rating of the work
-    // Update the rating of the work
-    // Update the rating of the work
-
     const rating = await prisma.review.aggregate({ _avg: { rating: true }, where: { workId } })
     await prisma.work.update({
         where: { id: workId },

@@ -4,7 +4,6 @@ export const socialMediaLinks = [
     {
         label: "Facebook",
         href: "https://www.instagram.com/dsbgeneralconstruction/",
-        // icon: <FaFacebook />,
         icon: <FacebookSVG />,
     },
     {
