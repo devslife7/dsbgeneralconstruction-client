@@ -2,7 +2,7 @@ import Button from "@/components/ui/button"
 
 type Props = {
     password: string
-    setPassword: (e: any) => void
+    setPassword: (e: string) => void
     closeModal: () => void
     handlePasswordSubmit: (e: any) => void
 }
