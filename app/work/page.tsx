@@ -8,10 +8,10 @@ export default function page() {
   const testUser = {}
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Suspense fallback={<div>Loading...</div>}>
         <Gallery />
-      </Suspense>
-      <AddWorkButton createWork={createWork} />
+      </Suspense> */}
+      {/* <AddWorkButton createWork={createWork} /> */}
       <CreatePostForm user={testUser} />
     </>
   )

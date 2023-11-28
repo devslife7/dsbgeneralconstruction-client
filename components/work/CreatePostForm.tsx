@@ -11,6 +11,8 @@ type User = {
 
 export default function CreatePostForm({ user }: { user: User }) {
   const [content, setContent] = useState("")
+  const [file, setFile] = useState<File | undefined>(undefined)
+  const [fileUrl, setfileUrl] = useState<string | undefined>(undefined)
 
   const [statusMessage, setStatusMessage] = useState("")
   const [loading, setLoading] = useState(false)
@@ -24,14 +26,34 @@ export default function CreatePostForm({ user }: { user: User }) {
     setLoading(true)
 
     // Do all the image upload and everything
+    console.log({ content, file })
 
     setStatusMessage("created")
     setLoading(false)
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    setFile(file)
+
+    if (fileUrl) {
+      URL.revokeObjectURL(fileUrl)
+    }
+
+    if (file) {
+      const url = URL.createObjectURL(file)
+      setfileUrl(url)
+    } else {
+      setfileUrl(undefined)
+    }
+  }
+
   return (
     <>
-      <form className="border border-neutral-500 rounded-lg px-6 py-4" onSubmit={handleSubmit}>
+      <form
+        className="border border-neutral-500 rounded-lg px-6 py-4 max-w-2xl m-auto"
+        onSubmit={handleSubmit}
+      >
         {statusMessage && (
           <p className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 mb-4 rounded relative">
             {statusMessage}
@@ -63,6 +85,30 @@ export default function CreatePostForm({ user }: { user: User }) {
             </label>
 
             {/* Preivew File */}
+            {fileUrl && file && (
+              <div className="flex gap-4 items-start pb-4 w-full">
+                {file.type.startsWith("image/") ? (
+                  <div className="rounded-lg h-32 w-32 overflow-hidden relative">
+                    <Image className="object-cover" src={fileUrl} alt="preview" priority={true} fill={true} />
+                  </div>
+                ) : (
+                  <div className="rounded-lg overflow-hidden w-200 h-300 relative">
+                    <video className="object-cover" src={fileUrl} autoPlay loop muted />
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  className="border rounded-xl px-4 py-2"
+                  onClick={() => {
+                    setFile(undefined)
+                    setfileUrl(undefined)
+                  }}
+                >
+                  Remove
+                </button>
+              </div>
+            )}
 
             <label className="flex">
               <svg
@@ -83,6 +129,7 @@ export default function CreatePostForm({ user }: { user: User }) {
                 name="media"
                 type="file"
                 accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm"
+                onChange={handleChange}
               />
             </label>
           </div>
