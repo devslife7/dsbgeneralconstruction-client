@@ -37,7 +37,9 @@ export default function CreatePostForm({ user }: { user: User }) {
       return
     }
 
-    const signedURL = signedURLResult.success.url
+    const url = signedURLResult.success.url
+
+    console.log("url", url)
 
     setStatusMessage("created")
     setLoading(false)
