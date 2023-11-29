@@ -1,6 +1,7 @@
 "use client"
 
 import { getSignedURL } from "@/lib/actions"
+import { createWorkWithMedia } from "@/lib/models/work"
 import Image from "next/image"
 import { useState } from "react"
 import { twMerge } from "tailwind-merge"
@@ -38,6 +39,8 @@ export default function CreatePostForm({ user }: { user: User }) {
     console.log({ content, file })
 
     try {
+      let url: string | undefined = ""
+      // Upload file to S3
       if (file) {
         setStatusMessage("uploading file")
         const checksum = await computeSHA256(file)
@@ -50,7 +53,7 @@ export default function CreatePostForm({ user }: { user: User }) {
           return
         }
 
-        const url = signedURLResult.success.url
+        url = signedURLResult.success.url
 
         console.log("url", url)
 
@@ -62,6 +65,9 @@ export default function CreatePostForm({ user }: { user: User }) {
           },
         })
       }
+
+      // Save work to database
+      await createWorkWithMedia(content, content, [url])
     } catch (e) {
       setStatusMessage("error")
       console.error(e)
