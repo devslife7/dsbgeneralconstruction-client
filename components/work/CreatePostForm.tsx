@@ -67,7 +67,9 @@ export default function CreatePostForm({ user }: { user: User }) {
       }
 
       // Save work to database
-      await createWorkWithMedia(content, content, [url])
+      console.log("url", url)
+      const parsedURL = url.split("?")[0]
+      await createWorkWithMedia(content, content, [parsedURL])
     } catch (e) {
       setStatusMessage("error")
       console.error(e)

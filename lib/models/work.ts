@@ -1,5 +1,7 @@
 "use server"
 import { prisma } from "../db"
+import { redirect } from "next/navigation"
+import { revalidatePath } from "next/cache"
 
 export async function listWorks() {
   return await prisma.work.findMany({
@@ -28,11 +30,16 @@ export async function createWork(data: any) {
 }
 
 export async function createWorkWithMedia(title: string, description: string, media: string[]) {
-  return await prisma.work.create({
+  const newWork = await prisma.work.create({
     data: {
       title,
       description,
       media,
     },
   })
+
+  revalidatePath("/work")
+  //   redirect("/work")
+
+  return newWork
 }

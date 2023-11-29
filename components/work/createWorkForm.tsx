@@ -2,7 +2,6 @@ import { useState } from "react"
 import Button from "../ui/button"
 import { useRouter } from "next/navigation"
 import { SpinnerSVG } from "@/public/svgs"
-import { createWorkWithMedia } from "@/lib/models/work"
 
 // Limiting the file input to 10mb = 10_000_000
 const FILE_SIZE_LIMIT = 10_000_000

@@ -28,6 +28,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.gravatar.com",
       },
+      {
+        protocol: "https",
+        hostname: "dsbgeneralconstruction-images-videos.s3.us-east-1.amazonaws.com",
+      },
     ],
   },
 
