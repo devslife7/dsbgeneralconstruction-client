@@ -3,6 +3,16 @@ import { prisma } from "../db"
 import { redirect } from "next/navigation"
 import { revalidatePath } from "next/cache"
 
+import { S3Client, DeleteObjectCommand } from "@aws-sdk/client-s3"
+
+const s3 = new S3Client({
+  region: process.env.AWS_BUCKET_REGION!,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+})
+
 export async function listWorks() {
   return await prisma.work.findMany({
     orderBy: {
@@ -13,10 +23,17 @@ export async function listWorks() {
     },
   })
 }
-export async function deleteWork(workId: number) {
+export async function deleteWork(work: any) {
+  // delete from s3
+  const deleteObjectCommand = new DeleteObjectCommand({
+    Bucket: process.env.AWS_BUCKET_NAME!,
+    Key: work.media[0].split("/").pop()!,
+  })
+  await s3.send(deleteObjectCommand)
+
   return await prisma.work.delete({
     where: {
-      id: workId,
+      id: work.id,
     },
   })
 }
@@ -38,7 +55,7 @@ export async function createWorkWithMedia(title: string, description: string, me
     },
   })
 
-  revalidatePath("/work")
+  //   revalidatePath("/work")
   //   redirect("/work")
 
   return newWork

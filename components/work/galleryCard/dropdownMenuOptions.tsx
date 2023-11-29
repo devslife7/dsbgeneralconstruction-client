@@ -15,14 +15,14 @@ type WorkProps = {
 
 type Props = {
   work: WorkProps
-  deleteWork: (workId: number) => void
+  deleteWork: (work: any) => void
 }
 
 export default function DropdownMenuOptions({ deleteWork, work }: Props) {
   const router = useRouter()
 
   const handleWorkDelete = async () => {
-    await deleteWork(work.id)
+    await deleteWork(work)
     router.refresh()
   }
   return (

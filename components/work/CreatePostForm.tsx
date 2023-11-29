@@ -5,6 +5,7 @@ import { createWorkWithMedia } from "@/lib/models/work"
 import Image from "next/image"
 import { useState } from "react"
 import { twMerge } from "tailwind-merge"
+import { useRouter } from "next/navigation"
 
 type User = {
   name?: string | null
@@ -12,6 +13,7 @@ type User = {
 }
 
 export default function CreatePostForm({ user }: { user: User }) {
+  const router = useRouter()
   const [content, setContent] = useState("")
   const [file, setFile] = useState<File | undefined>(undefined)
   const [fileUrl, setfileUrl] = useState<string | undefined>(undefined)
@@ -75,6 +77,7 @@ export default function CreatePostForm({ user }: { user: User }) {
       console.error(e)
       return
     } finally {
+      router.refresh()
       setLoading(false)
     }
 
