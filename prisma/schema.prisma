@@ -16,6 +16,7 @@ model Work {
   description String?
   Review      Review[]
   rating      Float?   @default(0)
+  media       String[]
 }
 
 model Review {
