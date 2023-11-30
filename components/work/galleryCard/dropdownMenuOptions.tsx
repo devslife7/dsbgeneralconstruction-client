@@ -1,8 +1,8 @@
 "use client"
 
 import { DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import { deleteWork } from "@/lib/models/work"
 import { DeleteSVG, EditSVG } from "@/public/svgs"
-import { useRouter } from "next/navigation"
 
 type WorkProps = {
   id: number
@@ -13,14 +13,7 @@ type WorkProps = {
   Review: any[]
 }
 
-type Props = {
-  work: WorkProps
-  deleteWork: (work: any) => void
-}
-
-export default function DropdownMenuOptions({ deleteWork, work }: Props) {
-  const router = useRouter()
-
+export default function DropdownMenuOptions({ work }: { work: WorkProps }) {
   const handleWorkDelete = async () => {
     await deleteWork(work)
   }

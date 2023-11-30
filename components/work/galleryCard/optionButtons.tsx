@@ -4,7 +4,6 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog"
 import MediaGalleryButton from "./mediaGalleryButton"
 import Reviews from "./reviews"
 import DropdownMenuOptions from "./dropdownMenuOptions"
-import { deleteWork } from "@/lib/models/work"
 import { deleteReview } from "@/lib/models/review"
 import { createReview } from "@/lib/models/review"
 
@@ -38,7 +37,7 @@ export default function OptionButtons({ work }: { work: WorkProps }) {
         <DropdownMenuTrigger className="flex justify-center w-1/6 py-2 text-xs border-l border-black/40">
           <OptionsSVG className="w-auto text-base opacity-70" />
         </DropdownMenuTrigger>
-        <DropdownMenuOptions deleteWork={deleteWork} work={work} />
+        <DropdownMenuOptions work={work} />
       </DropdownMenu>
     </div>
   )

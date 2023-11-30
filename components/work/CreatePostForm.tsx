@@ -5,7 +5,6 @@ import { createWorkWithMedia } from "@/lib/models/work"
 import Image from "next/image"
 import { useState } from "react"
 import { twMerge } from "tailwind-merge"
-import { useRouter } from "next/navigation"
 
 type User = {
   name?: string | null
@@ -13,9 +12,9 @@ type User = {
 }
 
 export default function CreatePostForm({ user }: { user: User }) {
-  const router = useRouter()
   const [content, setContent] = useState("")
   const [file, setFile] = useState<File | undefined>(undefined)
+  const [fileList, setFileList] = useState<File[]>([])
   const [fileUrl, setfileUrl] = useState<string | undefined>(undefined)
 
   const [statusMessage, setStatusMessage] = useState("")
@@ -37,44 +36,45 @@ export default function CreatePostForm({ user }: { user: User }) {
     setStatusMessage("creating")
     setLoading(true)
 
-    // Do all the image upload and everything here
+    // Do all the image upload here
     try {
       let url: string | undefined = ""
+      let urlArray: string[] | undefined = []
       // Upload file to S3
-      if (file) {
-        setStatusMessage("uploading file")
-        const checksum = await computeSHA256(file)
-        const signedURLResult = await getSignedURL(file.type, file.size, checksum)
+      if (fileList.length > 0 && fileList[0]) {
+        setStatusMessage("uploading files")
 
-        if (signedURLResult.error !== undefined) {
-          setStatusMessage(signedURLResult.error)
-          setLoading(false)
-          console.error(signedURLResult.error)
-          return
+        for (const file of fileList) {
+          const checksum = await computeSHA256(file)
+          const signedURLResult = await getSignedURL(file.type, file.size, checksum)
+
+          if (signedURLResult.error !== undefined) {
+            setStatusMessage(signedURLResult.error)
+            setLoading(false)
+            console.error(signedURLResult.error)
+            return
+          }
+
+          const url = signedURLResult.success.url
+          urlArray.push(url.split("?")[0])
+
+          await fetch(url, {
+            method: "PUT",
+            body: file,
+            headers: {
+              "Content-Type": file.type,
+            },
+          })
         }
-
-        url = signedURLResult.success.url
-
-        console.log("url: ", url)
-
-        await fetch(url, {
-          method: "PUT",
-          body: file,
-          headers: {
-            "Content-Type": file.type,
-          },
-        })
       }
 
       // Save work to database
-      const parsedURL = url.split("?")[0]
-      await createWorkWithMedia(content, content, [parsedURL])
+      await createWorkWithMedia(content, content, urlArray)
     } catch (e) {
       setStatusMessage("error")
       console.error(e)
       return
     } finally {
-      //   router.refresh()
       setLoading(false)
     }
 
@@ -85,6 +85,7 @@ export default function CreatePostForm({ user }: { user: User }) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     setFile(file)
+    setFileList(Array.from(e.target.files || []))
 
     if (fileUrl) {
       URL.revokeObjectURL(fileUrl)
@@ -174,7 +175,8 @@ export default function CreatePostForm({ user }: { user: User }) {
               className="bg-transparent flex-1 border-none outline-none hidden"
               name="media"
               type="file"
-              accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm"
+              multiple
+              accept="image/jpeg,image/jpg,image/png,image/webp,image/gif,video/mp4,video/webm,video/mov"
               onChange={handleChange}
             />
           </label>
