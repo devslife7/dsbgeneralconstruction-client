@@ -12,6 +12,7 @@ type WorkProps = {
 }
 
 export default function GalleryCard({ work }: { work: WorkProps }) {
+  console.log("work Media: ", work.media)
   return (
     <div className="w-full sm:max-w-md lg:max-w-xs h-full bg-white shadow-lg">
       <MediaGalleryButton mediaURLS={work.media} />
