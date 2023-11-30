@@ -55,6 +55,8 @@ export default function CreatePostForm({ user }: { user: User }) {
 
         url = signedURLResult.success.url
 
+        console.log("url: ", url)
+
         await fetch(url, {
           method: "PUT",
           body: file,
