@@ -57,7 +57,7 @@ export async function createWorkWithMedia(title: string, description: string, me
     },
   })
 
-  //   revalidatePath("/work")
+  revalidatePath("/work")
   //   redirect("/work")
 
   return newWork

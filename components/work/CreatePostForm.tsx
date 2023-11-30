@@ -72,7 +72,7 @@ export default function CreatePostForm({ user }: { user: User }) {
       console.error(e)
       return
     } finally {
-      router.refresh()
+      //   router.refresh()
       setLoading(false)
     }
 
