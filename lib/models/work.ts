@@ -49,7 +49,7 @@ export async function createWork(data: any) {
 }
 
 export async function createWorkWithMedia(title: string, description: string, media: string[]) {
-  const newWork = await prisma.work.create({
+  await prisma.work.create({
     data: {
       title,
       description,
@@ -59,6 +59,4 @@ export async function createWorkWithMedia(title: string, description: string, me
 
   revalidatePath("/work")
   //   redirect("/work")
-
-  return newWork
 }

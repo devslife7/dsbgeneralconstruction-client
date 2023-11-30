@@ -2,6 +2,7 @@
 
 import { getSignedURL } from "@/lib/actions"
 import { createWorkWithMedia } from "@/lib/models/work"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { useState } from "react"
 import { twMerge } from "tailwind-merge"
@@ -12,6 +13,7 @@ type User = {
 }
 
 export default function CreatePostForm({ user }: { user: User }) {
+  const router = useRouter()
   const [content, setContent] = useState("")
   const [file, setFile] = useState<File | undefined>(undefined)
   const [fileList, setFileList] = useState<File[]>([])
@@ -70,6 +72,7 @@ export default function CreatePostForm({ user }: { user: User }) {
 
       // Save work to database
       await createWorkWithMedia(content, content, urlArray)
+      router.refresh()
     } catch (e) {
       setStatusMessage("error")
       console.error(e)
