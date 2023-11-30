@@ -23,7 +23,7 @@ export default function DropdownMenuOptions({ deleteWork, work }: Props) {
 
   const handleWorkDelete = async () => {
     await deleteWork(work)
-    router.refresh()
+    // router.refresh()
   }
   return (
     <DropdownMenuContent className="text-gray-600">

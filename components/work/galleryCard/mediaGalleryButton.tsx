@@ -56,20 +56,6 @@ export default function MediaGalleryButton({ mediaURLS = testGallery, className 
       </PhotoView>
     )
   }
-  //   return (
-  //     <PhotoView src={imageURL}>
-  //       <Image
-  //         src={imageURL}
-  //         alt="Work Image"
-  //         width={384}
-  //         height={479}
-  //         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 20vw"
-  //         hidden={index !== 0}
-  //         priority={index === 0}
-  //       />
-  //     </PhotoView>
-  //   )
-  // }
 
   return (
     <PhotoProvider>

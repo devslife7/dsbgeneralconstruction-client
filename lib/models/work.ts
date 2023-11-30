@@ -31,11 +31,13 @@ export async function deleteWork(work: any) {
   })
   await s3.send(deleteObjectCommand)
 
-  return await prisma.work.delete({
+  await prisma.work.delete({
     where: {
       id: work.id,
     },
   })
+
+  revalidatePath("/work")
 }
 
 export async function createWork(data: any) {
