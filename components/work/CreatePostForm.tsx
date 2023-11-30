@@ -37,9 +37,7 @@ export default function CreatePostForm({ user }: { user: User }) {
     setStatusMessage("creating")
     setLoading(true)
 
-    // Do all the image upload and everything
-    console.log({ content, file })
-
+    // Do all the image upload and everything here
     try {
       let url: string | undefined = ""
       // Upload file to S3
@@ -57,8 +55,6 @@ export default function CreatePostForm({ user }: { user: User }) {
 
         url = signedURLResult.success.url
 
-        console.log("url", url)
-
         await fetch(url, {
           method: "PUT",
           body: file,
@@ -69,7 +65,6 @@ export default function CreatePostForm({ user }: { user: User }) {
       }
 
       // Save work to database
-      console.log("url", url)
       const parsedURL = url.split("?")[0]
       await createWorkWithMedia(content, content, [parsedURL])
     } catch (e) {
