@@ -39,7 +39,7 @@ export async function getSignedURL(type: string, size: number, checksum: string)
 
   const putObjectCommand = new PutObjectCommand({
     Bucket: process.env.AWS_BUCKET_NAME!,
-    Key: generateFileName() + `${type}`,
+    Key: generateFileName() + `${type.split("/")[1]}`,
     ContentType: type,
     ContentLength: size,
     ChecksumSHA256: checksum,
