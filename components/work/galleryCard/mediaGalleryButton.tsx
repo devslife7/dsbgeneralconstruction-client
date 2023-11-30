@@ -57,8 +57,6 @@ export default function MediaGalleryButton({ mediaURLS = testGallery, className 
     )
   }
 
-  console.log("mediaURLS", mediaURLS)
-
   return (
     <PhotoProvider>
       {mediaURLS.map((url: string, index: number) => (
