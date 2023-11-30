@@ -22,6 +22,7 @@ const acceptedTypes = [
   "image/webp",
   "image/gif",
   "video/mp4",
+  "video/mov",
   "video/webm",
 ]
 
@@ -38,7 +39,7 @@ export async function getSignedURL(type: string, size: number, checksum: string)
 
   const putObjectCommand = new PutObjectCommand({
     Bucket: process.env.AWS_BUCKET_NAME!,
-    Key: generateFileName() + `/${type}`,
+    Key: generateFileName() + `${type}`,
     ContentType: type,
     ContentLength: size,
     ChecksumSHA256: checksum,
