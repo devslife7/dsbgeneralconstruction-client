@@ -25,11 +25,13 @@ export async function listWorks() {
 }
 export async function deleteWork(work: any) {
   // delete from s3
-  const deleteObjectCommand = new DeleteObjectCommand({
-    Bucket: process.env.AWS_BUCKET_NAME!,
-    Key: work.media[0].split("/").pop()!,
-  })
-  await s3.send(deleteObjectCommand)
+  for (const file of work.media) {
+    const deleteObjectCommand = new DeleteObjectCommand({
+      Bucket: process.env.AWS_BUCKET_NAME!,
+      Key: file.split("/").pop()!,
+    })
+    await s3.send(deleteObjectCommand)
+  }
 
   await prisma.work.delete({
     where: {
