@@ -4,25 +4,18 @@ import { getSignedURL } from "@/lib/actions"
 import { createWorkWithMedia } from "@/lib/models/work"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
-import { useState } from "react"
-import { twMerge } from "tailwind-merge"
+import { useRef, useState } from "react"
+import Button from "../ui/button"
 
-type User = {
-  name?: string | null
-  image?: string | null
-}
-
-export default function CreatePostForm({ user }: { user: User }) {
+export default function CreatePostForm() {
+  const ref = useRef<HTMLFormElement>(null)
   const router = useRouter()
   const [content, setContent] = useState("")
   const [file, setFile] = useState<File | undefined>(undefined)
   const [fileList, setFileList] = useState<File[]>([])
-  const [fileUrl, setfileUrl] = useState<string | undefined>(undefined)
+  const [fileUrl, setFileUrl] = useState<string | undefined>(undefined)
 
   const [statusMessage, setStatusMessage] = useState("")
-  const [loading, setLoading] = useState(false)
-
-  const buttonDisabled = content.length < 1 || loading
 
   const computeSHA256 = async (file: File) => {
     const buffer = await file.arrayBuffer()
@@ -36,9 +29,8 @@ export default function CreatePostForm({ user }: { user: User }) {
     e.preventDefault()
 
     setStatusMessage("creating")
-    setLoading(true)
 
-    // Do all the image upload here
+    // Image upload whole logic
     try {
       let url: string | undefined = ""
       let urlArray: string[] | undefined = []
@@ -52,7 +44,6 @@ export default function CreatePostForm({ user }: { user: User }) {
 
           if (signedURLResult.error !== undefined) {
             setStatusMessage(signedURLResult.error)
-            setLoading(false)
             console.error(signedURLResult.error)
             return
           }
@@ -77,12 +68,9 @@ export default function CreatePostForm({ user }: { user: User }) {
       setStatusMessage("error")
       console.error(e)
       return
-    } finally {
-      setLoading(false)
     }
 
     setStatusMessage("created")
-    setLoading(false)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,45 +84,58 @@ export default function CreatePostForm({ user }: { user: User }) {
 
     if (file) {
       const url = URL.createObjectURL(file)
-      setfileUrl(url)
+      setFileUrl(url)
     } else {
-      setfileUrl(undefined)
+      setFileUrl(undefined)
     }
   }
 
+  const submitAction = (formData: FormData) => {
+    const title = formData.get("title")
+    const description = formData.get("description")
+    console.log("triggered submit action:", title, description)
+
+    // trigger server action here
+    //reset form here
+    ref.current?.reset()
+    setFileUrl(undefined)
+  }
+
   return (
-    <form className="border border-neutral-500 rounded-lg px-6 py-4 max-w-2xl m-auto" onSubmit={handleSubmit}>
+    <form
+      action={submitAction}
+      ref={ref}
+      className="border border-neutral-500 rounded-lg px-6 py-4 max-w-md m-auto"
+    >
+      {/* Status message */}
       {statusMessage && (
         <p className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 mb-4 rounded relative">
           {statusMessage}
         </p>
       )}
 
+      {/* Input fields */}
       <div className="flex gap-4 items-start pb-4 w-full">
-        <div className="rounded-full h-12 w-12 overflow-hidden relative">
-          <Image
-            className="object-cover"
-            src={user.image || "https://www.gravatar.com/avatar/?d=mp"}
-            alt={user.name || "user profile picture"}
-            priority={true}
-            fill={true}
-          />
-        </div>
-
-        <div className="flex flex-col gap-2 w-full">
-          <div>{user.name}</div>
-
+        <div className="flex flex-col gap-6 w-full">
+          <label className="text-center text-xl"> Create Work Post</label>
           <label className="w-full">
             <input
-              className="bg-transparent flex-1 border-none outline-none"
+              className="bg-transparent flex-1 w-full border-none outline-none text-xl"
               type="text"
-              placeholder="Post a thing..."
-              value={content}
-              onChange={e => setContent(e.target.value)}
+              name="title"
+              placeholder="Title"
+            />
+          </label>
+          <label className="w-full">
+            <input
+              className="bg-transparent flex-1 w-full border-none outline-none"
+              type="text"
+              name="description"
+              placeholder="Description"
             />
           </label>
 
-          {/* Preivew File */}
+          {/* Preview File */}
           {fileUrl && file && (
             <div className="flex gap-4 items-start pb-4 w-full">
               {file.type.startsWith("image/") ? (
@@ -146,17 +147,6 @@ export default function CreatePostForm({ user }: { user: User }) {
                   <video className="object-cover" src={fileUrl} autoPlay loop muted />
                 </div>
               )}
-
-              <button
-                type="button"
-                className="border rounded-xl px-4 py-2"
-                onClick={() => {
-                  setFile(undefined)
-                  setfileUrl(undefined)
-                }}
-              >
-                Remove
-              </button>
             </div>
           )}
 
@@ -173,7 +163,6 @@ export default function CreatePostForm({ user }: { user: User }) {
                 className="fill-current"
               ></path>
             </svg>
-
             <input
               className="bg-transparent flex-1 border-none outline-none hidden"
               name="media"
@@ -187,18 +176,7 @@ export default function CreatePostForm({ user }: { user: User }) {
       </div>
 
       <div className="flex justify-between items-center mt-5">
-        <div className="text-neutral-500">Characters: {content.length}</div>
-        <button
-          type="submit"
-          className={twMerge(
-            "border rounded-xl px-4 py-2 disabled",
-            buttonDisabled && "opacity-50 cursor-not-allowed"
-          )}
-          disabled={buttonDisabled}
-          aria-disabled={buttonDisabled}
-        >
-          Post
-        </button>
+        <Button type="submit">Submit</Button>
       </div>
     </form>
   )
