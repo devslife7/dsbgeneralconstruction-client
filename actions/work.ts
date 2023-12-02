@@ -1,6 +1,5 @@
 "use server"
-import { prisma } from "../db"
-import { redirect } from "next/navigation"
+import { prisma } from "../lib/db"
 import { revalidatePath } from "next/cache"
 
 import { S3Client, DeleteObjectCommand } from "@aws-sdk/client-s3"
@@ -60,5 +59,4 @@ export async function createWorkWithMedia(title: string, description: string, me
   })
 
   revalidatePath("/work")
-  //   redirect("/work")
 }

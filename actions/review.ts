@@ -1,6 +1,6 @@
 "use server"
 
-import { prisma } from "../db"
+import { prisma } from "../lib/db"
 
 export async function deleteReview(reviewId: number) {
   const deleted = await prisma.review.delete({

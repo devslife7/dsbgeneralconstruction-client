@@ -4,8 +4,8 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog"
 import MediaGalleryButton from "./mediaGalleryButton"
 import Reviews from "./reviews"
 import DropdownMenuOptions from "./dropdownMenuOptions"
-import { deleteReview } from "@/lib/models/review"
-import { createReview } from "@/lib/models/review"
+import { deleteReview } from "@/actions/review"
+import { createReview } from "@/actions/review"
 
 type WorkProps = {
   id: number

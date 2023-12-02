@@ -1,7 +1,7 @@
 "use client"
 
 import { DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
-import { deleteWork } from "@/lib/models/work"
+import { deleteWork } from "@/actions/work"
 import { DeleteSVG, EditSVG } from "@/public/svgs"
 
 type WorkProps = {

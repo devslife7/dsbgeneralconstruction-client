@@ -1,7 +1,6 @@
 "use client"
-
-import { getSignedURL } from "@/lib/actions"
-import { createWorkWithMedia } from "@/lib/models/work"
+import { getSignedURL } from "@/actions/actions"
+import { createWorkWithMedia } from "@/actions/work"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { useRef, useState } from "react"
