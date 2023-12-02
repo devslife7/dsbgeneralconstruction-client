@@ -19,3 +19,4 @@ export { default as TwitterSVG } from "./socials/twitter.svg"
 export { default as YoutubeSVG } from "./socials/youtube.svg"
 
 export { default as LogoSVG } from "./logo.svg"
+export { default as AttachMediaSVG } from "./attachMedia.svg"
