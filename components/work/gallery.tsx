@@ -1,8 +1,8 @@
 import GalleryCard from "./galleryCard/galleryCard"
-import { listWorks } from "@/actions/work"
+import { getWorkList } from "@/actions/work"
 
 export default async function Gallery() {
-  const gallery = await listWorks()
+  const gallery = await getWorkList()
   return (
     <div className="mt-10 mx-auto lg:container lg:px-8">
       <div className="my-container">

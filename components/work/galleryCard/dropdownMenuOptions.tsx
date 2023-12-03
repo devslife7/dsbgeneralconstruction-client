@@ -1,7 +1,7 @@
 "use client"
 
 import { DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
-import { deleteWork } from "@/actions/work"
+import { removeWork } from "@/actions/work"
 import { DeleteSVG, EditSVG } from "@/public/svgs"
 
 type WorkProps = {
@@ -15,7 +15,7 @@ type WorkProps = {
 
 export default function DropdownMenuOptions({ work }: { work: WorkProps }) {
   const handleWorkDelete = async () => {
-    await deleteWork(work)
+    await removeWork(work)
   }
   return (
     <DropdownMenuContent className="text-gray-600">

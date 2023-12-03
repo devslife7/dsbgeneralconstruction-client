@@ -1,7 +1,7 @@
 "use client"
 import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
-import { createWorkWithMediaComplete } from "@/actions/work"
+import { addWork } from "@/actions/work"
 import Image from "next/image"
 import Button from "../ui/button"
 
@@ -13,54 +13,6 @@ export default function CreatePostForm() {
   const [fileUrl, setFileUrl] = useState<string | undefined>(undefined)
 
   const [statusMessage, setStatusMessage] = useState("")
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    setStatusMessage("creating")
-
-    // Image upload whole logic
-    // try {
-    //   let url: string | undefined = ""
-    //   let urlArray: string[] | undefined = []
-    //   // Upload file to S3
-    //   if (fileList.length > 0 && fileList[0]) {
-    //     setStatusMessage("uploading files")
-
-    //     for (const file of fileList) {
-    //       const checksum = await computeSHA256(file)
-    //       const signedURLResult = await getSignedURL(file.type, file.size, checksum)
-
-    //       if (signedURLResult.error !== undefined) {
-    //         setStatusMessage(signedURLResult.error)
-    //         console.error(signedURLResult.error)
-    //         return
-    //       }
-
-    //       const url = signedURLResult.success.url
-    //       urlArray.push(url.split("?")[0])
-
-    //       await fetch(url, {
-    //         method: "PUT",
-    //         body: file,
-    //         headers: {
-    //           "Content-Type": file.type,
-    //         },
-    //       })
-    //     }
-    //   }
-
-    //   // Save work to database
-    //   await createWorkWithMedia(content, content, urlArray)
-    //   router.refresh()
-    // } catch (e) {
-    //   setStatusMessage("error")
-    //   console.error(e)
-    //   return
-    // }
-
-    setStatusMessage("created")
-  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -82,10 +34,8 @@ export default function CreatePostForm() {
 
   const submitAction = async (formData: FormData) => {
     setStatusMessage("creating")
-
     // trigger server action here
-    await createWorkWithMediaComplete(formData)
-
+    await addWork(formData)
     setStatusMessage("created")
   }
 

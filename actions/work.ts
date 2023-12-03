@@ -12,7 +12,7 @@ const s3 = new S3Client({
   },
 })
 
-export async function listWorks() {
+export async function getWorkList() {
   return await prisma.work.findMany({
     orderBy: {
       id: "desc",
@@ -22,7 +22,7 @@ export async function listWorks() {
     },
   })
 }
-export async function deleteWork(work: any) {
+export async function removeWork(work: any) {
   // delete from s3
   for (const file of work.media) {
     const deleteObjectCommand = new DeleteObjectCommand({
@@ -41,27 +41,7 @@ export async function deleteWork(work: any) {
   revalidatePath("/work")
 }
 
-export async function createWork(data: any) {
-  return await prisma.work.create({
-    data: {
-      ...data,
-    },
-  })
-}
-
-export async function createWorkWithMedia(title: string, description: string, media: string[]) {
-  await prisma.work.create({
-    data: {
-      title,
-      description,
-      media,
-    },
-  })
-
-  revalidatePath("/work")
-}
-
-export async function createWorkWithMediaComplete(formData: FormData) {
+export async function addWork(formData: FormData) {
   const title = formData.get("title") as string
   const description = formData.get("description") as string
   const media = formData.getAll("media") as File[]
