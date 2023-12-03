@@ -1,9 +1,7 @@
 "use server"
 // import { auth } from "@/auth"
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
-
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
-
 import crypto from "crypto"
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString("hex")
 
@@ -28,6 +26,38 @@ const acceptedTypes = [
 
 const maxFileSize = 1024 * 1024 * 10 // 10MB
 
+// Takes in a list of files and uploads them to S3
+export async function uploadFilesToS3(fileList: File[]) {
+  let urlArray: string[] | undefined = []
+  try {
+    // Upload file to S3
+    if (fileList.length > 0 && fileList[0]) {
+      for (const file of fileList) {
+        const checksum = await computeSHA256(file)
+        const signedURLResult = await getSignedURL(file.type, file.size, checksum)
+        if (signedURLResult.error !== undefined) {
+          console.error(signedURLResult.error)
+          return
+        }
+        const url = signedURLResult.success.url
+        urlArray.push(url.split("?")[0])
+        await fetch(url, {
+          method: "PUT",
+          body: file,
+          headers: {
+            "Content-Type": file.type,
+          },
+        })
+      }
+    }
+  } catch (e) {
+    console.error(e)
+    return
+  }
+  return urlArray
+}
+
+// Returns a signed URL for the file to be uploaded to
 export async function getSignedURL(type: string, size: number, checksum: string) {
   // make sure user is authenticated
   // const session = await auth()
@@ -50,4 +80,13 @@ export async function getSignedURL(type: string, size: number, checksum: string)
   })
 
   return { success: { url: signedURL } }
+}
+
+// Takes an input and produces a fixed-size string of bytes. Output is unique to the input.
+const computeSHA256 = async (file: File) => {
+  const buffer = await file.arrayBuffer()
+  const hashBuffer = await crypto.subtle.digest("SHA-256", buffer)
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("")
+  return hashHex
 }

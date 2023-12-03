@@ -1,15 +1,13 @@
 "use client"
-import { getSignedURL } from "@/actions/actions"
-import { createWorkWithMedia, createWorkWithMediaComplete } from "@/actions/work"
-import { useRouter } from "next/navigation"
-import Image from "next/image"
 import { useRef, useState } from "react"
+import { useRouter } from "next/navigation"
+import { createWorkWithMediaComplete } from "@/actions/work"
+import Image from "next/image"
 import Button from "../ui/button"
 
 export default function CreatePostForm() {
   const ref = useRef<HTMLFormElement>(null)
   const router = useRouter()
-  const [content, setContent] = useState("")
   const [file, setFile] = useState<File | undefined>(undefined)
   const [fileList, setFileList] = useState<File[]>([])
   const [fileUrl, setFileUrl] = useState<string | undefined>(undefined)
