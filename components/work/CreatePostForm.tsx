@@ -1,13 +1,12 @@
 "use client"
 import { useRef, useState } from "react"
-import { useRouter } from "next/navigation"
 import { addWork } from "@/actions/work"
 import Image from "next/image"
 import Button from "../ui/button"
+import { experimental_useFormStatus as useFormStatus } from "react-dom"
 
 export default function CreatePostForm() {
   const ref = useRef<HTMLFormElement>(null)
-  const router = useRouter()
   const [file, setFile] = useState<File | undefined>(undefined)
   const [fileList, setFileList] = useState<File[]>([])
   const [fileUrl, setFileUrl] = useState<string | undefined>(undefined)
@@ -34,7 +33,6 @@ export default function CreatePostForm() {
 
   const submitAction = async (formData: FormData) => {
     setStatusMessage("creating")
-    // trigger server action here
     await addWork(formData)
     setStatusMessage("created")
   }
