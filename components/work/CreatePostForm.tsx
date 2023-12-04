@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import { addWork } from "@/actions/work"
 import Image from "next/image"
 import Button from "../ui/button"
-import { experimental_useFormStatus as useFormStatus } from "react-dom"
+// import { experimental_useFormStatus as useFormStatus } from "react-dom"
 
 export default function CreatePostForm() {
   const ref = useRef<HTMLFormElement>(null)
@@ -11,7 +11,7 @@ export default function CreatePostForm() {
   const [fileList, setFileList] = useState<File[]>([])
   const [fileUrl, setFileUrl] = useState<string | undefined>(undefined)
   const [statusMessage, setStatusMessage] = useState("")
-  const { pending } = useFormStatus()
+  // const { pending } = useFormStatus()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -78,9 +78,7 @@ export default function CreatePostForm() {
       </div>
 
       <div className="flex justify-between items-center mt-5">
-        <Button aria-disabled={pending} type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </div>
     </form>
   )
